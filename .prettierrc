@@ -1,0 +1,14 @@
+{
+	"singleQuote": true,
+	"useTabs": true,
+	"printWidth": 120,
+	"trailingComma": "all",
+	"importOrder": ["^[./]"],
+	"importOrderSeparation": false,
+	"importOrderParserPlugins": ["typescript", "jsx", "classProperties", "decorators-legacy"],
+	"plugins": [
+		"@trivago/prettier-plugin-sort-imports",
+		"prettier-plugin-organize-attributes",
+		"prettier-plugin-tailwindcss"
+	]
+}
