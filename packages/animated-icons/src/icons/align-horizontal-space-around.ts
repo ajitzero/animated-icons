@@ -1,0 +1,75 @@
+import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+
+@Component({
+	selector: 'i-align-horizontal-space-around',
+	template: `
+		<svg
+			class="align-horizontal-space-around-icon"
+			[attr.width]="size()"
+			[attr.height]="size()"
+			[attr.stroke]="color()"
+			[attr.stroke-width]="strokeWidth()"
+			[class.animate]="isHovered()"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+		>
+			<svg:rect class="rectangle" width="6" height="10" x="9" y="7" rx="2" />
+			<svg:path class="left-line" d="M4 22V2" />
+			<svg:path class="right-line" d="M20 22V2" />
+		</svg>
+	`,
+	styles: `
+		:host {
+			display: inline-block;
+		}
+		.align-horizontal-space-around-icon {
+			overflow: visible;
+		}
+
+		.rectangle,
+		.left-line,
+		.right-line {
+			transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+			transform-origin: center;
+		}
+
+		.align-horizontal-space-around-icon.animate .rectangle {
+			transform: scaleX(0.85);
+		}
+
+		.align-horizontal-space-around-icon.animate .left-line {
+			transform: translateX(2px) scaleY(0.9);
+		}
+
+		.align-horizontal-space-around-icon.animate .right-line {
+			transform: translateX(-2px) scaleY(0.9);
+		}
+	`,
+	host: {
+		'[class]': 'class()',
+		'aria-label': 'align-horizontal-space-around',
+		role: 'img',
+		'(mouseenter)': 'handleMouseEnter()',
+		'(mouseleave)': 'handleMouseLeave()',
+	},
+	changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class AlignHorizontalSpaceAroundIcon {
+	color = input('currentColor');
+	size = input(24);
+	strokeWidth = input(2);
+	class = input('');
+
+	isHovered = signal(false);
+
+	handleMouseEnter() {
+		this.isHovered.set(true);
+	}
+
+	handleMouseLeave() {
+		this.isHovered.set(false);
+	}
+}

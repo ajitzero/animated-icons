@@ -3,7 +3,16 @@ import { FormsModule } from '@angular/forms';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmEmptyImports } from '@spartan-ng/helm/empty';
 import { HlmInputImports } from '@spartan-ng/helm/input';
-import { AccessibilityIcon, ActivityIcon, AirplayIcon } from '../../../../packages/animated-icons/src';
+import {
+	AccessibilityIcon,
+	ActivityIcon,
+	AirplayIcon,
+	AlarmClockCheckIcon,
+	AlarmClockIcon,
+	AlarmClockOffIcon,
+	AlignHorizontalSpaceAroundIcon,
+	AlignVerticalSpaceAroundIcon,
+} from 'ng-animated-icons';
 import { IconCard } from './icon-card';
 import type { IconItem } from './icon-item.type';
 
@@ -55,7 +64,11 @@ export class Explorer {
 		{ name: 'accessibility', component: AccessibilityIcon },
 		{ name: 'activity', component: ActivityIcon },
 		{ name: 'airplay', component: AirplayIcon },
-		// { name: 'alarm-clock' },
+		{ name: 'alarm-clock-check', component: AlarmClockCheckIcon },
+		{ name: 'alarm-clock-off', component: AlarmClockOffIcon },
+		{ name: 'alarm-clock', component: AlarmClockIcon },
+		{ name: 'align-horizontal-space-around', component: AlignHorizontalSpaceAroundIcon },
+		{ name: 'align-vertical-space-around', component: AlignVerticalSpaceAroundIcon },
 	]);
 
 	filteredIcons = computed(() => {
