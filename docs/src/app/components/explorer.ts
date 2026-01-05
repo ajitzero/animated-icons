@@ -553,6 +553,7 @@ import type { IconItem } from './icon-item.type';
 })
 export class Explorer {
 	searchTerm = signal('');
+	includeWip = signal(false);
 
 	icons = signal<IconItem[]>([
 		{ wip: false, name: 'accessibility', component: AccessibilityIcon },
