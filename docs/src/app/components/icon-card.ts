@@ -41,7 +41,7 @@ export class IconCard {
 
 	source = computed(() => {
 		const icon = this.icon();
-		return `https://github.com/ajitzero/animated-icons/tree/main/packages/animated-icons/src/lib/${icon.name}.ts`;
+		return `https://github.com/ajitzero/animated-icons/tree/main/packages/animated-icons/src/icons/${icon.name}.ts`;
 	});
 
 	svelteSource = computed(() => {
