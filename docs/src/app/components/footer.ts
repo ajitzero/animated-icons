@@ -1,20 +1,15 @@
 import { Component } from '@angular/core';
-import { HlmButton } from '@spartan-ng/helm/button';
 
 @Component({
 	selector: 'docs-footer',
 	template: `
-		<span>
-			<span class="opacity-30">&copy;</span>
-			<a class="px-1 font-mono" hlmBtn target="_blank" variant="link" href="https://github.com/ajitzero"
-				>Ajit Panigrahi</a
-			>
-		</span>
-		<a hlmBtn variant="link" target="_blank" href="https://github.com/ajitzero/animated-icons">View Source</a>
+		<a class="group hover:bg-muted-foreground/10 rounded-md py-2 px-3 -my-2 -mx-3" target="_blank" href="https://github.com/ajitzero">
+			<span class="text-muted-foreground">Built with <span class="group-hover:hidden">🤍</span><span class="hidden group-hover:inline">❤️</span> by</span>
+			<span class="px-1 group-hover:underline">@ajitzero</span>
+		</a>
 	`,
 	host: {
-		class: 'flex justify-between mt-16 mb-24 items-center max-w-2xl mx-auto',
+		class: 'flex justify-center mt-16 mb-24 items-center max-w-2xl mx-auto',
 	},
-	imports: [HlmButton],
 })
 export class Footer {}
