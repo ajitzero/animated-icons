@@ -21,8 +21,8 @@ import { hlmH1, hlmP } from '@spartan-ng/helm/typography';
 			<p class="${hlmP}">
 				Thanks to
 				<a class="underline hover:opacity-75" href="https://lucide-animated.com/">pqoqubbw/icons</a>. Built with
-				<a class="underline hover:opacity-75" href="https://motion.dev/">Motion</a>
-				and
+				<!-- <a class="underline hover:opacity-75" href="https://motion.dev/">Motion</a> -->
+				<!-- and -->
 				<a class="underline hover:opacity-75" href="https://lucide.dev/">Lucide</a>.
 			</p>
 		</section>
