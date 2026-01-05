@@ -3,6 +3,7 @@ import { Component, computed, input, isDevMode, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmInputImports } from '@spartan-ng/helm/input';
+import { HlmTooltipImports } from '@spartan-ng/helm/tooltip';
 import type { IconItem } from './icon-item.type';
 
 @Component({
@@ -18,11 +19,22 @@ import type { IconItem } from './icon-item.type';
 				<a [href]="svelteSource()" hlmBtn variant="link" target="_blank">Svelte</a>
 			}
 		</div>
+		@if (icon().wip) {
+			<span
+				class="text-red-500"
+				[hlmTooltipTrigger]="'This icon might be working, but I have not verfied it yet'"
+				aria-describedby="Simple tooltip"
+				hlmBtn
+				variant="outline"
+				aria-label="Work in progress"
+				>WIP</span
+			>
+		}
 	`,
 	host: {
 		class: 'flex flex-col items-center p-8 justify-center bg-background group/card rounded-2xl',
 	},
-	imports: [HlmInputImports, HlmButtonImports, FormsModule, NgComponentOutlet],
+	imports: [HlmInputImports, HlmButtonImports, HlmTooltipImports, FormsModule, NgComponentOutlet],
 })
 export class IconCard {
 	icon = input.required<IconItem>();

@@ -1,0 +1,74 @@
+import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+
+@Component({
+	selector: 'i-mouse-pointer-2',
+	template: `
+		<svg
+			class="mouse-pointer-2-icon"
+			[attr.width]="size()"
+			[attr.height]="size()"
+			[attr.stroke]="color()"
+			[attr.stroke-width]="strokeWidth()"
+			[class.animate]="isHovered()"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+		>
+			<svg:path
+				d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z"
+			/>
+		</svg>
+	`,
+	styles: `
+		:host {
+			display: inline-block;
+		}
+		.mouse-pointer-icon {
+			overflow: visible;
+		}
+
+		.mouse-pointer-icon.animate {
+			animation: mouseMove 1s ease;
+		}
+
+		@keyframes mouseMove {
+			0%,
+			100% {
+				transform: translate(0, 0);
+			}
+			25% {
+				transform: translate(0, -4px);
+			}
+			75% {
+				transform: translate(-3px, 0);
+			}
+		}
+	`,
+	host: {
+		'[class]': 'class()',
+		'aria-label': 'mouse-pointer-2',
+		role: 'img',
+		'(mouseenter)': 'handleMouseEnter()',
+	},
+	changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class MousePointer2Icon {
+	color = input('currentColor');
+	size = input(24);
+	strokeWidth = input(2);
+	class = input('');
+
+	isHovered = signal(false);
+
+	handleMouseEnter() {
+		if (!this.isHovered()) {
+			this.isHovered.set(true);
+
+			setTimeout(() => {
+				this.isHovered.set(false);
+			}, 1400);
+		}
+	}
+}

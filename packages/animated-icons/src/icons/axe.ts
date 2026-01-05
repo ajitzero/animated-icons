@@ -1,0 +1,76 @@
+import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+
+@Component({
+	selector: 'i-axe',
+	template: `
+		<svg
+			class="axe-icon"
+			[attr.width]="size()"
+			[attr.height]="size()"
+			[attr.stroke]="color()"
+			[attr.stroke-width]="strokeWidth()"
+			[class.animate]="isHovered()"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+		>
+			<svg:path d="m14 12-8.5 8.5a2.12 2.12 0 1 1-3-3L11 9" />
+			<svg:path d="M15 13 9 7l4-4 6 6h3a8 8 0 0 1-7 7z" />
+		</svg>
+	`,
+	styles: `
+		:host {
+			display: inline-block;
+		}
+		.axe-icon {
+			transform-origin: bottom left;
+			transition: transform 0.3s ease-;
+		}
+
+		.axe-icon.animate {
+			animation: swing 1s ease;
+		}
+
+		@keyframes swing {
+			0% {
+				transform: rotate(0deg);
+			}
+			60% {
+				transform: rotate(-20deg);
+			}
+			80% {
+				transform: rotate(15deg);
+			}
+			100% {
+				transform: rotate(0deg);
+			}
+		}
+	`,
+	host: {
+		'[class]': 'class()',
+		'aria-label': 'axe',
+		role: 'img',
+		'(mouseenter)': 'handleMouseEnter()',
+	},
+	changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class AxeIcon {
+	color = input('currentColor');
+	size = input(24);
+	strokeWidth = input(2);
+	class = input('');
+
+	isHovered = signal(false);
+
+	handleMouseEnter() {
+		if (!this.isHovered()) {
+			this.isHovered.set(true);
+
+			setTimeout(() => {
+				this.isHovered.set(false);
+			}, 1400);
+		}
+	}
+}

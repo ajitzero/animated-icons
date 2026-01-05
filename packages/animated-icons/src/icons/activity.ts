@@ -57,7 +57,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 	host: {
 		'[class]': 'class()',
 		'(mouseenter)': 'handleMouseEnter()',
-		'aria-label': 'accessibility',
+		'aria-label': 'activity',
 		role: 'img',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,

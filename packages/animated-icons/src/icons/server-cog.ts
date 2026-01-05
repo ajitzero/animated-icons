@@ -1,0 +1,73 @@
+import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+
+@Component({
+	selector: 'i-server-cog',
+	template: `
+		<svg
+			class="server-cog-icon"
+			[attr.width]="size()"
+			[attr.height]="size()"
+			[attr.stroke]="color()"
+			[attr.stroke-width]="strokeWidth()"
+			[class.animate]="isHovered()"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+		>
+			<svg:path d="M4.5 10H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-.5" />
+			<svg:path d="M4.5 14H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-.5" />
+			<svg:path d="M6 6h.01" />
+			<svg:path d="M6 18h.01" />
+			<svg:g class="cog-group">
+				<svg:circle cx="12" cy="12" r="3" />
+				<svg:path d="m15.7 13.4-.9-.3" />
+				<svg:path d="m9.2 10.9-.9-.3" />
+				<svg:path d="m10.6 15.7.3-.9" />
+				<svg:path d="m13.6 15.7-.4-1" />
+				<svg:path d="m10.8 9.3-.4-1" />
+				<svg:path d="m8.3 13.6 1-.4" />
+				<svg:path d="m14.7 10.8 1-.4" />
+				<svg:path d="m13.4 8.3-.3.9" />
+			</svg:g>
+		</svg>
+	`,
+	styles: `
+		:host {
+			display: inline-block;
+		}
+		.cog-group {
+			transform-origin: 12px 12px;
+			transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		}
+
+		.cog-group.animate {
+			transform: rotate(180deg);
+		}
+	`,
+	host: {
+		'[class]': 'class()',
+		'aria-label': 'server-cog',
+		role: 'img',
+		'(mouseenter)': 'handleMouseEnter()',
+		'(mouseleave)': 'handleMouseLeave()',
+	},
+	changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ServerCogIcon {
+	color = input('currentColor');
+	size = input(24);
+	strokeWidth = input(2);
+	class = input('');
+
+	isHovered = signal(false);
+
+	handleMouseEnter() {
+		this.isHovered.set(true);
+	}
+
+	handleMouseLeave() {
+		this.isHovered.set(false);
+	}
+}

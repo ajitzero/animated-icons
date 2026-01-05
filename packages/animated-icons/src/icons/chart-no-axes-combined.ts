@@ -1,0 +1,135 @@
+import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+
+@Component({
+	selector: 'i-chart-no-axes-combined',
+	template: `
+		<svg
+			class="chart-no-axes-combined-icon"
+			[attr.width]="size()"
+			[attr.height]="size()"
+			[attr.stroke]="color()"
+			[attr.stroke-width]="strokeWidth()"
+			[class.animate]="isHovered()"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+		>
+			<svg:path class="column column-0" d="M4 18v3" />
+			<svg:path class="column column-1" d="M8 14v7" />
+			<svg:path class="column column-2" d="M12 16v5" />
+			<svg:path class="column column-3" d="M16 14v7" />
+			<svg:path class="column column-4" d="M20 10v11" />
+			<svg:path class="line" d="M2 15l6.647-6.646a.5.5 0 0 1 .707 0L12.646 11.646a.5.5 0 0 0 .707 0L22 3" />
+		</svg>
+	`,
+	styles: `
+		:host {
+			display: inline-block;
+		}
+		.chart-no-axes-combined-icon {
+			overflow: visible;
+		}
+
+		.line {
+			stroke-dasharray: 28;
+			stroke-dashoffset: 0;
+			transition:
+				stroke-dashoffset 0.3s ease,
+				opacity 0.3s ease;
+		}
+
+		.chart-no-axes-combined-icon.animate .line {
+			animation: lineAnimation 0.9s ease backwards;
+			animation-delay: 0.1s;
+		}
+
+		.column {
+			stroke-dasharray: 20;
+			stroke-dashoffset: 0;
+			transition:
+				stroke-dashoffset 0.3s ease,
+				opacity 0.3s ease;
+		}
+
+		.chart-no-axes-combined-icon.animate .column {
+			animation: columnAnimation 0.5s ease backwards;
+		}
+
+		.chart-no-axes-combined-icon.animate .column-0 {
+			animation-delay: 0s;
+		}
+
+		.chart-no-axes-combined-icon.animate .column-1 {
+			animation-delay: 0.1s;
+		}
+
+		.chart-no-axes-combined-icon.animate .column-2 {
+			animation-delay: 0.2s;
+		}
+
+		.chart-no-axes-combined-icon.animate .column-3 {
+			animation-delay: 0.3s;
+		}
+
+		.chart-no-axes-combined-icon.animate .column-4 {
+			animation-delay: 0.4s;
+		}
+
+		@keyframes lineAnimation {
+			0% {
+				stroke-dashoffset: 28;
+				opacity: 0;
+			}
+			15% {
+				stroke-dashoffset: 28;
+				opacity: 0;
+			}
+			100% {
+				stroke-dashoffset: 0;
+				opacity: 1;
+			}
+		}
+
+		@keyframes columnAnimation {
+			0% {
+				stroke-dashoffset: 0;
+				opacity: 1;
+			}
+			50% {
+				stroke-dashoffset: 20;
+				opacity: 0;
+			}
+			100% {
+				stroke-dashoffset: 0;
+				opacity: 1;
+			}
+		}
+	`,
+	host: {
+		'[class]': 'class()',
+		'aria-label': 'chart-no-axes-combined',
+		role: 'img',
+		'(mouseenter)': 'handleMouseEnter()',
+	},
+	changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ChartNoAxesCombinedIcon {
+	color = input('currentColor');
+	size = input(24);
+	strokeWidth = input(2);
+	class = input('');
+
+	isHovered = signal(false);
+
+	handleMouseEnter() {
+		if (!this.isHovered()) {
+			this.isHovered.set(true);
+
+			setTimeout(() => {
+				this.isHovered.set(false);
+			}, 1400);
+		}
+	}
+}

@@ -1,0 +1,88 @@
+import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+
+@Component({
+	selector: 'i-droplet-off',
+	template: `
+		<svg
+			class="droplet-off-icon"
+			[attr.width]="size()"
+			[attr.height]="size()"
+			[attr.stroke]="color()"
+			[attr.stroke-width]="strokeWidth()"
+			[class.animate]="isHovered()"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+		>
+			<svg:path d="M18.715 13.186C18.29 11.858 17.384 10.607 16 9.5c-2-1.6-3.5-4-4-6.5a10.7 10.7 0 0 1-.884 2.586" />
+			<svg:path d="m2 2 20 20" />
+			<svg:path d="M8.795 8.797A11 11 0 0 1 8 9.5C6 11.1 5 13 5 15a7 7 0 0 0 13.222 3.208" />
+		</svg>
+	`,
+	styles: `
+		:host {
+			display: inline-block;
+		}
+		.droplet-off {
+			overflow: visible;
+		}
+
+		.droplet-off {
+			overflow: visible;
+			transform: translateX(0);
+			transition: transform 0.6s ease-in-out;
+		}
+
+		.droplet-off.animate {
+			animation: groupShake 0.6s ease-in-out;
+		}
+
+		@keyframes groupShake {
+			0% {
+				transform: translateX(0);
+			}
+			16.67% {
+				transform: translateX(-7%);
+			}
+			33.33% {
+				transform: translateX(7%);
+			}
+			50% {
+				transform: translateX(-7%);
+			}
+			66.67% {
+				transform: translateX(7%);
+			}
+			100% {
+				transform: translateX(0);
+			}
+		}
+	`,
+	host: {
+		'[class]': 'class()',
+		'aria-label': 'droplet-off',
+		role: 'img',
+		'(mouseenter)': 'handleMouseEnter()',
+	},
+	changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class DropletOffIcon {
+	color = input('currentColor');
+	size = input(24);
+	strokeWidth = input(2);
+	class = input('');
+
+	isHovered = signal(false);
+
+	handleMouseEnter() {
+		if (!this.isHovered()) {
+			this.isHovered.set(true);
+
+			setTimeout(() => {
+				this.isHovered.set(false);
+			}, 1400);
+		}
+	}
+}

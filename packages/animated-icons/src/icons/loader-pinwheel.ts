@@ -1,0 +1,78 @@
+import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+
+@Component({
+	selector: 'i-loader-pinwheel',
+	template: `
+		<svg
+			class="loader-pinwheel-icon"
+			[attr.width]="size()"
+			[attr.height]="size()"
+			[attr.stroke]="color()"
+			[attr.stroke-width]="strokeWidth()"
+			[class.animate]="isHovered()"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+		>
+			<svg:g class="pinwheel">
+				<svg:path d="M22 12a1 1 0 0 1-10 0 1 1 0 0 0-10 0" />
+				<svg:path d="M7 20.7a1 1 0 1 1 5-8.7 1 1 0 1 0 5-8.6" />
+				<svg:path d="M7 3.3a1 1 0 1 1 5 8.6 1 1 0 1 0 5 8.6" />
+			</svg:g>
+			<svg:circle cx="12" cy="12" r="10" />
+		</svg>
+	`,
+	styles: `
+		:host {
+			display: inline-block;
+		}
+		.loader-pinwheel-icon {
+			overflow: visible;
+		}
+
+		.pinwheel {
+			transform-origin: center;
+			transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		}
+
+		.pinwheel.animate {
+			animation: spin 0.6s ease-in-out infinite;
+		}
+
+		@keyframes spin {
+			from {
+				transform: rotate(0deg);
+			}
+			to {
+				transform: rotate(360deg);
+			}
+		}
+	`,
+	host: {
+		'[class]': 'class()',
+		'aria-label': 'loader-pinwheel',
+		role: 'img',
+		'(mouseenter)': 'handleMouseEnter()',
+	},
+	changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class LoaderPinwheelIcon {
+	color = input('currentColor');
+	size = input(24);
+	strokeWidth = input(2);
+	class = input('');
+
+	isHovered = signal(false);
+
+	handleMouseEnter() {
+		if (!this.isHovered()) {
+			this.isHovered.set(true);
+
+			setTimeout(() => {
+				this.isHovered.set(false);
+			}, 1400);
+		}
+	}
+}

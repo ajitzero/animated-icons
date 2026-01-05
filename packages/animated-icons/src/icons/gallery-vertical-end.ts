@@ -1,0 +1,108 @@
+import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+
+@Component({
+	selector: 'i-gallery-vertical-end',
+	template: `
+		<svg
+			class="gallery-vertical-end-icon"
+			[attr.width]="size()"
+			[attr.height]="size()"
+			[attr.stroke]="color()"
+			[attr.stroke-width]="strokeWidth()"
+			[class.animate]="isHovered()"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+		>
+			<svg:path d="M7 2h10" custom="1" />
+			<svg:path d="M5 6h14" custom="2" />
+			<svg:rect width="18" height="12" x="3" y="10" rx="2" />
+		</svg>
+	`,
+	styles: `
+		:host {
+			display: inline-block;
+		}
+		path {
+			transition:
+				transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+				opacity 0.3s ease;
+			transform-origin: center;
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		path[custom='1'].animate {
+			animation: disappearThenAppear1 0.6s forwards;
+		}
+
+		path[custom='2'].animate {
+			animation: disappearThenAppear2 0.6s forwards;
+		}
+
+		@keyframes disappearThenAppear1 {
+			0% {
+				opacity: 0;
+				transform: translateY(3px);
+			}
+			60% {
+				opacity: 0;
+				transform: translateY(3px);
+			}
+			80% {
+				opacity: 1;
+				transform: translateY(0);
+			}
+			100% {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes disappearThenAppear2 {
+			0% {
+				opacity: 0;
+				transform: translateY(3px);
+			}
+			40% {
+				opacity: 0;
+				transform: translateY(3px);
+			}
+			60% {
+				opacity: 1;
+				transform: translateY(0);
+			}
+			100% {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+	`,
+	host: {
+		'[class]': 'class()',
+		'aria-label': 'gallery-vertical-end',
+		role: 'img',
+		'(mouseenter)': 'handleMouseEnter()',
+	},
+	changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class GalleryVerticalEndIcon {
+	color = input('currentColor');
+	size = input(24);
+	strokeWidth = input(2);
+	class = input('');
+
+	isHovered = signal(false);
+
+	handleMouseEnter() {
+		if (!this.isHovered()) {
+			this.isHovered.set(true);
+
+			setTimeout(() => {
+				this.isHovered.set(false);
+			}, 1400);
+		}
+	}
+}
