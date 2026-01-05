@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { HlmButton } from '@spartan-ng/helm/button';
 
 @Component({
@@ -16,6 +15,6 @@ import { HlmButton } from '@spartan-ng/helm/button';
 	host: {
 		class: 'flex justify-between mt-16 mb-24 items-center max-w-2xl mx-auto',
 	},
-	imports: [RouterLink, HlmButton],
+	imports: [HlmButton],
 })
 export class Footer {}
