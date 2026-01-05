@@ -24,7 +24,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		:host {
 			display: inline-block;
 		}
-		svg path {
+		.arrow-big-down-dash-icon path {
 			transition: transform 0.2s ease-out;
 		}
 		.animate-arrow {
@@ -56,7 +56,7 @@ export class ArrowBigDownDashIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 200);
 		}
 	}
 }
