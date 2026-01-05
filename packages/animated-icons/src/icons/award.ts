@@ -42,7 +42,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			60% {
 				transform: rotate(-20deg) scale(1.2);
 			}
-			1000% {
+			100% {
 				transform: rotate(0deg) scale(1);
 			}
 		}

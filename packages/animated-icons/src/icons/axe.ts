@@ -26,7 +26,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		}
 		.axe-icon {
 			transform-origin: bottom left;
-			transition: transform 0.3s ease-;
+			transition: transform 0.3s ease;
 		}
 
 		.axe-icon.animate {
