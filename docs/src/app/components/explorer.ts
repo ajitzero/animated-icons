@@ -1,8 +1,10 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, isDevMode, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmEmptyImports } from '@spartan-ng/helm/empty';
 import { HlmInputImports } from '@spartan-ng/helm/input';
+import { HlmLabelImports } from '@spartan-ng/helm/label';
+import { HlmSwitchImports } from '@spartan-ng/helm/switch';
 import {
 	AccessibilityIcon,
 	ActivityIcon,
@@ -522,6 +524,16 @@ import type { IconItem } from './icon-item.type';
 			</div>
 		</div>
 
+		<!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
+		<label class="flex items-center" hlmLabel>
+			<hlm-switch class="mr-2" [(checked)]="includeWip" />
+			@if (includeWip()) {
+				Including WIP icons
+			} @else {
+				Excluding WIP icons
+			}
+		</label>
+
 		@let icons = filteredIcons();
 
 		@if (icons.length === 0) {
@@ -539,31 +551,39 @@ import type { IconItem } from './icon-item.type';
 				</div>
 			</div>
 		} @else {
-			<div class="my-4 grid w-full grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-1 py-2">
+			<div class="grid w-full grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-1 py-2">
 				@for (icon of icons; track icon.name) {
-					<docs-icon-card [icon]="icon" />
+					<docs-icon-card [class.hidden]="!includeWip() && icon.wip" [icon]="icon" />
 				}
 			</div>
 		}
 	`,
 	host: {
-		class: 'flex flex-col items-center',
+		class: 'flex flex-col items-center gap-4',
 	},
-	imports: [FormsModule, HlmButtonImports, HlmEmptyImports, HlmInputImports, IconCard],
+	imports: [
+		FormsModule,
+		HlmButtonImports,
+		HlmEmptyImports,
+		HlmInputImports,
+		HlmLabelImports,
+		HlmSwitchImports,
+		IconCard,
+	],
 })
 export class Explorer {
 	searchTerm = signal('');
-	includeWip = signal(false);
+	includeWip = signal(isDevMode());
 
 	icons = signal<IconItem[]>([
-		{ wip: false, name: 'accessibility', component: AccessibilityIcon },
-		{ wip: false, name: 'activity', component: ActivityIcon },
+		{ wip: true, name: 'accessibility', component: AccessibilityIcon },
+		{ wip: true, name: 'activity', component: ActivityIcon },
 		{ wip: false, name: 'airplay', component: AirplayIcon },
-		{ wip: false, name: 'alarm-clock-check', component: AlarmClockCheckIcon },
-		{ wip: false, name: 'alarm-clock-off', component: AlarmClockOffIcon },
-		{ wip: false, name: 'alarm-clock', component: AlarmClockIcon },
-		{ wip: false, name: 'align-horizontal-space-around', component: AlignHorizontalSpaceAroundIcon },
-		{ wip: false, name: 'align-vertical-space-around', component: AlignVerticalSpaceAroundIcon },
+		{ wip: true, name: 'alarm-clock-check', component: AlarmClockCheckIcon },
+		{ wip: true, name: 'alarm-clock-off', component: AlarmClockOffIcon },
+		{ wip: true, name: 'alarm-clock', component: AlarmClockIcon },
+		{ wip: true, name: 'align-horizontal-space-around', component: AlignHorizontalSpaceAroundIcon },
+		{ wip: true, name: 'align-vertical-space-around', component: AlignVerticalSpaceAroundIcon },
 		{ wip: true, name: 'anvil', component: AnvilIcon },
 		{ wip: true, name: 'archive', component: ArchiveIcon },
 		{ wip: true, name: 'arrow-big-down-dash', component: ArrowBigDownDashIcon },
