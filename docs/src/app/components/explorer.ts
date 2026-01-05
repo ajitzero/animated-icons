@@ -45,7 +45,7 @@ import type { IconItem } from './icon-item.type';
 				</div>
 			</div>
 		} @else {
-			<div class="my-4 grid w-full max-w-2xl grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-1 p-2">
+			<div class="my-4 grid w-full grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-1 py-2">
 				@for (icon of icons; track icon.name) {
 					<docs-icon-card [icon]="icon" />
 				}
