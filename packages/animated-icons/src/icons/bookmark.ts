@@ -76,7 +76,7 @@ export class BookmarkIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 600);
 		}
 	}
 }

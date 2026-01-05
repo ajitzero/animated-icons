@@ -110,7 +110,7 @@ export class BookmarkXIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 600);
 		}
 	}
 }

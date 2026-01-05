@@ -103,7 +103,7 @@ export class BookmarkMinusIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 600);
 		}
 	}
 }
