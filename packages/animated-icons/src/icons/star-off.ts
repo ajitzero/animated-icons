@@ -25,17 +25,14 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		:host {
 			display: inline-block;
 		}
-		.star-off {
-			overflow: visible;
-		}
 
-		.star-off {
+		.star-off-icon {
 			overflow: visible;
 			transform: translateX(0);
 			transition: transform 0.6s ease-in-out;
 		}
 
-		.star-off.animate {
+		.star-off-icon.animate {
 			animation: groupShake 0.6s ease-in-out;
 		}
 
@@ -82,7 +79,7 @@ export class StarOffIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 600);
 		}
 	}
 }
