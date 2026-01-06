@@ -1086,9 +1086,11 @@ export class Explorer {
 
 	cleanSearchTerm = computed(() => this.searchTerm().trim());
 
+	availableIcons = computed(() => this.icons().filter((icon) => this.includeWip() || !icon.wip));
+
 	filteredIcons = computed(() => {
 		const searchTerm = this.cleanSearchTerm();
-		const icons = this.icons().filter((icon) => this.includeWip() || !icon.wip);
+		const icons = this.availableIcons();
 
 		if (!searchTerm) {
 			return icons;
@@ -1098,7 +1100,7 @@ export class Explorer {
 	});
 
 	iconCountMessage = computed(() => {
-		const icons = this.icons();
+		const icons = this.availableIcons();
 		const filteredIcons = this.filteredIcons();
 		if (icons.length === filteredIcons.length) {
 			return `${icons.length} icons`;
