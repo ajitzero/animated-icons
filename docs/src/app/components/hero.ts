@@ -28,7 +28,7 @@ import { hlmH1, hlmP } from '@spartan-ng/helm/typography';
 		</section>
 	`,
 	host: {
-		class: 'block py-18 max-w-2xl mx-auto text-center',
+		class: 'block py-18 max-w-2xl mx-auto text-center px-4 sm:px-0',
 	},
 })
 export class Hero {}

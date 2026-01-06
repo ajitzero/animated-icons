@@ -12,7 +12,7 @@ import { HlmButtonImports } from '@spartan-ng/helm/button';
 		</span>
 	`,
 	host: {
-		class: 'flex justify-between mt-4 items-center max-w-2xl mx-auto',
+		class: 'flex justify-between mt-4 items-center max-w-2xl mx-auto px-4 md:px-0',
 	},
 	imports: [RouterLink, HlmButtonImports],
 })

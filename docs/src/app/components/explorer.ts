@@ -525,14 +525,16 @@ import type { IconItem } from './icon-item.type';
 		</div>
 
 		<!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
-		<label class="flex items-center" hlmLabel>
-			<hlm-switch class="mr-2" [(checked)]="includeWip" />
-			@if (includeWip()) {
-				Including WIP icons
-			} @else {
-				Excluding WIP icons
-			}
-		</label>
+		@if (isDevMode) {
+			<label class="flex items-center" hlmLabel>
+				<hlm-switch class="mr-2" [(checked)]="includeWip" />
+				@if (includeWip()) {
+					Including WIP icons
+				} @else {
+					Excluding WIP icons
+				}
+			</label>
+		}
 
 		@let icons = filteredIcons();
 
@@ -541,7 +543,7 @@ import type { IconItem } from './icon-item.type';
 				<div hlmEmptyHeader>
 					<div hlmEmptyTitle>No icons matched</div>
 					<div hlmEmptyDescription>
-						There are no icons for <strong>"{{ searchTerm() }}"</strong>. Please try searching by other names.
+						There are no icons for <strong>"{{ cleanSearchTerm() }}"</strong>. Please try searching by other names.
 					</div>
 				</div>
 				<div hlmEmptyContent>
@@ -559,7 +561,7 @@ import type { IconItem } from './icon-item.type';
 		}
 	`,
 	host: {
-		class: 'flex flex-col items-center gap-4',
+		class: 'flex flex-col items-center gap-4 min-h-96',
 	},
 	imports: [
 		FormsModule,
@@ -572,8 +574,10 @@ import type { IconItem } from './icon-item.type';
 	],
 })
 export class Explorer {
+	readonly isDevMode = isDevMode();
+
 	searchTerm = signal('');
-	includeWip = signal(isDevMode());
+	includeWip = signal(this.isDevMode);
 
 	icons = signal<IconItem[]>([
 		{ name: 'accessibility', component: AccessibilityIcon },
@@ -1080,9 +1084,11 @@ export class Explorer {
 		{ wip: false, name: 'zap-off', component: ZapOffIcon },
 	]);
 
+	cleanSearchTerm = computed(() => this.searchTerm().trim());
+
 	filteredIcons = computed(() => {
-		const searchTerm = this.searchTerm();
-		const icons = this.icons();
+		const searchTerm = this.cleanSearchTerm();
+		const icons = this.icons().filter((icon) => this.includeWip() || !icon.wip);
 
 		if (!searchTerm) {
 			return icons;
