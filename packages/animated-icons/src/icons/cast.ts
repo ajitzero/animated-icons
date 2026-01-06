@@ -85,7 +85,7 @@ export class CastIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 700);
 		}
 	}
 }
