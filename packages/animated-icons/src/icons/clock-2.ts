@@ -9,7 +9,6 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			[attr.height]="size()"
 			[attr.stroke]="color()"
 			[attr.stroke-width]="strokeWidth()"
-			[class.animate]="isHovered()"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
 			fill="none"
@@ -17,8 +16,8 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			stroke-linejoin="round"
 		>
 			<svg:circle cx="12" cy="12" r="10" />
-			<svg:line class="minute-hand" x1="12" y1="6" x2="12" y2="12" />
-			<svg:line class="hour-hand" x1="12" y1="12" x2="16" y2="10" />
+			<svg:line class="minute-hand" [class.animate]="isHovered()" x1="12" y1="6" x2="12" y2="12" />
+			<svg:line class="hour-hand" [class.animate]="isHovered()" x1="12" y1="12" x2="16" y2="10" />
 		</svg>
 	`,
 	styles: `
