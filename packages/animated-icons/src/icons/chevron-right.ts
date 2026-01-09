@@ -9,14 +9,13 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			[attr.height]="size()"
 			[attr.stroke]="color()"
 			[attr.stroke-width]="strokeWidth()"
-			[class.animate]="isHovered()"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
 			fill="none"
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:path [class.chevron]="isHovered()" d="m9 18 6-6-6-6" />
+			<svg:path [class.chevron-right]="isHovered()" d="m9 18 6-6-6-6" />
 		</svg>
 	`,
 	styles: `
@@ -27,7 +26,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			transition: all 0.2s ease-in;
 		}
 
-		.chevron {
+		.chevron-right {
 			transform: translateX(3px);
 		}
 	`,
@@ -53,7 +52,7 @@ export class ChevronRightIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 200);
 		}
 	}
 }

@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			[attr.height]="size()"
 			[attr.stroke]="color()"
 			[attr.stroke-width]="strokeWidth()"
-			[class.animate]="isHovered()"
+			[class.chevron-left]="isHovered()"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
 			fill="none"
@@ -55,7 +55,7 @@ export class ChevronsLeftIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 200);
 		}
 	}
 }
