@@ -30,17 +30,17 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		:host {
 			display: inline-block;
 		}
-		.candy-off {
+		.candy-off-icon {
 			overflow: visible;
 		}
 
-		.candy-off {
+		.candy-off-icon {
 			overflow: visible;
 			transform: translateX(0);
 			transition: transform 0.6s ease-in-out;
 		}
 
-		.candy-off.animate {
+		.candy-off-icon.animate {
 			animation: groupShake 0.6s ease-in-out;
 		}
 
@@ -87,7 +87,7 @@ export class CandyOffIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 600);
 		}
 	}
 }

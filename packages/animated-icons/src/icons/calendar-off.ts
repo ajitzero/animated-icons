@@ -28,17 +28,17 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		:host {
 			display: inline-block;
 		}
-		.calendar-off {
+		.calendar-off-icon {
 			overflow: visible;
 		}
 
-		.calendar-off {
+		.calendar-off-icon {
 			overflow: visible;
 			transform: translateX(0);
 			transition: transform 0.6s ease-in-out;
 		}
 
-		.calendar-off.animate {
+		.calendar-off-icon.animate {
 			animation: groupShake 0.6s ease-in-out;
 		}
 
@@ -85,7 +85,7 @@ export class CalendarOffIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 600);
 		}
 	}
 }

@@ -28,17 +28,17 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		:host {
 			display: inline-block;
 		}
-		.captions-off {
+		.captions-off-icon {
 			overflow: visible;
 		}
 
-		.captions-off {
+		.captions-off-icon {
 			overflow: visible;
 			transform: translateX(0);
 			transition: transform 0.6s ease-in-out;
 		}
 
-		.captions-off.animate {
+		.captions-off-icon.animate {
 			animation: groupShake 0.6s ease-in-out;
 		}
 
@@ -85,7 +85,7 @@ export class CaptionsOffIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 600);
 		}
 	}
 }

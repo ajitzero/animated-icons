@@ -26,17 +26,17 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		:host {
 			display: inline-block;
 		}
-		.camera-off {
+		.camera-off-icon {
 			overflow: visible;
 		}
 
-		.camera-off {
+		.camera-off-icon {
 			overflow: visible;
 			transform: translateX(0);
 			transition: transform 0.6s ease-in-out;
 		}
 
-		.camera-off.animate {
+		.camera-off-icon.animate {
 			animation: groupShake 0.6s ease-in-out;
 		}
 
@@ -83,7 +83,7 @@ export class CameraOffIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 600);
 		}
 	}
 }

@@ -31,17 +31,17 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		:host {
 			display: inline-block;
 		}
-		.bug-off {
+		.bug-off-icon {
 			overflow: visible;
 		}
 
-		.bug-off {
+		.bug-off-icon {
 			overflow: visible;
 			transform: translateX(0);
 			transition: transform 0.6s ease-in-out;
 		}
 
-		.bug-off.animate {
+		.bug-off-icon.animate {
 			animation: groupShake 0.6s ease-in-out;
 		}
 
@@ -88,7 +88,7 @@ export class BugOffIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 600);
 		}
 	}
 }
