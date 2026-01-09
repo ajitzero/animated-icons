@@ -674,7 +674,7 @@ export class Explorer {
 		{ name: 'bookmark', component: BookmarkIcon },
 		// { wip: true, name: 'bot-off', component: BotOffIcon },
 		// { wip: true, name: 'bot', component: BotIcon },
-		// { wip: true, name: 'boxes', component: BoxesIcon },
+		{ name: 'boxes', component: BoxesIcon },
 		// { wip: true, name: 'brain-cog', component: BrainCogIcon },
 		{ name: 'briefcase-business', component: BriefcaseBusinessIcon },
 		{ name: 'briefcase-conveyor-belt', component: BriefcaseConveyorBeltIcon },
