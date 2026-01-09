@@ -685,7 +685,7 @@ export class Explorer {
 		{ name: 'bug-off', component: BugOffIcon },
 		{ name: 'calendar-check-2', component: CalendarCheck2Icon },
 		{ name: 'calendar-check', component: CalendarCheckIcon },
-		{ wip: true, name: 'calendar-cog', component: CalendarCogIcon },
+		{ name: 'calendar-cog', component: CalendarCogIcon },
 		// // { wip: true, name: 'calendar-days', component: CalendarDaysIcon },
 		{ name: 'calendar-off', component: CalendarOffIcon },
 		{ name: 'calendar-sync', component: CalendarSyncIcon },

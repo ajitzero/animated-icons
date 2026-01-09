@@ -20,7 +20,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			<svg:path d="M16 2v4" />
 			<svg:path d="M3 10h18" />
 			<svg:path d="M8 2v4" />
-			<svg:g class="cog-group">
+			<svg:g class="cog-group" [class.animate]="isHovered()">
 				<svg:path d="m15.2 16.9-.9-.4" />
 				<svg:path d="m15.2 19.1-.9.4" />
 				<svg:path d="m16.9 15.2-.4-.9" />
