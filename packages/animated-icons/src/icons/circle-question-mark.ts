@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			[attr.height]="size()"
 			[attr.stroke]="color()"
 			[attr.stroke-width]="strokeWidth()"
-			[class.animate]="isHovered()"
+			[class.animate-icon]="isHovered()"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
 			fill="none"
@@ -27,11 +27,11 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		:host {
 			display: inline-block;
 		}
-		.animate-icon {
+		.circle-question-mark-icon.animate-icon {
 			transition: transform 0.5s ease-in-out;
 		}
 
-		.animate-path {
+		.circle-question-mark-icon g.animate-path {
 			transition: transform 0.5s ease-in-out;
 			transform-origin: center;
 			animation: rotateAnimation 0.5s ease-in-out;
@@ -77,7 +77,7 @@ export class CircleQuestionMarkIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 500);
 		}
 	}
 }
