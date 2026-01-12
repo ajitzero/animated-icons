@@ -1084,7 +1084,7 @@ export class Explorer {
 		{ wip: false, name: 'zap-off', component: ZapOffIcon },
 	]);
 
-	cleanSearchTerm = computed(() => this.searchTerm().trim());
+	cleanSearchTerm = computed(() => this.searchTerm().trim().toLowerCase());
 
 	availableIcons = computed(() => this.icons().filter((icon) => this.includeWip() || !icon.wip));
 
