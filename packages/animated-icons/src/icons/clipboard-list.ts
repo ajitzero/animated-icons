@@ -144,7 +144,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 })
 export class ClipboardListIcon {
 	color = input('currentColor');
-	size = input(28);
+	size = input(24);
 	strokeWidth = input(2);
 	class = input('');
 
