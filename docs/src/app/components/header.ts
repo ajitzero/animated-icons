@@ -8,7 +8,9 @@ import { HlmButtonImports } from '@spartan-ng/helm/button';
 		<a class="font-mono" hlmBtn target="_blank" variant="link" routerLink="/">Animated Icons</a>
 		<span>
 			<a hlmBtn variant="link" target="_blank" href="https://github.com/ajitzero/animated-icons">GitHub</a>
-			<button (click)="toggleTheme()" hlmBtn variant="outline">Theme</button>
+			<button class="transition-transform active:translate-y-0.5" (click)="toggleTheme()" hlmBtn variant="outline">
+				Theme
+			</button>
 		</span>
 	`,
 	host: {
