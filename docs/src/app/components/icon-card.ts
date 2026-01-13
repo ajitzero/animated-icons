@@ -9,10 +9,8 @@ import type { IconItem } from './icon-item.type';
 @Component({
 	selector: 'docs-icon-card',
 	template: `
-		<span>
-			<ng-container [ngComponentOutlet]="icon().component"></ng-container>
-		</span>
-		<span class="my-2 text-center">{{ icon().name }}</span>
+		<ng-container [ngComponentOutlet]="icon().component"></ng-container>
+		<span class="my-2 text-center text-sm">{{ icon().name }}</span>
 		<div class="flex">
 			<a [href]="source()" hlmBtn variant="link" target="_blank">Source</a>
 			@if (isDevMode()) {
