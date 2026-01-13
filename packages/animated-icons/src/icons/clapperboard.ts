@@ -99,7 +99,7 @@ export class ClapperboardIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 800);
 		}
 	}
 }

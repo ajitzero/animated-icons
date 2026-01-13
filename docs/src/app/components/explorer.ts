@@ -745,7 +745,7 @@ export class Explorer {
 		// { wip: true, name: 'circle-parking-off', component: CircleParkingOffIcon },
 		// { wip: true, name: 'circle-plus', component: CirclePlusIcon },
 		{ name: 'circle-question-mark', component: CircleQuestionMarkIcon },
-		// { wip: true, name: 'clapperboard', component: ClapperboardIcon },
+		{ name: 'clapperboard', component: ClapperboardIcon },
 		{ name: 'clipboard-check', component: ClipboardCheckIcon },
 		{ name: 'clipboard-list', component: ClipboardListIcon },
 		{ name: 'clipboard-pen-line', component: ClipboardPenLineIcon },
