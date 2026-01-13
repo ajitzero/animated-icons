@@ -85,7 +85,7 @@ export class HeartIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 1200);
 		}
 	}
 }

@@ -27,17 +27,13 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		:host {
 			display: inline-block;
 		}
-		.heart-off {
-			overflow: visible;
-		}
-
-		.heart-off {
+		.heart-off-icon {
 			overflow: visible;
 			transform: translateX(0);
 			transition: transform 0.6s ease-in-out;
 		}
 
-		.heart-off.animate {
+		.heart-off-icon.animate {
 			animation: groupShake 0.6s ease-in-out;
 		}
 
@@ -84,7 +80,7 @@ export class HeartOffIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 600);
 		}
 	}
 }
