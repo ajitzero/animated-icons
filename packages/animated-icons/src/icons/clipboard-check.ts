@@ -75,7 +75,7 @@ export class ClipboardCheckIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 500);
 		}
 	}
 }

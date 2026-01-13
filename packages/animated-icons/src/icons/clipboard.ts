@@ -16,8 +16,8 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:rect class="clip" width="8" height="4" x="8" y="2" rx="1" ry="1" />
-			<svg:path class="board" d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+			<svg:rect class="clipboard-clip" width="8" height="4" x="8" y="2" rx="1" ry="1" />
+			<svg:path class="clipboard-board" d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
 		</svg>
 	`,
 	styles: `
@@ -29,16 +29,16 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			overflow: visible;
 		}
 
-		.clip,
-		.board {
+		.clipboard-clip,
+		.clipboard-board {
 			transition: transform 0.3s ease;
 		}
 
-		.clipboard-icon.animate .clip {
+		.clipboard-icon.animate .clipboard-clip {
 			animation: clipBounce 0.5s ease-in-out;
 		}
 
-		.clipboard-icon.animate .board {
+		.clipboard-icon.animate .clipboard-board {
 			animation: boardShake 0.5s ease-in-out;
 		}
 
@@ -94,7 +94,7 @@ export class ClipboardIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 700);
 		}
 	}
 }

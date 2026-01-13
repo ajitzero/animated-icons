@@ -144,7 +144,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 })
 export class ClipboardListIcon {
 	color = input('currentColor');
-	size = input(24);
+	size = input(28);
 	strokeWidth = input(2);
 	class = input('');
 
@@ -156,7 +156,7 @@ export class ClipboardListIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 700);
 		}
 	}
 }

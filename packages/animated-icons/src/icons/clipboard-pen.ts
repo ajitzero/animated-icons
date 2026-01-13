@@ -9,7 +9,6 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			[attr.height]="size()"
 			[attr.stroke]="color()"
 			[attr.stroke-width]="strokeWidth()"
-			[class.animate]="isHovered()"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
 			fill="none"
@@ -21,6 +20,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			<svg:path d="M4 13.5V6a2 2 0 0 1 2-2h2" />
 			<svg:path
 				class="pen"
+				[class.animate]="isHovered()"
 				d="M13.378 15.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"
 			/>
 		</svg>
@@ -77,7 +77,7 @@ export class ClipboardPenIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 1000);
 		}
 	}
 }
