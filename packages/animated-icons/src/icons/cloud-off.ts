@@ -25,17 +25,13 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		:host {
 			display: inline-block;
 		}
-		.cloud-off {
-			overflow: visible;
-		}
-
-		.cloud-off {
+		.cloud-off-icon {
 			overflow: visible;
 			transform: translateX(0);
 			transition: transform 0.6s ease-in-out;
 		}
 
-		.cloud-off.animate {
+		.cloud-off-icon.animate {
 			animation: groupShake 0.6s ease-in-out;
 		}
 
@@ -82,7 +78,7 @@ export class CloudOffIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 600);
 		}
 	}
 }

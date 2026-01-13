@@ -9,14 +9,13 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			[attr.height]="size()"
 			[attr.stroke]="color()"
 			[attr.stroke-width]="strokeWidth()"
-			[class.animate]="isHovered()"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
 			fill="none"
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:g>
+			<svg:g class="cloud-upload" [class.animate]="isHovered()">
 				<svg:path d="M12 13v8" />
 				<svg:path d="m8 17 4-4 4 4" />
 			</svg:g>
@@ -27,11 +26,11 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		:host {
 			display: inline-block;
 		}
-		g.animate path {
+		.cloud-upload.animate path {
 			transform: translateY(-2px);
 			transition: transform 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 		}
-		g path {
+		.cloud-upload path {
 			transform: translateY(0);
 			transition: transform 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 		}

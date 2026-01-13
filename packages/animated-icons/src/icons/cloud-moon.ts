@@ -31,22 +31,22 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			overflow: visible;
 		}
 
-		.cloud-moon-path1 {
+		.cloud-moon-icon path:nth-child(1) {
 			transform: translate(0, 0);
 			transition: transform 0.1s ease-in-out;
 		}
 
-		.cloud-moon-path2 {
+		.cloud-moon-icon path:nth-child(2) {
 			transform: rotate(0deg);
 			transform-origin: center;
 			transition: transform 0.1s ease-in-out;
 		}
 
-		.cloud-moon-icon.animate .cloud-moon-path1 {
+		.cloud-moon-icon.animate path:nth-child(1) {
 			animation: cloudMoonPath1 1.4s ease-in-out forwards;
 		}
 
-		.cloud-moon-icon.animate .cloud-moon-path2 {
+		.cloud-moon-icon.animate path:nth-child(2) {
 			animation: cloudMoonPath2 1.4s ease-in-out forwards;
 		}
 
