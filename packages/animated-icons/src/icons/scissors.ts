@@ -31,17 +31,17 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		:host {
 			display: inline-block;
 		}
-		.blade-top,
-		.blade-bottom {
+		.scissors-icon .blade-top,
+		.scissors-icon .blade-bottom {
 			transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 			transform-origin: 12px 12px;
 		}
 
-		.animate .blade-top {
+		.scissors-icon.animate .blade-top {
 			animation: openBlade 0.8s ease-in-out;
 		}
 
-		.animate .blade-bottom {
+		.scissors-icon.animate .blade-bottom {
 			animation: closeBlade 0.8s ease-in-out;
 		}
 
@@ -91,7 +91,7 @@ export class ScissorsIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 800);
 		}
 	}
 }

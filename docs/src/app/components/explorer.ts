@@ -980,7 +980,7 @@ export class Explorer {
 		{ name: 'rss', component: RssIcon },
 		// { wip: true, name: 'save-off', component: SaveOffIcon },
 		// { wip: true, name: 'scan-text', component: ScanTextIcon },
-		// { wip: true, name: 'scissors', component: ScissorsIcon },
+		{ name: 'scissors', component: ScissorsIcon },
 		{ name: 'search-check', component: SearchCheckIcon },
 		{ name: 'search', component: SearchIcon },
 		{ name: 'send-horizontal', component: SendHorizontalIcon },
