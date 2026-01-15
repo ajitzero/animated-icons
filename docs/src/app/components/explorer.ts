@@ -543,7 +543,18 @@ import type { IconItem } from './icon-item.type';
 				<div hlmEmptyHeader>
 					<div hlmEmptyTitle>No icons matched</div>
 					<div hlmEmptyDescription>
-						There are no icons for <strong>"{{ cleanSearchTerm() }}"</strong>. Please try searching by other names.
+						There are no icons for
+						@for (term of cleanSearchTerms(); track $index; let first = $first, last = $last) {
+							@if (last) {
+								<span> or </span>
+							} @else {
+								@if (!first) {
+									<span>, </span>
+								}
+							}
+							<strong [class.-mr-1]="last">"{{ term }}"</strong>
+						}
+						. Please try searching by other names.
 					</div>
 				</div>
 				<div hlmEmptyContent>
@@ -1085,19 +1096,24 @@ export class Explorer {
 		{ wip: false, name: 'zap-off', component: ZapOffIcon },
 	]);
 
-	cleanSearchTerm = computed(() => this.searchTerm().trim().toLowerCase());
+	cleanSearchTerms = computed(() => {
+		return this.searchTerm()
+			.split(',')
+			.map((term) => this.cleanString(term))
+			.filter(Boolean);
+	});
 
 	availableIcons = computed(() => this.icons().filter((icon) => this.includeWip() || !icon.wip));
 
 	filteredIcons = computed(() => {
-		const searchTerm = this.cleanSearchTerm();
+		const searchTerms = this.cleanSearchTerms();
 		const icons = this.availableIcons();
 
-		if (!searchTerm) {
+		if (!searchTerms.length) {
 			return icons;
 		}
 
-		return icons.filter((icon) => icon.name.includes(searchTerm));
+		return icons.filter((icon) => searchTerms.some((term) => icon.name.includes(term)));
 	});
 
 	iconCountMessage = computed(() => {
@@ -1109,4 +1125,8 @@ export class Explorer {
 
 		return `${filteredIcons.length}/${icons.length} icons`;
 	});
+
+	private cleanString(value: string) {
+		return value.trim().toLowerCase();
+	}
 }
