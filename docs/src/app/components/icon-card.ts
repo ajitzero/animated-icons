@@ -9,7 +9,7 @@ import type { IconItem } from './icon-item.type';
 @Component({
 	selector: 'docs-icon-card',
 	template: `
-		<ng-container [ngComponentOutlet]="icon().component"></ng-container>
+		<ng-container [ngComponentOutlet]="icon().component" [ngComponentOutletInputs]="componentInputs()"></ng-container>
 		<span class="my-2 text-center text-sm">{{ icon().name }}</span>
 		<div class="flex h-9 opacity-0 group-hover:opacity-100">
 			<a [href]="source()" hlmBtn variant="link" target="_blank">Source</a>
@@ -31,6 +31,8 @@ import type { IconItem } from './icon-item.type';
 	`,
 	host: {
 		class: 'flex flex-col items-center p-8 pt-16 justify-center bg-background group/card rounded-2xl group',
+		'(mouseenter)': 'isAnimating.set(true)',
+		'(mouseleave)': 'isAnimating.set(false)',
 	},
 	imports: [HlmInputImports, HlmButtonImports, HlmTooltipImports, FormsModule, NgComponentOutlet],
 })
@@ -48,4 +50,10 @@ export class IconCard {
 	});
 
 	isDevMode = signal(isDevMode());
+
+	protected isAnimating = signal(false);
+	protected componentInputs = computed(() => ({
+		size: 28,
+		animate: this.isAnimating(),
+	}));
 }
