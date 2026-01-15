@@ -517,7 +517,7 @@ import type { IconItem } from './icon-item.type';
 	selector: 'docs-explorer',
 	template: `
 		<div class="relative max-w-sm">
-			<input class="peer pe-18" [(ngModel)]="searchTerm" hlmInput placeholder="Search icons..." />
+			<input class="peer pe-20" [(ngModel)]="searchTerm" hlmInput placeholder="Search icons..." />
 			<div
 				class="text-muted-foreground/80 pointer-events-none absolute inset-y-0 end-0 flex items-center justify-center pe-3 text-xs peer-disabled:opacity-50"
 			>
