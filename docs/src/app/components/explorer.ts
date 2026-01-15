@@ -1,5 +1,6 @@
-import { Component, computed, input, isDevMode, linkedSignal, signal } from '@angular/core';
+import { Component, computed, effect, inject, input, isDevMode, linkedSignal, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmEmptyImports } from '@spartan-ng/helm/empty';
 import { HlmInputImports } from '@spartan-ng/helm/input';
@@ -585,6 +586,7 @@ import type { IconItem } from './icon-item.type';
 	],
 })
 export class Explorer {
+	private readonly router = inject(Router);
 	readonly isDevMode = isDevMode();
 
 	search = input('');
@@ -1128,5 +1130,20 @@ export class Explorer {
 
 	private cleanString(value: string) {
 		return value.trim().toLowerCase();
+	}
+
+	constructor() {
+		effect((onCleanup) => {
+			const terms = this.cleanSearchTerms();
+			const timeout = setTimeout(() => {
+				this.router.navigate([], {
+					queryParams: { search: terms || null },
+					queryParamsHandling: 'merge',
+					replaceUrl: true,
+				});
+			}, 300);
+
+			onCleanup(() => clearTimeout(timeout));
+		});
 	}
 }
