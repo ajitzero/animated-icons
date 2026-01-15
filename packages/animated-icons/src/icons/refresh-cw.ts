@@ -27,15 +27,12 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			display: inline-block;
 		}
 		.refresh-cw-icon {
-			transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+			overflow: visible;
 			transform-origin: center;
+			transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
 		.refresh-cw-icon.animate {
 			transform: rotate(50deg);
-		}
-
-		svg {
-			overflow: visible;
 		}
 	`,
 	host: {
