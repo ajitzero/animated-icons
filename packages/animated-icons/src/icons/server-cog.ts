@@ -9,7 +9,6 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			[attr.height]="size()"
 			[attr.stroke]="color()"
 			[attr.stroke-width]="strokeWidth()"
-			[class.animate]="isHovered()"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
 			fill="none"
@@ -20,7 +19,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			<svg:path d="M4.5 14H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-.5" />
 			<svg:path d="M6 6h.01" />
 			<svg:path d="M6 18h.01" />
-			<svg:g class="cog-group">
+			<svg:g class="cog-group" [class.animate]="isHovered()">
 				<svg:circle cx="12" cy="12" r="3" />
 				<svg:path d="m15.7 13.4-.9-.3" />
 				<svg:path d="m9.2 10.9-.9-.3" />
@@ -37,12 +36,12 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		:host {
 			display: inline-block;
 		}
-		.cog-group {
+		.server-cog-icon .cog-group {
 			transform-origin: 12px 12px;
 			transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
 
-		.cog-group.animate {
+		.server-cog-icon .cog-group.animate {
 			transform: rotate(180deg);
 		}
 	`,

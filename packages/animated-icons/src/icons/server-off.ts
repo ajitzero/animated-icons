@@ -28,17 +28,13 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		:host {
 			display: inline-block;
 		}
-		.server-off {
-			overflow: visible;
-		}
-
-		.server-off {
+		.server-off-icon {
 			overflow: visible;
 			transform: translateX(0);
 			transition: transform 0.6s ease-in-out;
 		}
 
-		.server-off.animate {
+		.server-off-icon.animate {
 			animation: groupShake 0.6s ease-in-out;
 		}
 
@@ -85,7 +81,7 @@ export class ServerOffIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 600);
 		}
 	}
 }
