@@ -94,7 +94,7 @@ export class LayoutPanelLeftIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 650);
 		}
 	}
 }

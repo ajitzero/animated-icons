@@ -110,7 +110,7 @@ export class LayoutTemplateIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 650);
 		}
 	}
 }
