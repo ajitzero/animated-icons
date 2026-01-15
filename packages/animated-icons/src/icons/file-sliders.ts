@@ -48,7 +48,7 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 		'aria-label': 'file-sliders',
 		role: 'img',
 		'(mouseenter)': 'isAnimating.set(true)',
-		'(mouseleave)': 'isAnimating.set(false)',
+		'(mouseleave)': 'handleMouseLeave()',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -60,4 +60,8 @@ export class FileSlidersIcon {
 	animate = input(false);
 
 	protected isAnimating = linkedSignal(() => this.animate());
+
+	handleMouseLeave() {
+		if (!this.animate()) this.isAnimating.set(false);
+	}
 }

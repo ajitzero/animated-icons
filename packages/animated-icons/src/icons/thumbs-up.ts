@@ -40,7 +40,7 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 		'aria-label': 'thumbs-up',
 		role: 'img',
 		'(mouseenter)': 'isAnimating.set(true)',
-		'(mouseleave)': 'isAnimating.set(false)',
+		'(mouseleave)': 'handleMouseLeave()',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -52,4 +52,8 @@ export class ThumbsUpIcon {
 	animate = input(false);
 
 	protected isAnimating = linkedSignal(() => this.animate());
+
+	handleMouseLeave() {
+		if (!this.animate()) this.isAnimating.set(false);
+	}
 }

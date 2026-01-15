@@ -72,7 +72,7 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 		'aria-label': 'clipboard-pen-line',
 		role: 'img',
 		'(mouseenter)': 'isAnimating.set(true)',
-		'(mouseleave)': 'isAnimating.set(false)',
+		'(mouseleave)': 'handleMouseLeave()',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -84,4 +84,8 @@ export class ClipboardPenLineIcon {
 	animate = input(false);
 
 	protected isAnimating = linkedSignal(() => this.animate());
+
+	handleMouseLeave() {
+		if (!this.animate()) this.isAnimating.set(false);
+	}
 }
