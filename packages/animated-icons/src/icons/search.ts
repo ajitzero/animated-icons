@@ -24,13 +24,13 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		:host {
 			display: inline-block;
 		}
-		svg {
+		.search-icon {
 			transition:
 				transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275),
 				transform 1s ease-in-out;
 		}
 
-		.animate {
+		.search-icon.animate {
 			animation: search-bounce 1s ease-in-out;
 		}
 
@@ -69,7 +69,7 @@ export class SearchIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 1000);
 		}
 	}
 }

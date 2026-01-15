@@ -75,7 +75,7 @@ export class SearchCheckIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 500);
 		}
 	}
 }
