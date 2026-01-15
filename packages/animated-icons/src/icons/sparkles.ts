@@ -35,7 +35,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			overflow: visible;
 		}
 
-		.sparkles-group {
+		.sparkles-icon .sparkles-group {
 			transform-origin: center;
 			transition: transform 0.6s ease-in-out;
 		}
@@ -44,7 +44,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			animation: scaleGroup 0.6s ease-in-out;
 		}
 
-		.sparkles-plus {
+		.sparkles-icon .sparkles-plus {
 			opacity: 1;
 			transform: scale(1);
 			transform-origin: center;
@@ -58,7 +58,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			animation: pulsePlus 0.75s ease-in-out;
 		}
 
-		.sparkles-circle {
+		.sparkles-icon .sparkles-circle {
 			opacity: 1;
 			transform: scale(1);
 			transform-origin: center;
@@ -148,7 +148,7 @@ export class SparklesIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 750);
 		}
 	}
 }
