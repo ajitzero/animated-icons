@@ -963,7 +963,7 @@ export class Explorer {
 		// { wip: true, name: 'rotate-cw', component: RotateCwIcon },
 		// { wip: true, name: 'route-off', component: RouteOffIcon },
 		// { wip: true, name: 'route', component: RouteIcon },
-		// { wip: true, name: 'rss', component: RssIcon },
+		{ name: 'rss', component: RssIcon },
 		// { wip: true, name: 'save-off', component: SaveOffIcon },
 		// { wip: true, name: 'scan-text', component: ScanTextIcon },
 		// { wip: true, name: 'scissors', component: ScissorsIcon },
