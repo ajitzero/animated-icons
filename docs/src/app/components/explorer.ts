@@ -1,4 +1,4 @@
-import { Component, computed, isDevMode, signal } from '@angular/core';
+import { Component, computed, input, isDevMode, linkedSignal, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmEmptyImports } from '@spartan-ng/helm/empty';
@@ -576,7 +576,8 @@ import type { IconItem } from './icon-item.type';
 export class Explorer {
 	readonly isDevMode = isDevMode();
 
-	searchTerm = signal('');
+	search = input('');
+	searchTerm = linkedSignal(() => this.search());
 	includeWip = signal(this.isDevMode);
 
 	icons = signal<IconItem[]>([
