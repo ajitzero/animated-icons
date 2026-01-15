@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
 
 @Component({
 	selector: 'i-send',
@@ -15,7 +15,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:g [class.animate-group]="isHovered()">
+			<svg:g [class.animate-group]="isAnimating()">
 				<svg:path
 					class="path1"
 					d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"
@@ -68,16 +68,14 @@ export class SendIcon {
 	size = input(24);
 	strokeWidth = input(2);
 	class = input('');
+	animate = input(false);
 
-	isHovered = signal(false);
+	protected isAnimating = linkedSignal(() => this.animate());
 
 	handleMouseEnter() {
-		if (!this.isHovered()) {
-			this.isHovered.set(true);
-
-			setTimeout(() => {
-				this.isHovered.set(false);
-			}, 1200);
+		if (!this.isAnimating()) {
+			this.isAnimating.set(true);
+			setTimeout(() => this.isAnimating.set(false), 1200);
 		}
 	}
 }

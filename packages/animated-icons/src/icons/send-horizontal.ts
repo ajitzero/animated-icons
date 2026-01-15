@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
 
 @Component({
 	selector: 'i-send-horizontal',
@@ -15,7 +15,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:g [class.animate-group]="isHovered()">
+			<svg:g [class.animate-group]="isAnimating()">
 				<svg:path
 					class="path1"
 					d="M3.714 3.048a.498.498 0 0 0-.683.627l2.843 7.627a2 2 0 0 1 0 1.396l-2.842 7.627a.498.498 0 0 0 .682.627l18-8.5a.5.5 0 0 0 0-.904z"
@@ -68,16 +68,14 @@ export class SendHorizontalIcon {
 	size = input(24);
 	strokeWidth = input(2);
 	class = input('');
+	animate = input(false);
 
-	isHovered = signal(false);
+	protected isAnimating = linkedSignal(() => this.animate());
 
 	handleMouseEnter() {
-		if (!this.isHovered()) {
-			this.isHovered.set(true);
-
-			setTimeout(() => {
-				this.isHovered.set(false);
-			}, 1200);
+		if (!this.isAnimating()) {
+			this.isAnimating.set(true);
+			setTimeout(() => this.isAnimating.set(false), 1200);
 		}
 	}
 }

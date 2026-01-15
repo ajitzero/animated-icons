@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
 
 @Component({
 	selector: 'i-arrow-big-left-dash',
@@ -9,15 +9,15 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			[attr.height]="size()"
 			[attr.stroke]="color()"
 			[attr.stroke-width]="strokeWidth()"
-			[class.animate]="isHovered()"
+			[class.animate]="isAnimating()"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
 			fill="none"
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:path [class.animate-dash]="isHovered()" d="M19 15V9" />
-			<svg:path [class.animate-arrow]="isHovered()" d="M15 15h-3v4l-7-7 7-7v4h3v6z" />
+			<svg:path [class.animate-dash]="isAnimating()" d="M19 15V9" />
+			<svg:path [class.animate-arrow]="isAnimating()" d="M15 15h-3v4l-7-7 7-7v4h3v6z" />
 		</svg>
 	`,
 	styles: `
@@ -47,16 +47,14 @@ export class ArrowBigLeftDashIcon {
 	size = input(24);
 	strokeWidth = input(2);
 	class = input('');
+	animate = input(false);
 
-	isHovered = signal(false);
+	protected isAnimating = linkedSignal(() => this.animate());
 
 	handleMouseEnter() {
-		if (!this.isHovered()) {
-			this.isHovered.set(true);
-
-			setTimeout(() => {
-				this.isHovered.set(false);
-			}, 1400);
+		if (!this.isAnimating()) {
+			this.isAnimating.set(true);
+			setTimeout(() => this.isAnimating.set(false), 1400);
 		}
 	}
 }

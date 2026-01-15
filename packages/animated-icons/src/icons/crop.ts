@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
 
 @Component({
 	selector: 'i-crop',
@@ -9,15 +9,15 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			[attr.height]="size()"
 			[attr.stroke]="color()"
 			[attr.stroke-width]="strokeWidth()"
-			[class.animate]="isHovered()"
+			[class.animate]="isAnimating()"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
 			fill="none"
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:path [class.bottom-left]="isHovered()" d="M6 2v14a2 2 0 0 0 2 2h14" />
-			<svg:path [class.top-right]="isHovered()" d="M18 22V8a2 2 0 0 0-2-2H2" />
+			<svg:path [class.bottom-left]="isAnimating()" d="M6 2v14a2 2 0 0 0 2 2h14" />
+			<svg:path [class.top-right]="isAnimating()" d="M18 22V8a2 2 0 0 0-2-2H2" />
 		</svg>
 	`,
 	styles: `
@@ -38,8 +38,8 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		'[class]': 'class()',
 		'aria-label': 'crop',
 		role: 'img',
-		'(mouseenter)': 'handleMouseEnter()',
-		'(mouseleave)': 'handleMouseLeave()',
+		'(mouseenter)': 'isAnimating.set(true)',
+		'(mouseleave)': 'isAnimating.set(false)',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -48,14 +48,7 @@ export class CropIcon {
 	size = input(24);
 	strokeWidth = input(2);
 	class = input('');
+	animate = input(false);
 
-	isHovered = signal(false);
-
-	handleMouseEnter() {
-		this.isHovered.set(true);
-	}
-
-	handleMouseLeave() {
-		this.isHovered.set(false);
-	}
+	protected isAnimating = linkedSignal(() => this.animate());
 }

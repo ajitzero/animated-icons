@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
 
 @Component({
 	selector: 'i-chevron-up',
@@ -15,7 +15,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:path [class.chevron-up]="isHovered()" d="m18 15-6-6-6 6" />
+			<svg:path [class.chevron-up]="isAnimating()" d="m18 15-6-6-6 6" />
 		</svg>
 	`,
 	styles: `
@@ -43,16 +43,14 @@ export class ChevronUpIcon {
 	size = input(24);
 	strokeWidth = input(2);
 	class = input('');
+	animate = input(false);
 
-	isHovered = signal(false);
+	protected isAnimating = linkedSignal(() => this.animate());
 
 	handleMouseEnter() {
-		if (!this.isHovered()) {
-			this.isHovered.set(true);
-
-			setTimeout(() => {
-				this.isHovered.set(false);
-			}, 200);
+		if (!this.isAnimating()) {
+			this.isAnimating.set(true);
+			setTimeout(() => this.isAnimating.set(false), 200);
 		}
 	}
 }

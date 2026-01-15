@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
 
 @Component({
 	selector: 'i-message-circle-question-mark',
@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			[attr.height]="size()"
 			[attr.stroke]="color()"
 			[attr.stroke-width]="strokeWidth()"
-			[class.animate]="isHovered()"
+			[class.animate]="isAnimating()"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
 			fill="none"
@@ -17,7 +17,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			stroke-linejoin="round"
 		>
 			<svg:path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
-			<svg:g [class.animate-path]="isHovered()">
+			<svg:g [class.animate-path]="isAnimating()">
 				<svg:path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
 				<svg:path d="M12 17h.01" />
 			</svg:g>
@@ -68,16 +68,14 @@ export class MessageCircleQuestionMarkIcon {
 	size = input(24);
 	strokeWidth = input(2);
 	class = input('');
+	animate = input(false);
 
-	isHovered = signal(false);
+	protected isAnimating = linkedSignal(() => this.animate());
 
 	handleMouseEnter() {
-		if (!this.isHovered()) {
-			this.isHovered.set(true);
-
-			setTimeout(() => {
-				this.isHovered.set(false);
-			}, 1400);
+		if (!this.isAnimating()) {
+			this.isAnimating.set(true);
+			setTimeout(() => this.isAnimating.set(false), 1400);
 		}
 	}
 }

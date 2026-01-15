@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
 
 @Component({
 	selector: 'i-bell',
@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			[attr.height]="size()"
 			[attr.stroke]="color()"
 			[attr.stroke-width]="strokeWidth()"
-			[class.animate]="isHovered()"
+			[class.animate]="isAnimating()"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
 			fill="none"
@@ -17,10 +17,10 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			stroke-linejoin="round"
 		>
 			<svg:path
-				[class.animate-bell]="isHovered()"
+				[class.animate-bell]="isAnimating()"
 				d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"
 			/>
-			<svg:path [class.animate-clapper]="isHovered()" d="M10.268 21a2 2 0 0 0 3.464 0" />
+			<svg:path [class.animate-clapper]="isAnimating()" d="M10.268 21a2 2 0 0 0 3.464 0" />
 		</svg>
 	`,
 	styles: `
@@ -104,16 +104,14 @@ export class BellIcon {
 	size = input(24);
 	strokeWidth = input(2);
 	class = input('');
+	animate = input(false);
 
-	isHovered = signal(false);
+	protected isAnimating = linkedSignal(() => this.animate());
 
 	handleMouseEnter() {
-		if (!this.isHovered()) {
-			this.isHovered.set(true);
-
-			setTimeout(() => {
-				this.isHovered.set(false);
-			}, 1400);
+		if (!this.isAnimating()) {
+			this.isAnimating.set(true);
+			setTimeout(() => this.isAnimating.set(false), 1400);
 		}
 	}
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
 
 @Component({
 	selector: 'i-chevrons-right-left',
@@ -15,8 +15,8 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:path [class.chevron-left]="isHovered()" d="m20 17-5-5 5-5" />
-			<svg:path [class.chevron-right]="isHovered()" d="m4 17 5-5-5-5" />
+			<svg:path [class.chevron-left]="isAnimating()" d="m20 17-5-5 5-5" />
+			<svg:path [class.chevron-right]="isAnimating()" d="m4 17 5-5-5-5" />
 		</svg>
 	`,
 	styles: `
@@ -52,16 +52,14 @@ export class ChevronsRightLeftIcon {
 	size = input(24);
 	strokeWidth = input(2);
 	class = input('');
+	animate = input(false);
 
-	isHovered = signal(false);
+	protected isAnimating = linkedSignal(() => this.animate());
 
 	handleMouseEnter() {
-		if (!this.isHovered()) {
-			this.isHovered.set(true);
-
-			setTimeout(() => {
-				this.isHovered.set(false);
-			}, 200);
+		if (!this.isAnimating()) {
+			this.isAnimating.set(true);
+			setTimeout(() => this.isAnimating.set(false), 200);
 		}
 	}
 }

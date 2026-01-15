@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
 
 @Component({
 	selector: 'i-unfold-vertical',
@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			[attr.height]="size()"
 			[attr.stroke]="color()"
 			[attr.stroke-width]="strokeWidth()"
-			[class.animate]="isHovered()"
+			[class.animate]="isAnimating()"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
 			fill="none"
@@ -17,11 +17,11 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			stroke-linejoin="round"
 		>
 			<svg:path d="M4 12H2 M10 12H8 M16 12h-2 M22 12h-2" />
-			<svg:g [class.move-up]="isHovered()">
+			<svg:g [class.move-up]="isAnimating()">
 				<svg:path d="M12 8V2" />
 				<svg:path d="m15 5-3-3-3 3" />
 			</svg:g>
-			<svg:g [class.move-down]="isHovered()">
+			<svg:g [class.move-down]="isAnimating()">
 				<svg:path d="M12 22v-6" />
 				<svg:path d="m15 19-3 3-3-3" />
 			</svg:g>
@@ -48,8 +48,8 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		'[class]': 'class()',
 		'aria-label': 'unfold-vertical',
 		role: 'img',
-		'(mouseenter)': 'handleMouseEnter()',
-		'(mouseleave)': 'handleMouseLeave()',
+		'(mouseenter)': 'isAnimating.set(true)',
+		'(mouseleave)': 'isAnimating.set(false)',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -58,14 +58,7 @@ export class UnfoldVerticalIcon {
 	size = input(24);
 	strokeWidth = input(2);
 	class = input('');
+	animate = input(false);
 
-	isHovered = signal(false);
-
-	handleMouseEnter() {
-		this.isHovered.set(true);
-	}
-
-	handleMouseLeave() {
-		this.isHovered.set(false);
-	}
+	protected isAnimating = linkedSignal(() => this.animate());
 }

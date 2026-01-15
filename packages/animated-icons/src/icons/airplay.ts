@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
 
 @Component({
 	selector: 'i-airplay-icon',
@@ -9,7 +9,6 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			[attr.height]="size()"
 			[attr.stroke]="color()"
 			[attr.stroke-width]="strokeWidth()"
-			style="overflow: hidden"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
 			fill="none"
@@ -17,7 +16,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			stroke-linejoin="round"
 		>
 			<svg:path class="airplay-path1" d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1" />
-			<svg:path class="airplay-path2" [class.hovered]="isHovered()" d="m12 15 5 6H7Z" />
+			<svg:path class="airplay-path2" [class.hovered]="isAnimating()" d="m12 15 5 6H7Z" />
 		</svg>
 	`,
 	styles: `
@@ -25,7 +24,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			display: inline-block;
 		}
 		.airplay-icon {
-			overflow: visible;
+			overflow: hidden;
 		}
 
 		.airplay-path2 {
@@ -39,10 +38,10 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 	`,
 	host: {
 		'[class]': 'class()',
-		'(mouseenter)': 'isHovered.set(true)',
-		'(mouseleave)': 'isHovered.set(false)',
 		'aria-label': 'airplay',
 		role: 'img',
+		'(mouseenter)': 'isAnimating.set(true)',
+		'(mouseleave)': 'isAnimating.set(false)',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -51,6 +50,7 @@ export class AirplayIcon {
 	size = input(24);
 	strokeWidth = input(2);
 	class = input('');
+	animate = input(false);
 
-	isHovered = signal(false);
+	protected isAnimating = linkedSignal(() => this.animate());
 }

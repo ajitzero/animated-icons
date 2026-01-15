@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
 
 @Component({
 	selector: 'i-file-sliders',
@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			[attr.height]="size()"
 			[attr.stroke]="color()"
 			[attr.stroke-width]="strokeWidth()"
-			[class.animate]="isHovered()"
+			[class.animate]="isAnimating()"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
 			fill="none"
@@ -21,9 +21,9 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			/>
 			<svg:path d="M14 2v5a1 1 0 0 0 1 1h5" />
 			<svg:path d="M8 12h8" />
-			<svg:path [class.animate-line1]="isHovered()" d="M10 11v2" />
+			<svg:path [class.animate-line1]="isAnimating()" d="M10 11v2" />
 			<svg:path d="M8 17h8" />
-			<svg:path [class.animate-line2]="isHovered()" d="M14 16v2" />
+			<svg:path [class.animate-line2]="isAnimating()" d="M14 16v2" />
 		</svg>
 	`,
 	styles: `
@@ -47,8 +47,8 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		'[class]': 'class()',
 		'aria-label': 'file-sliders',
 		role: 'img',
-		'(mouseenter)': 'handleMouseEnter()',
-		'(mouseleave)': 'handleMouseLeave()',
+		'(mouseenter)': 'isAnimating.set(true)',
+		'(mouseleave)': 'isAnimating.set(false)',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -57,14 +57,7 @@ export class FileSlidersIcon {
 	size = input(24);
 	strokeWidth = input(2);
 	class = input('');
+	animate = input(false);
 
-	isHovered = signal(false);
-
-	handleMouseEnter() {
-		this.isHovered.set(true);
-	}
-
-	handleMouseLeave() {
-		this.isHovered.set(false);
-	}
+	protected isAnimating = linkedSignal(() => this.animate());
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
 
 @Component({
 	selector: 'i-cloud-download',
@@ -15,7 +15,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:g class="cloud-download" [class.animate]="isHovered()">
+			<svg:g class="cloud-download" [class.animate]="isAnimating()">
 				<svg:path d="M12 13v8l-4-4" />
 				<svg:path d="m12 21 4-4" />
 			</svg:g>
@@ -39,8 +39,8 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		'[class]': 'class()',
 		'aria-label': 'cloud-download',
 		role: 'img',
-		'(mouseenter)': 'handleMouseEnter()',
-		'(mouseleave)': 'handleMouseLeave()',
+		'(mouseenter)': 'isAnimating.set(true)',
+		'(mouseleave)': 'isAnimating.set(false)',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -49,14 +49,7 @@ export class CloudDownloadIcon {
 	size = input(24);
 	strokeWidth = input(2);
 	class = input('');
+	animate = input(false);
 
-	isHovered = signal(false);
-
-	handleMouseEnter() {
-		this.isHovered.set(true);
-	}
-
-	handleMouseLeave() {
-		this.isHovered.set(false);
-	}
+	protected isAnimating = linkedSignal(() => this.animate());
 }

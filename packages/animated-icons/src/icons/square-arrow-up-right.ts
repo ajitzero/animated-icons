@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
 
 @Component({
 	selector: 'i-square-arrow-up-right',
@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			[attr.height]="size()"
 			[attr.stroke]="color()"
 			[attr.stroke-width]="strokeWidth()"
-			[class.animate]="isHovered()"
+			[class.animate]="isAnimating()"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
 			fill="none"
@@ -17,8 +17,8 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			stroke-linejoin="round"
 		>
 			<svg:rect width="18" height="18" x="3" y="3" rx="2" />
-			<svg:path [class.head]="isHovered()" d="M8 8h8v8" />
-			<svg:path [class.head]="isHovered()" d="M12 12 L16 8" />
+			<svg:path [class.head]="isAnimating()" d="M8 8h8v8" />
+			<svg:path [class.head]="isAnimating()" d="M12 12 L16 8" />
 			<svg:path d="M12 12 L8 16" />
 		</svg>
 	`,
@@ -47,16 +47,14 @@ export class SquareArrowUpRightIcon {
 	size = input(24);
 	strokeWidth = input(2);
 	class = input('');
+	animate = input(false);
 
-	isHovered = signal(false);
+	protected isAnimating = linkedSignal(() => this.animate());
 
 	handleMouseEnter() {
-		if (!this.isHovered()) {
-			this.isHovered.set(true);
-
-			setTimeout(() => {
-				this.isHovered.set(false);
-			}, 1400);
+		if (!this.isAnimating()) {
+			this.isAnimating.set(true);
+			setTimeout(() => this.isAnimating.set(false), 1400);
 		}
 	}
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
 
 @Component({
 	selector: 'i-clipboard-pen',
@@ -20,7 +20,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			<svg:path d="M4 13.5V6a2 2 0 0 1 2-2h2" />
 			<svg:path
 				class="pen"
-				[class.animate]="isHovered()"
+				[class.animate]="isAnimating()"
 				d="M13.378 15.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"
 			/>
 		</svg>
@@ -68,16 +68,14 @@ export class ClipboardPenIcon {
 	size = input(24);
 	strokeWidth = input(2);
 	class = input('');
+	animate = input(false);
 
-	isHovered = signal(false);
+	protected isAnimating = linkedSignal(() => this.animate());
 
 	handleMouseEnter() {
-		if (!this.isHovered()) {
-			this.isHovered.set(true);
-
-			setTimeout(() => {
-				this.isHovered.set(false);
-			}, 1000);
+		if (!this.isAnimating()) {
+			this.isAnimating.set(true);
+			setTimeout(() => this.isAnimating.set(false), 1000);
 		}
 	}
 }

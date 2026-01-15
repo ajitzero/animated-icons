@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
 
 @Component({
 	selector: 'i-frame',
@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			[attr.height]="size()"
 			[attr.stroke]="color()"
 			[attr.stroke-width]="strokeWidth()"
-			[class.animate]="isHovered()"
+			[class.animate]="isAnimating()"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
 			fill="none"
@@ -17,8 +17,8 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			stroke-linejoin="round"
 		>
 			<svg:line
-				[class.animate-line]="isHovered()"
-				[style.transform]="isHovered() ? 'translateY(-4px)' : 'translateY(0)'"
+				[class.animate-line]="isAnimating()"
+				[style.transform]="isAnimating() ? 'translateY(-4px)' : 'translateY(0)'"
 				[style.transition]="'transform 0.17s ease-in-out'"
 				x1="22"
 				x2="2"
@@ -26,8 +26,8 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 				y2="6"
 			/>
 			<svg:line
-				[class.animate-line]="isHovered()"
-				[style.transform]="isHovered() ? 'translateY(4px)' : 'translateY(0)'"
+				[class.animate-line]="isAnimating()"
+				[style.transform]="isAnimating() ? 'translateY(4px)' : 'translateY(0)'"
 				[style.transition]="'transform 0.17s ease-in-out'"
 				x1="22"
 				x2="2"
@@ -35,8 +35,8 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 				y2="18"
 			/>
 			<svg:line
-				[class.animate-line]="isHovered()"
-				[style.transform]="isHovered() ? 'translateX(-4px)' : 'translateX(0)'"
+				[class.animate-line]="isAnimating()"
+				[style.transform]="isAnimating() ? 'translateX(-4px)' : 'translateX(0)'"
 				[style.transition]="'transform 0.17s ease-in-out'"
 				x1="6"
 				x2="6"
@@ -44,8 +44,8 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 				y2="22"
 			/>
 			<svg:line
-				[class.animate-line]="isHovered()"
-				[style.transform]="isHovered() ? 'translateX(4px)' : 'translateX(0)'"
+				[class.animate-line]="isAnimating()"
+				[style.transform]="isAnimating() ? 'translateX(4px)' : 'translateX(0)'"
 				[style.transition]="'transform 0.17s ease-in-out'"
 				x1="18"
 				x2="18"
@@ -58,8 +58,8 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		'[class]': 'class()',
 		'aria-label': 'frame',
 		role: 'img',
-		'(mouseenter)': 'handleMouseEnter()',
-		'(mouseleave)': 'handleMouseLeave()',
+		'(mouseenter)': 'isAnimating.set(true)',
+		'(mouseleave)': 'isAnimating.set(false)',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -68,14 +68,7 @@ export class FrameIcon {
 	size = input(24);
 	strokeWidth = input(2);
 	class = input('');
+	animate = input(false);
 
-	isHovered = signal(false);
-
-	handleMouseEnter() {
-		this.isHovered.set(true);
-	}
-
-	handleMouseLeave() {
-		this.isHovered.set(false);
-	}
+	protected isAnimating = linkedSignal(() => this.animate());
 }

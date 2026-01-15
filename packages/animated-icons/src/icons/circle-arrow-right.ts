@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
 
 @Component({
 	selector: 'i-circle-arrow-right',
@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			[attr.height]="size()"
 			[attr.stroke]="color()"
 			[attr.stroke-width]="strokeWidth()"
-			[class.animate]="isHovered()"
+			[class.animate]="isAnimating()"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
 			fill="none"
@@ -18,8 +18,8 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		>
 			<svg:circle cx="12" cy="12" r="10" />
 			<svg:path d="M8 12H12" />
-			<svg:path [class.head]="isHovered()" d="M12 12H16" />
-			<svg:path [class.head]="isHovered()" d="m12 16 4-4-4-4" />
+			<svg:path [class.head]="isAnimating()" d="M12 12H16" />
+			<svg:path [class.head]="isAnimating()" d="m12 16 4-4-4-4" />
 		</svg>
 	`,
 	styles: `
@@ -46,16 +46,14 @@ export class CircleArrowRightIcon {
 	size = input(24);
 	strokeWidth = input(2);
 	class = input('');
+	animate = input(false);
 
-	isHovered = signal(false);
+	protected isAnimating = linkedSignal(() => this.animate());
 
 	handleMouseEnter() {
-		if (!this.isHovered()) {
-			this.isHovered.set(true);
-
-			setTimeout(() => {
-				this.isHovered.set(false);
-			}, 1400);
+		if (!this.isAnimating()) {
+			this.isAnimating.set(true);
+			setTimeout(() => this.isAnimating.set(false), 1400);
 		}
 	}
 }

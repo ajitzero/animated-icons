@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
 
 @Component({
 	selector: 'i-server-cog',
@@ -19,7 +19,7 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			<svg:path d="M4.5 14H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-.5" />
 			<svg:path d="M6 6h.01" />
 			<svg:path d="M6 18h.01" />
-			<svg:g class="cog-group" [class.animate]="isHovered()">
+			<svg:g class="cog-group" [class.animate]="isAnimating()">
 				<svg:circle cx="12" cy="12" r="3" />
 				<svg:path d="m15.7 13.4-.9-.3" />
 				<svg:path d="m9.2 10.9-.9-.3" />
@@ -49,8 +49,8 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		'[class]': 'class()',
 		'aria-label': 'server-cog',
 		role: 'img',
-		'(mouseenter)': 'handleMouseEnter()',
-		'(mouseleave)': 'handleMouseLeave()',
+		'(mouseenter)': 'isAnimating.set(true)',
+		'(mouseleave)': 'isAnimating.set(false)',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -59,14 +59,7 @@ export class ServerCogIcon {
 	size = input(24);
 	strokeWidth = input(2);
 	class = input('');
+	animate = input(false);
 
-	isHovered = signal(false);
-
-	handleMouseEnter() {
-		this.isHovered.set(true);
-	}
-
-	handleMouseLeave() {
-		this.isHovered.set(false);
-	}
+	protected isAnimating = linkedSignal(() => this.animate());
 }

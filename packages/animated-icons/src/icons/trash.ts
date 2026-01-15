@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
 
 @Component({
 	selector: 'i-trash',
@@ -15,11 +15,11 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:g [class.is-animated]="isHovered()">
+			<svg:g [class.is-animated]="isAnimating()">
 				<svg:path d="M3 6h18" />
 				<svg:path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
 			</svg:g>
-			<svg:path [class.animate-path]="isHovered()" d="M19 8v12c0 1-1 2-2 2H7c-1 0-2-1-2-2V8" />
+			<svg:path [class.animate-path]="isAnimating()" d="M19 8v12c0 1-1 2-2 2H7c-1 0-2-1-2-2V8" />
 		</svg>
 	`,
 	styles: `
@@ -48,8 +48,8 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		'[class]': 'class()',
 		'aria-label': 'trash',
 		role: 'img',
-		'(mouseenter)': 'handleMouseEnter()',
-		'(mouseleave)': 'handleMouseLeave()',
+		'(mouseenter)': 'isAnimating.set(true)',
+		'(mouseleave)': 'isAnimating.set(false)',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -58,14 +58,7 @@ export class TrashIcon {
 	size = input(24);
 	strokeWidth = input(2);
 	class = input('');
+	animate = input(false);
 
-	isHovered = signal(false);
-
-	handleMouseEnter() {
-		this.isHovered.set(true);
-	}
-
-	handleMouseLeave() {
-		this.isHovered.set(false);
-	}
+	protected isAnimating = linkedSignal(() => this.animate());
 }

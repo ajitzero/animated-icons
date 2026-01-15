@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
 
 @Component({
 	selector: 'i-clock-6',
@@ -16,8 +16,8 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			stroke-linejoin="round"
 		>
 			<svg:circle cx="12" cy="12" r="10" />
-			<svg:line class="minute-hand" [class.animate]="isHovered()" x1="12" y1="6" x2="12" y2="12" />
-			<svg:line class="hour-hand" [class.animate]="isHovered()" x1="12" y1="12" x2="12" y2="16.5" />
+			<svg:line class="minute-hand" [class.animate]="isAnimating()" x1="12" y1="6" x2="12" y2="12" />
+			<svg:line class="hour-hand" [class.animate]="isAnimating()" x1="12" y1="12" x2="12" y2="16.5" />
 		</svg>
 	`,
 	styles: `
@@ -47,8 +47,8 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		'[class]': 'class()',
 		'aria-label': 'clock-6',
 		role: 'img',
-		'(mouseenter)': 'handleMouseEnter()',
-		'(mouseleave)': 'handleMouseLeave()',
+		'(mouseenter)': 'isAnimating.set(true)',
+		'(mouseleave)': 'isAnimating.set(false)',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -57,14 +57,7 @@ export class Clock6Icon {
 	size = input(24);
 	strokeWidth = input(2);
 	class = input('');
+	animate = input(false);
 
-	isHovered = signal(false);
-
-	handleMouseEnter() {
-		this.isHovered.set(true);
-	}
-
-	handleMouseLeave() {
-		this.isHovered.set(false);
-	}
+	protected isAnimating = linkedSignal(() => this.animate());
 }
