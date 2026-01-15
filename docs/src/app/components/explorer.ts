@@ -973,7 +973,7 @@ export class Explorer {
 		{ name: 'send', component: SendIcon },
 		// { wip: true, name: 'server-cog', component: ServerCogIcon },
 		// { wip: true, name: 'server-off', component: ServerOffIcon },
-		// { wip: true, name: 'settings', component: SettingsIcon },
+		{ name: 'settings', component: SettingsIcon },
 		// { wip: true, name: 'shield-alert', component: ShieldAlertIcon },
 		// { wip: true, name: 'shield-check', component: ShieldCheckIcon },
 		// { wip: true, name: 'shield-off', component: ShieldOffIcon },

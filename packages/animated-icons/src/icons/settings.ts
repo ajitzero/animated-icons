@@ -26,17 +26,14 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 		:host {
 			display: inline-block;
 		}
-		.settings-gear {
-			transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-			transform-origin: center;
-		}
-
-		.settings-gear.animate {
-			transform: rotate(180deg);
-		}
-
-		svg {
+		.settings-icon {
 			overflow: visible;
+			transform-origin: center;
+			transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		}
+
+		.settings-icon.animate {
+			transform: rotate(180deg);
 		}
 	`,
 	host: {
