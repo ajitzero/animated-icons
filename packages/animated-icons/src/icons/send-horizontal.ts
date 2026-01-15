@@ -9,7 +9,6 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			[attr.height]="size()"
 			[attr.stroke]="color()"
 			[attr.stroke-width]="strokeWidth()"
-			[class.animate]="isHovered()"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
 			fill="none"
@@ -33,12 +32,12 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 			overflow: hidden;
 		}
 
-		.animate-group {
+		.send-horizontal-icon .animate-group {
 			transform-origin: center;
-			animation: sendAnimation 1.2s ease-in-out;
+			animation: sendHorizontalAnimation 1.2s ease-in-out;
 		}
 
-		@keyframes sendAnimation {
+		@keyframes sendHorizontalAnimation {
 			0% {
 				transform: scale(1) translateX(0);
 			}
@@ -78,7 +77,7 @@ export class SendHorizontalIcon {
 
 			setTimeout(() => {
 				this.isHovered.set(false);
-			}, 1400);
+			}, 1200);
 		}
 	}
 }
