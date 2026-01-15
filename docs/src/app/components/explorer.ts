@@ -539,7 +539,7 @@ import type { IconItem } from './icon-item.type';
 		@let icons = filteredIcons();
 
 		@if (icons.length === 0) {
-			<div class="bg-background my-4" hlmEmpty>
+			<div class="bg-background mx-4 my-2 sm:mx-0" hlmEmpty>
 				<div hlmEmptyHeader>
 					<div hlmEmptyTitle>No icons matched</div>
 					<div hlmEmptyDescription>
