@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, input, linkedSignal } from '@angular/core';
 
 @Component({
 	selector: 'i-sparkles',
@@ -143,10 +143,19 @@ export class SparklesIcon {
 
 	protected isAnimating = linkedSignal(() => this.animate());
 
-	handleMouseEnter() {
-		if (!this.isAnimating()) {
+	handleMouseEnter(forced = false) {
+		if (forced || !this.isAnimating()) {
 			this.isAnimating.set(true);
 			setTimeout(() => this.isAnimating.set(false), 750);
 		}
+	}
+
+	constructor() {
+		effect(() => {
+			const animate = this.animate();
+			if (animate) {
+				this.handleMouseEnter(true);
+			}
+		});
 	}
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, input, linkedSignal } from '@angular/core';
 
 @Component({
 	selector: 'i-square-arrow-out-down-right',
@@ -60,10 +60,19 @@ export class SquareArrowOutDownRightIcon {
 
 	protected isAnimating = linkedSignal(() => this.animate());
 
-	handleMouseEnter() {
-		if (!this.isAnimating()) {
+	handleMouseEnter(forced = false) {
+		if (forced || !this.isAnimating()) {
 			this.isAnimating.set(true);
 			setTimeout(() => this.isAnimating.set(false), 1400);
 		}
+	}
+
+	constructor() {
+		effect(() => {
+			const animate = this.animate();
+			if (animate) {
+				this.handleMouseEnter(true);
+			}
+		});
 	}
 }

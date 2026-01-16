@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, input, linkedSignal } from '@angular/core';
 
 @Component({
 	selector: 'i-chevron-right',
@@ -47,10 +47,19 @@ export class ChevronRightIcon {
 
 	protected isAnimating = linkedSignal(() => this.animate());
 
-	handleMouseEnter() {
-		if (!this.isAnimating()) {
+	handleMouseEnter(forced = false) {
+		if (forced || !this.isAnimating()) {
 			this.isAnimating.set(true);
 			setTimeout(() => this.isAnimating.set(false), 200);
 		}
+	}
+
+	constructor() {
+		effect(() => {
+			const animate = this.animate();
+			if (animate) {
+				this.handleMouseEnter(true);
+			}
+		});
 	}
 }
