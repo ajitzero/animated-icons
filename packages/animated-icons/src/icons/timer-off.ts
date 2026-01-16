@@ -27,17 +27,13 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 		:host {
 			display: inline-block;
 		}
-		.timer-off {
-			overflow: visible;
-		}
-
-		.timer-off {
+		.timer-off-icon {
 			overflow: visible;
 			transform: translateX(0);
 			transition: transform 0.6s ease-in-out;
 		}
 
-		.timer-off.animate {
+		.timer-off-icon.animate {
 			animation: groupShake 0.6s ease-in-out;
 		}
 
@@ -82,7 +78,7 @@ export class TimerOffIcon {
 	handleMouseEnter() {
 		if (!this.isAnimating()) {
 			this.isAnimating.set(true);
-			setTimeout(() => this.isAnimating.set(false), 1400);
+			setTimeout(() => this.isAnimating.set(false), 600);
 		}
 	}
 }

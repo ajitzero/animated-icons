@@ -29,7 +29,7 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 			overflow: visible;
 		}
 
-		.button {
+		.timer-icon .button {
 			transform-origin: center;
 			transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 		}
@@ -38,7 +38,7 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 			animation: buttonPress 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 		}
 
-		.hand {
+		.timer-icon .hand {
 			transform-origin: 12px 14px;
 			transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 		}
