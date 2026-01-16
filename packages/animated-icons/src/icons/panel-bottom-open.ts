@@ -9,7 +9,6 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 			[attr.height]="size()"
 			[attr.stroke]="color()"
 			[attr.stroke-width]="strokeWidth()"
-			[class.animate]="isAnimating()"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
 			fill="none"
@@ -25,16 +24,16 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 		:host {
 			display: inline-block;
 		}
-		path {
+		.panel-bottom-open-icon path {
 			transition: all 0.2s ease-in-out;
 		}
 
-		.line {
+		.panel-bottom-open-icon .line {
 			transform: translateY(-2px);
 			transition-delay: 0.05s;
 		}
 
-		.chevron {
+		.panel-bottom-open-icon .chevron {
 			transform: translateY(-2px);
 		}
 	`,
@@ -58,7 +57,7 @@ export class PanelBottomOpenIcon {
 	handleMouseEnter() {
 		if (!this.isAnimating()) {
 			this.isAnimating.set(true);
-			setTimeout(() => this.isAnimating.set(false), 1400);
+			setTimeout(() => this.isAnimating.set(false), 300);
 		}
 	}
 }
