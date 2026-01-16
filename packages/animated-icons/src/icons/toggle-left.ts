@@ -28,7 +28,7 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 			overflow: visible;
 		}
 
-		.toggle-circle {
+		.toggle-left-icon .toggle-circle {
 			transform: translateX(0);
 			transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 		}
