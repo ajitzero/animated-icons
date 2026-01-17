@@ -9,7 +9,22 @@ import type { IconItem } from './icon-item.type';
 @Component({
 	selector: 'docs-icon-card',
 	template: `
-		<ng-container [ngComponentOutlet]="icon().component" [ngComponentOutletInputs]="componentInputs()"></ng-container>
+		<div class="flex items-center gap-4">
+			@if (isDevMode()) {
+				<ng-container
+					[ngComponentOutlet]="icon().component"
+					[ngComponentOutletInputs]="componentInputs()[0]"
+				></ng-container>
+				<ng-container
+					[ngComponentOutlet]="icon().component"
+					[ngComponentOutletInputs]="componentInputs()[1]"
+				></ng-container>
+			}
+			<ng-container
+				[ngComponentOutlet]="icon().component"
+				[ngComponentOutletInputs]="componentInputs()[2]"
+			></ng-container>
+		</div>
 		<span class="my-2 text-center text-sm">{{ icon().name }}</span>
 		<div class="flex h-9 group-focus-within:opacity-100 group-hover:opacity-100 focus:opacity-100 md:opacity-0">
 			<a [href]="source()" hlmBtn variant="link" target="_blank">Source</a>
@@ -54,8 +69,5 @@ export class IconCard {
 	isDevMode = signal(isDevMode());
 
 	protected isAnimating = signal(false);
-	protected componentInputs = computed(() => ({
-		size: 36,
-		animate: this.isAnimating(),
-	}));
+	protected componentInputs = computed(() => [24, 30, 36].map((size) => ({ size, animate: this.isAnimating() })));
 }
