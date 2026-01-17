@@ -11,7 +11,7 @@ import type { IconItem } from './icon-item.type';
 	template: `
 		<ng-container [ngComponentOutlet]="icon().component" [ngComponentOutletInputs]="componentInputs()"></ng-container>
 		<span class="my-2 text-center text-sm">{{ icon().name }}</span>
-		<div class="flex h-9 opacity-0 group-hover:opacity-100">
+		<div class="flex h-9 group-focus-within:opacity-100 group-hover:opacity-100 focus:opacity-100 md:opacity-0">
 			<a [href]="source()" hlmBtn variant="link" target="_blank">Source</a>
 			@if (isDevMode()) {
 				<a [href]="svelteSource()" hlmBtn variant="link" target="_blank">Svelte</a>
@@ -31,6 +31,8 @@ import type { IconItem } from './icon-item.type';
 	`,
 	host: {
 		class: 'flex flex-col items-center p-8 pt-16 justify-center bg-background group/card rounded-2xl group',
+		'(focusin)': 'isAnimating.set(true)',
+		'(focusout)': 'isAnimating.set(false)',
 		'(mouseenter)': 'isAnimating.set(true)',
 		'(mouseleave)': 'isAnimating.set(false)',
 	},
