@@ -17,11 +17,11 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 			stroke-linejoin="round"
 		>
 			<svg:path d="M12 2v2 M12 8v2 M12 14v2 M12 20v2" />
-			<svg:g [class.move-left]="isAnimating()">
+			<svg:g class="move-left">
 				<svg:path d="M8 12H2" />
 				<svg:path d="m5 9-3 3 3 3" />
 			</svg:g>
-			<svg:g [class.move-right]="isAnimating()">
+			<svg:g class="move-right">
 				<svg:path d="M16 12h6" />
 				<svg:path d="m19 15 3-3-3-3" />
 			</svg:g>
@@ -34,13 +34,14 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 		.unfold-horizontal-icon {
 			overflow: visible;
 		}
+
 		.unfold-horizontal-icon g {
 			transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
-		.move-left {
+		.unfold-horizontal-icon.animate .move-left {
 			transform: translateX(-2px);
 		}
-		.move-right {
+		.unfold-horizontal-icon.animate .move-right {
 			transform: translateX(2px);
 		}
 	`,

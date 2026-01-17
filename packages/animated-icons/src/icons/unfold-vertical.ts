@@ -37,10 +37,10 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 		.unfold-vertical-icon g {
 			transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
-		.move-up {
+		.unfold-vertical-icon.animate .move-up {
 			transform: translateY(-2px);
 		}
-		.move-down {
+		.unfold-vertical-icon.animate .move-down {
 			transform: translateY(2px);
 		}
 	`,
