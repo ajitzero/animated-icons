@@ -53,7 +53,7 @@ export class IconCard {
 
 	protected isAnimating = signal(false);
 	protected componentInputs = computed(() => ({
-		size: 28,
+		size: 36,
 		animate: this.isAnimating(),
 	}));
 }
