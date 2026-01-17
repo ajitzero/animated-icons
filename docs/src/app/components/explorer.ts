@@ -1,8 +1,11 @@
 import { Component, computed, effect, inject, input, isDevMode, linkedSignal, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { provideIcons } from '@ng-icons/core';
+import { lucideCircleX } from '@ng-icons/lucide';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmEmptyImports } from '@spartan-ng/helm/empty';
+import { HlmIconImports } from '@spartan-ng/helm/icon';
 import { HlmInputImports } from '@spartan-ng/helm/input';
 import { HlmLabelImports } from '@spartan-ng/helm/label';
 import { HlmSwitchImports } from '@spartan-ng/helm/switch';
@@ -517,10 +520,19 @@ import type { IconItem } from './icon-item.type';
 	selector: 'docs-explorer',
 	template: `
 		<div class="sticky top-4 z-10 max-w-sm">
-			<input class="peer pe-20" [(ngModel)]="searchTerm" hlmInput placeholder="Search icons..." />
+			<input class="peer pe-28" [(ngModel)]="searchTerm" hlmInput placeholder="Search icons..." />
+
 			<div
-				class="text-muted-foreground/80 pointer-events-none absolute inset-y-0 end-0 flex items-center justify-center pe-3 text-xs peer-disabled:opacity-50"
+				class="text-muted-foreground/80 absolute inset-y-0 end-0 flex items-center justify-center pe-3 text-xs select-none peer-disabled:opacity-50"
 			>
+				@if (searchTerm().length > 0) {
+					<button
+						class="text-muted-foreground/80 hover:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 flex h-full w-9 items-center justify-center rounded-md transition-[color,box-shadow] outline-none focus:z-10 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
+						(click)="searchTerm.set('')"
+					>
+						<ng-icon hlm size="sm" name="lucideCircleX" />
+					</button>
+				}
 				{{ iconCountMessage() }}
 			</div>
 		</div>
@@ -575,6 +587,7 @@ import type { IconItem } from './icon-item.type';
 	host: {
 		class: 'flex flex-col items-center gap-4 min-h-96',
 	},
+	providers: [provideIcons({ lucideCircleX })],
 	imports: [
 		FormsModule,
 		HlmButtonImports,
@@ -582,6 +595,7 @@ import type { IconItem } from './icon-item.type';
 		HlmInputImports,
 		HlmLabelImports,
 		HlmSwitchImports,
+		HlmIconImports,
 		IconCard,
 	],
 })
