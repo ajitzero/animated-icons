@@ -25,15 +25,12 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 			display: inline-block;
 		}
 		.rotate-cw-icon {
-			transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+			overflow: visible;
 			transform-origin: center;
+			transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
 		.rotate-cw-icon.animate {
 			transform: rotate(50deg);
-		}
-
-		svg {
-			overflow: visible;
 		}
 	`,
 	host: {

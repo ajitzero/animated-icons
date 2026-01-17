@@ -31,24 +31,24 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 		:host {
 			display: inline-block;
 		}
+		.rotate-ccw-key-icon {
+			overflow: visible;
+		}
+
 		.rotate-ccw-key-icon,
-		.arrow,
-		.key {
+		.rotate-ccw-key-icon .arrow,
+		.rotate-ccw-key-icon .key {
 			transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 			transform-origin: center;
 		}
 
-		.arrow.animate {
+		.rotate-ccw-key-icon.animate .arrow {
 			transform: rotate(-50deg);
 			transition-delay: 0.1s;
 		}
 
-		.key.animate {
+		.rotate-ccw-key-icon.animate .key {
 			transform: rotate(-25deg);
-		}
-
-		svg {
-			overflow: visible;
 		}
 	`,
 	host: {
