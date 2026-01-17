@@ -26,7 +26,7 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 			display: inline-block;
 		}
 		.undo-dot-icon {
-			transform-origin: 14px 20px;
+			transform-origin: center 71.42857%; /* calc(20 / 28 * 100%) */
 			transition: transform 0.3s ease;
 		}
 
@@ -36,6 +36,7 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 	`,
 	host: {
 		'[class]': 'class()',
+		'[style]': "'--icon-size: ' + size()",
 		'aria-label': 'undo-dot',
 		role: 'img',
 		'(mouseenter)': 'isAnimating.set(true)',
