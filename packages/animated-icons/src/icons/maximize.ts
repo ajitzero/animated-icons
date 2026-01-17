@@ -16,33 +16,33 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:path [class.top-left]="isAnimating()" d="M8 3H5a2 2 0 0 0-2 2v3" />
-			<svg:path [class.top-right]="isAnimating()" d="M21 8V5a2 2 0 0 0-2-2h-3" />
-			<svg:path [class.bottom-left]="isAnimating()" d="M3 16v3a2 2 0 0 0 2 2h3" />
-			<svg:path [class.bottom-right]="isAnimating()" d="M16 21h3a2 2 0 0 0 2-2v-3" />
+			<svg:path class="top-left" d="M8 3H5a2 2 0 0 0-2 2v3" />
+			<svg:path class="top-right" d="M21 8V5a2 2 0 0 0-2-2h-3" />
+			<svg:path class="bottom-left" d="M3 16v3a2 2 0 0 0 2 2h3" />
+			<svg:path class="bottom-right" d="M16 21h3a2 2 0 0 0 2-2v-3" />
 		</svg>
 	`,
 	styles: `
 		:host {
 			display: inline-block;
 		}
-		path {
+		.maximize-icon path {
 			transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
 
-		.bottom-right {
+		.maximize-icon.animate .bottom-right {
 			transform: translate(2px, 2px);
 		}
 
-		.bottom-left {
+		.maximize-icon.animate .bottom-left {
 			transform: translate(-2px, 2px);
 		}
 
-		.top-right {
+		.maximize-icon.animate .top-right {
 			transform: translate(2px, -2px);
 		}
 
-		.top-left {
+		.maximize-icon.animate .top-left {
 			transform: translate(-2px, -2px);
 		}
 

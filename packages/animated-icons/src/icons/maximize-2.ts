@@ -16,24 +16,24 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:polyline [class.top-right]="isAnimating()" points="15 3 21 3 21 9" />
-			<svg:polyline [class.bottom-left]="isAnimating()" points="9 21 3 21 3 15" />
-			<svg:line [class.top-right]="isAnimating()" x1="21" x2="14" y1="3" y2="10" />
-			<svg:line [class.bottom-left]="isAnimating()" x1="3" x2="10" y1="21" y2="14" />
+			<svg:polyline class="top-right" points="15 3 21 3 21 9" />
+			<svg:polyline class="bottom-left" points="9 21 3 21 3 15" />
+			<svg:line class="top-right" x1="21" x2="14" y1="3" y2="10" />
+			<svg:line class="bottom-left" x1="3" x2="10" y1="21" y2="14" />
 		</svg>
 	`,
 	styles: `
 		:host {
 			display: inline-block;
 		}
-		polyline,
-		line {
+		.maximize-2-icon polyline,
+		.maximize-2-icon line {
 			transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
-		.top-right {
+		.maximize-2-icon.animate .top-right {
 			transform: translate(2px, -2px);
 		}
-		.bottom-left {
+		.maximize-2-icon.animate .bottom-left {
 			transform: translate(-2px, 2px);
 		}
 	`,
