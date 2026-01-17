@@ -33,14 +33,14 @@ import { ChangeDetectionStrategy, Component, effect, input, linkedSignal } from 
 			overflow: visible;
 		}
 
-		.lightbulb-path1 {
+		.lightbulb-icon .lightbulb-path1 {
 			transform-origin: bottom center;
 			transform-box: fill-box;
 			fill: transparent;
 			transition: fill 0s;
 		}
 
-		.lightbulb-path2 {
+		.lightbulb-icon .lightbulb-path2 {
 			transform-origin: bottom center;
 			transform-box: fill-box;
 		}
@@ -52,11 +52,11 @@ import { ChangeDetectionStrategy, Component, effect, input, linkedSignal } from 
 			fill: currentColor;
 			fill-opacity: 0;
 		}
-
+		/*
 		.lightbulb-icon:not(.animate) .lightbulb-path1 {
 			fill: transparent;
 		}
-
+*/
 		.lightbulb-icon.animate .lightbulb-path2 {
 			animation: lightbulb-rotate2 0.8s ease-in-out forwards;
 		}
@@ -135,7 +135,7 @@ export class LightbulbIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || !this.isAnimating()) {
 			this.isAnimating.set(true);
-			setTimeout(() => this.isAnimating.set(false), 1400);
+			setTimeout(() => this.isAnimating.set(false), 1100);
 		}
 	}
 
