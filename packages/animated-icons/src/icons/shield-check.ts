@@ -30,7 +30,7 @@ import { ChangeDetectionStrategy, Component, effect, input, linkedSignal } from 
 			overflow: visible;
 		}
 
-		.check-path {
+		.shield-check-icon .check-path {
 			stroke-dasharray: 9;
 			stroke-dashoffset: 0;
 			transition:
@@ -77,7 +77,7 @@ export class ShieldCheckIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || !this.isAnimating()) {
 			this.isAnimating.set(true);
-			setTimeout(() => this.isAnimating.set(false), 1400);
+			setTimeout(() => this.isAnimating.set(false), 500);
 		}
 	}
 

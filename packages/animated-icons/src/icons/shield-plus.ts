@@ -28,23 +28,23 @@ import { ChangeDetectionStrategy, Component, effect, input, linkedSignal } from 
 		:host {
 			display: inline-block;
 		}
-		.shield-plus {
+		.shield-plus-icon {
 			overflow: visible;
 		}
 
-		.horizontal,
-		.vertical {
+		.shield-plus-icon .horizontal,
+		.shield-plus-icon .vertical {
 			stroke-dasharray: 8;
 			stroke-dashoffset: 0;
 			transition: stroke-dashoffset 0.15s ease-out;
 		}
 
-		.shield-plus.animate .horizontal {
+		.shield-plus-icon.animate .horizontal {
 			opacity: 0;
 			animation: lineAnimation 0.3s ease-out forwards;
 		}
 
-		.shield-plus.animate .vertical {
+		.shield-plus-icon.animate .vertical {
 			opacity: 0;
 			animation: lineAnimation 0.3s ease-out 0.25s forwards;
 		}
@@ -84,7 +84,7 @@ export class ShieldPlusIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || !this.isAnimating()) {
 			this.isAnimating.set(true);
-			setTimeout(() => this.isAnimating.set(false), 1400);
+			setTimeout(() => this.isAnimating.set(false), 500);
 		}
 	}
 
