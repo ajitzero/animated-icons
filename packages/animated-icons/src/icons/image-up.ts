@@ -28,12 +28,12 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 		:host {
 			display: inline-block;
 		}
-		g.animate path {
-			transform: translateY(-2px);
+		.image-up-icon g path {
+			transform: translateY(0);
 			transition: transform 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 		}
-		g path {
-			transform: translateY(0);
+		.image-up-icon.animate g path {
+			transform: translateY(-2px);
 			transition: transform 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 		}
 	`,

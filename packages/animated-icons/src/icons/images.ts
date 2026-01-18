@@ -18,7 +18,7 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 		>
 			<svg:path class="images-path-1" d="m22 11-1.296-1.296a2.4 2.4 0 0 0-3.408 0L11 16" />
 			<svg:path class="images-path-2" d="M4 8a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2" />
-			<svg:circle class="images-circle" cx="13" cy="7" r="1" fill="currentColor" />
+			<svg:circle class="images-circle" cx="13" cy="7" r="1" />
 			<svg:rect class="images-rect" x="8" y="2" width="14" height="14" rx="2" />
 		</svg>
 	`,
@@ -26,6 +26,10 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 		:host {
 			display: inline-block;
 		}
+		.images-icon {
+			overflow: visible;
+		}
+
 		.images-path-1,
 		.images-path-2,
 		.images-circle,
@@ -33,24 +37,20 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 			transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 		}
 
-		.images-path-1.animate {
+		.images-icon.animate .images-path-1 {
 			transform: translate(-3px, 3px);
 		}
 
-		.images-path-2.animate {
+		.images-icon.animate .images-path-2 {
 			transform: translate(3px, -3px);
 		}
 
-		.images-circle.animate {
+		.images-icon.animate .images-circle {
 			transform: translate(-3px, 3px);
 		}
 
-		.images-rect.animate {
+		.images-icon.animate .images-rect {
 			transform: translate(-3px, 3px);
-		}
-
-		svg {
-			overflow: visible;
 		}
 	`,
 	host: {

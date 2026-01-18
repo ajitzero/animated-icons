@@ -28,15 +28,17 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 		:host {
 			display: inline-block;
 		}
-		.image-down {
+		.image-down-icon {
 			overflow: visible;
 		}
-		g.animate path {
-			transform: translateY(2px);
+
+		.image-down-icon g path {
+			transform: translateY(0);
 			transition: transform 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 		}
-		g path {
-			transform: translateY(0);
+
+		.image-down-icon.animate g path {
+			transform: translateY(2px);
 			transition: transform 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 		}
 	`,

@@ -28,17 +28,13 @@ import { ChangeDetectionStrategy, Component, effect, input, linkedSignal } from 
 		:host {
 			display: inline-block;
 		}
-		.image-off {
-			overflow: visible;
-		}
-
-		.image-off {
+		.image-off-icon {
 			overflow: visible;
 			transform: translateX(0);
 			transition: transform 0.6s ease-in-out;
 		}
 
-		.image-off.animate {
+		.image-off-icon.animate {
 			animation: groupShake 0.6s ease-in-out;
 		}
 
@@ -83,7 +79,7 @@ export class ImageOffIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || !this.isAnimating()) {
 			this.isAnimating.set(true);
-			setTimeout(() => this.isAnimating.set(false), 1400);
+			setTimeout(() => this.isAnimating.set(false), 600);
 		}
 	}
 
