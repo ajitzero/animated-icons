@@ -27,17 +27,13 @@ import { ChangeDetectionStrategy, Component, effect, input, linkedSignal } from 
 		:host {
 			display: inline-block;
 		}
-		.vibrate-off {
-			overflow: visible;
-		}
-
-		.vibrate-off {
+		.vibrate-off-icon {
 			overflow: visible;
 			transform: translateX(0);
 			transition: transform 0.6s ease-in-out;
 		}
 
-		.vibrate-off.animate {
+		.vibrate-off-icon.animate {
 			animation: groupShake 0.6s ease-in-out;
 		}
 
@@ -82,7 +78,7 @@ export class VibrateOffIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || !this.isAnimating()) {
 			this.isAnimating.set(true);
-			setTimeout(() => this.isAnimating.set(false), 1400);
+			setTimeout(() => this.isAnimating.set(false), 600);
 		}
 	}
 

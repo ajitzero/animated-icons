@@ -25,12 +25,12 @@ import { ChangeDetectionStrategy, Component, effect, input, linkedSignal } from 
 		:host {
 			display: inline-block;
 		}
-		.vibrate-rect {
+		.vibrate-icon .vibrate-rect {
 			transform: rotate(0deg);
 			transition: transform 0.4s ease;
 		}
 
-		.vibrate-rect.animate {
+		.vibrate-icon.animate .vibrate-rect {
 			transform-origin: center;
 			animation: vibrate 0.4s ease;
 		}
@@ -76,7 +76,7 @@ export class VibrateIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || !this.isAnimating()) {
 			this.isAnimating.set(true);
-			setTimeout(() => this.isAnimating.set(false), 1400);
+			setTimeout(() => this.isAnimating.set(false), 400);
 		}
 	}
 
