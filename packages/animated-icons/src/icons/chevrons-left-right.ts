@@ -69,10 +69,12 @@ export class ChevronsLeftRightIcon {
 
 	protected isAnimating = linkedSignal(() => this.animate());
 
+	#timer: ReturnType<typeof setTimeout> | null = null;
+
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			setTimeout(() => this.isAnimating.set(false), 200);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 200);
 		}
 	}
 
@@ -81,6 +83,11 @@ export class ChevronsLeftRightIcon {
 			const animate = this.animate();
 			if (animate) {
 				this.handleMouseEnter(true);
+			} else {
+				if (this.#timer) {
+					clearTimeout(this.#timer);
+					this.#timer = null;
+				}
 			}
 		});
 	}
