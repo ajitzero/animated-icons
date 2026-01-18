@@ -78,7 +78,7 @@ export class CircleOffIcon {
 	protected isAnimating = linkedSignal(() => this.animate());
 
 	handleMouseEnter(forced = false) {
-		if (forced || !this.isAnimating()) {
+		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
 			setTimeout(() => this.isAnimating.set(false), 1400);
 		}
