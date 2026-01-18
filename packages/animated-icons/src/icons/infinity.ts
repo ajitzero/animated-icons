@@ -30,7 +30,7 @@ import { ChangeDetectionStrategy, Component, effect, input, linkedSignal } from 
 			overflow: visible;
 		}
 
-		.line {
+		.infinity-icon .line {
 			stroke-dasharray: 28;
 			stroke-dashoffset: 0;
 			transition: stroke-dashoffset 1s ease-in-out;
@@ -72,7 +72,7 @@ export class InfinityIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			setTimeout(() => this.isAnimating.set(false), 1400);
+			setTimeout(() => this.isAnimating.set(false), 1000);
 		}
 	}
 

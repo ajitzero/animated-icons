@@ -773,7 +773,7 @@ export const ICONS_LIST: IconItem[] = [
 	{ name: 'image-off', component: ImageOffIcon },
 	{ name: 'image-up', component: ImageUpIcon },
 	{ name: 'images', component: ImagesIcon },
-	// { wip: true, name: 'infinity', component: InfinityIcon },
+	{ name: 'infinity', component: InfinityIcon },
 	// { wip: true, name: 'kanban', component: KanbanIcon },
 	{ name: 'key-round', component: KeyRoundIcon },
 	{ name: 'key-square', component: KeySquareIcon },
