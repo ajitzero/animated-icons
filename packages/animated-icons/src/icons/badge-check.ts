@@ -31,12 +31,12 @@ import { ChangeDetectionStrategy, Component, effect, input, linkedSignal } from 
 			overflow: visible;
 		}
 
-		.badge-path {
+		.badge-check-icon .badge-path {
 			transform-origin: center;
 			transition: transform 1.2s ease-in-out;
 		}
 
-		.check-path {
+		.badge-check-icon .check-path {
 			stroke-dasharray: 10;
 			stroke-dashoffset: 0;
 			opacity: 1;
@@ -100,7 +100,7 @@ export class BadgeCheckIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || !this.isAnimating()) {
 			this.isAnimating.set(true);
-			setTimeout(() => this.isAnimating.set(false), 1400);
+			setTimeout(() => this.isAnimating.set(false), 1200);
 		}
 	}
 

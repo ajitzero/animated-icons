@@ -19,7 +19,7 @@ import { ChangeDetectionStrategy, Component, effect, input, linkedSignal } from 
 			<svg:path
 				d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"
 			/>
-			<svg:g [class.animate-path]="isAnimating()">
+			<svg:g class="animate-path">
 				<svg:path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
 				<svg:line x1="12" x2="12.01" y1="17" y2="17" />
 			</svg:g>
@@ -29,11 +29,11 @@ import { ChangeDetectionStrategy, Component, effect, input, linkedSignal } from 
 		:host {
 			display: inline-block;
 		}
-		.animate-icon {
+		.badge-question-mark-icon.animate {
 			transition: transform 0.5s ease-in-out;
 		}
 
-		.animate-path {
+		.badge-question-mark-icon.animate .animate-path {
 			transition: transform 0.5s ease-in-out;
 			transform-origin: center;
 			animation: rotateAnimation 0.5s ease-in-out;
@@ -77,7 +77,7 @@ export class BadgeQuestionMarkIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || !this.isAnimating()) {
 			this.isAnimating.set(true);
-			setTimeout(() => this.isAnimating.set(false), 1400);
+			setTimeout(() => this.isAnimating.set(false), 500);
 		}
 	}
 

@@ -27,7 +27,7 @@ import { ChangeDetectionStrategy, Component, effect, input, linkedSignal } from 
 		:host {
 			display: inline-block;
 		}
-		.animate-icon {
+		.badge-alert-icon.animate {
 			animation: primaryAnimation 0.5s ease-in-out;
 		}
 
@@ -69,7 +69,7 @@ export class BadgeAlertIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || !this.isAnimating()) {
 			this.isAnimating.set(true);
-			setTimeout(() => this.isAnimating.set(false), 1400);
+			setTimeout(() => this.isAnimating.set(false), 500);
 		}
 	}
 
