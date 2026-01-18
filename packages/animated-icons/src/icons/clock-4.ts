@@ -1,4 +1,14 @@
-import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
+import type { BooleanInput } from '@angular/cdk/coercion';
+import {
+	booleanAttribute,
+	ChangeDetectionStrategy,
+	Component,
+	inject,
+	input,
+	linkedSignal,
+	numberAttribute,
+} from '@angular/core';
+import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 
 @Component({
 	selector: 'i-clock-4',
@@ -53,11 +63,13 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Clock4Icon {
-	color = input('currentColor');
-	size = input(24);
-	strokeWidth = input(2);
+	#options = inject(ANIMATED_ICONS_CONFIG);
+
+	color = input(this.#options?.color ?? 'currentColor');
+	size = input(this.#options?.size ?? 24, { transform: numberAttribute });
+	strokeWidth = input(this.#options?.strokeWidth ?? 2, { transform: numberAttribute });
 	class = input('');
-	animate = input(false);
+	animate = input<boolean, BooleanInput>(false, { transform: booleanAttribute });
 
 	protected isAnimating = linkedSignal(() => this.animate());
 
