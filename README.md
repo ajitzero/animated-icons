@@ -1,26 +1,36 @@
 # Animated Icons for Angular
 
-Angular Port of https://lucide-animated.com/
+**Demo:** <https://icons.ajitpanigrahi.com/>
 
-This is a Work-In-Progress.
+A collection of 150+ hand-crafted, interaction-ready [Lucide](https://lucide.dev) icons. Built natively for Angular with zero dependencies. Fully tree-shakeable, MIT licensed, and completely customizable.
 
 > an open-source collection of smooth, animated icons for your projects. feel free to use them, share your feedback, and let's make this library awesome together!
 
-## Commands
+## Documentation
 
-View demo:
+See [Package-specific README](https://github.com/ajitzero/animated-icons/tree/main/packages/animated-icons).
+
+## Commands for development
+
+Run demo locally:
 
 ```sh
 bunx nx serve docs
 ```
 
-Format code:
+Format affected code only:
+
+```sh
+bunx nx format
+```
+
+Format everything:
 
 ```sh
 bun run format
 ```
 
-For deployment:
+Build for deployment:
 
 ```sh
 bunx nx build docs
