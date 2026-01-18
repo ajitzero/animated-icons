@@ -26,33 +26,33 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:path [class.top-left]="isAnimating()" d="M8 3v3a2 2 0 0 1-2 2H3" />
-			<svg:path [class.top-right]="isAnimating()" d="M21 8h-3a2 2 0 0 1-2-2V3" />
-			<svg:path [class.bottom-left]="isAnimating()" d="M3 16h3a2 2 0 0 1 2 2v3" />
-			<svg:path [class.bottom-right]="isAnimating()" d="M16 21v-3a2 2 0 0 1 2-2h3" />
+			<svg:path class="top-left" d="M8 3v3a2 2 0 0 1-2 2H3" />
+			<svg:path class="top-right" d="M21 8h-3a2 2 0 0 1-2-2V3" />
+			<svg:path class="bottom-left" d="M3 16h3a2 2 0 0 1 2 2v3" />
+			<svg:path class="bottom-right" d="M16 21v-3a2 2 0 0 1 2-2h3" />
 		</svg>
 	`,
 	styles: `
 		:host {
 			display: inline-block;
 		}
-		path {
+		.minimize-icon path {
 			transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
 
-		.bottom-right {
+		.minimize-icon.animate .bottom-right {
 			transform: translate(-1px, -1px);
 		}
 
-		.top-left {
+		.minimize-icon.animate .top-left {
 			transform: translate(1px, 1px);
 		}
 
-		.bottom-left {
+		.minimize-icon.animate .bottom-left {
 			transform: translate(1px, -1px);
 		}
 
-		.top-right {
+		.minimize-icon.animate .top-right {
 			transform: translate(-1px, 1px);
 		}
 	`,
