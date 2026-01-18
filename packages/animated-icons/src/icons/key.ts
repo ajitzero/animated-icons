@@ -25,13 +25,13 @@ import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angula
 		:host {
 			display: inline-block;
 		}
-		svg {
+		.key-icon {
 			transform-origin: center;
 			transform: rotate(0deg);
 			transition: transform 0.3s ease-out;
 		}
 
-		.animate {
+		.key-icon.animate {
 			transform: rotate(-28deg);
 			transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
