@@ -17,26 +17,26 @@ import { ChangeDetectionStrategy, Component, effect, input, linkedSignal } from 
 			stroke-linejoin="round"
 		>
 			<svg:path
-				[class.animate-bell]="isAnimating()"
+				class="bell"
 				d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"
 			/>
-			<svg:path [class.animate-clapper]="isAnimating()" d="M10.268 21a2 2 0 0 0 3.464 0" />
+			<svg:path class="clapper" d="M10.268 21a2 2 0 0 0 3.464 0" />
 		</svg>
 	`,
 	styles: `
 		:host {
 			display: inline-block;
 		}
-		.animate-svg {
+		.bell-icon.animate {
 			transform-origin: top center;
 			animation: bellRing 0.9s ease-in-out;
 		}
 
-		.animate-bell {
+		.bell-icon.animate .bell {
 			animation: bellMove 1.1s ease-in-out;
 		}
 
-		.animate-clapper {
+		.bell-icon.animate .clapper {
 			animation: clapperMove 1.1s ease-in-out;
 		}
 
@@ -111,7 +111,7 @@ export class BellIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || !this.isAnimating()) {
 			this.isAnimating.set(true);
-			setTimeout(() => this.isAnimating.set(false), 1400);
+			setTimeout(() => this.isAnimating.set(false), 1100);
 		}
 	}
 

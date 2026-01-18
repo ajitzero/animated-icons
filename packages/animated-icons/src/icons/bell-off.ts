@@ -26,17 +26,13 @@ import { ChangeDetectionStrategy, Component, effect, input, linkedSignal } from 
 		:host {
 			display: inline-block;
 		}
-		.bell-off {
-			overflow: visible;
-		}
-
-		.bell-off {
+		.bell-off-icon {
 			overflow: visible;
 			transform: translateX(0);
 			transition: transform 0.6s ease-in-out;
 		}
 
-		.bell-off.animate {
+		.bell-off-icon.animate {
 			animation: groupShake 0.6s ease-in-out;
 		}
 
@@ -81,7 +77,7 @@ export class BellOffIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || !this.isAnimating()) {
 			this.isAnimating.set(true);
-			setTimeout(() => this.isAnimating.set(false), 1400);
+			setTimeout(() => this.isAnimating.set(false), 600);
 		}
 	}
 
