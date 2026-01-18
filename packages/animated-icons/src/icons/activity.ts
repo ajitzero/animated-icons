@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, effect, input, linkedSignal } from '@angular/core';
 
 @Component({
-	selector: 'i-activity-icon',
+	selector: 'i-activity',
 	template: `
 		<svg
 			class="activity-icon"

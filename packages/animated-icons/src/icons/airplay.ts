@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
 
 @Component({
-	selector: 'i-airplay-icon',
+	selector: 'i-airplay',
 	template: `
 		<svg
 			class="airplay-icon"
