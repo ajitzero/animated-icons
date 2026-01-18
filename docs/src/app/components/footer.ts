@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 		</a>
 	`,
 	host: {
-		class: 'flex justify-center mt-16 mb-24 items-center max-w-2xl mx-auto',
+		class: 'flex justify-center my-16 items-center max-w-2xl mx-auto',
 	},
 })
 export class Footer {}
