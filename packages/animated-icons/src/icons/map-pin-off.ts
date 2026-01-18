@@ -29,17 +29,13 @@ import { ChangeDetectionStrategy, Component, effect, input, linkedSignal } from 
 		:host {
 			display: inline-block;
 		}
-		.map-pin-off {
-			overflow: visible;
-		}
-
-		.map-pin-off {
+		.map-pin-off-icon {
 			overflow: visible;
 			transform: translateX(0);
 			transition: transform 0.6s ease-in-out;
 		}
 
-		.map-pin-off.animate {
+		.map-pin-off-icon.animate {
 			animation: groupShake 0.6s ease-in-out;
 		}
 
@@ -84,7 +80,7 @@ export class MapPinOffIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			setTimeout(() => this.isAnimating.set(false), 1400);
+			setTimeout(() => this.isAnimating.set(false), 600);
 		}
 	}
 

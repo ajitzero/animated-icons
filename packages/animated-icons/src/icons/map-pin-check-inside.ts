@@ -29,6 +29,7 @@ import { ChangeDetectionStrategy, Component, effect, input, linkedSignal } from 
 		.map-pin-check-inside-icon {
 			overflow: visible;
 		}
+
 		.check-path {
 			stroke-dasharray: 9;
 			stroke-dashoffset: 0;
@@ -74,7 +75,7 @@ export class MapPinCheckInsideIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			setTimeout(() => this.isAnimating.set(false), 1400);
+			setTimeout(() => this.isAnimating.set(false), 500);
 		}
 	}
 
