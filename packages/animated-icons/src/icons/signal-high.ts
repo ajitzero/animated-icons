@@ -37,7 +37,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.signal-icon {
+		.signal-high-icon {
 			overflow: visible;
 		}
 
@@ -46,21 +46,21 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: opacity 0.2s ease;
 		}
 
-		.signal-icon.animate .signal-level {
+		.signal-high-icon.animate .signal-level {
 			animation: fadeInSequence 0.6s ease forwards;
 		}
 
-		.signal-icon.animate .signal-line-1 {
+		.signal-high-icon.animate .signal-line-1 {
 			opacity: 0;
 			animation-delay: 0.1s;
 		}
 
-		.signal-icon.animate .signal-line-2 {
+		.signal-high-icon.animate .signal-line-2 {
 			opacity: 0;
 			animation-delay: 0.2s;
 		}
 
-		.signal-icon.animate .signal-line-3 {
+		.signal-high-icon.animate .signal-line-3 {
 			opacity: 0;
 			animation-delay: 0.3s;
 		}
@@ -98,7 +98,7 @@ export class SignalHighIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 700);
 		}
 	}
 

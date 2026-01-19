@@ -34,7 +34,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.signal-icon {
+		.signal-zero-icon {
 			overflow: visible;
 		}
 
@@ -42,7 +42,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: opacity 0.2s ease;
 		}
 
-		.signal-icon.animate .signal-level {
+		.signal-zero-icon.animate .signal-level {
 			opacity: 0;
 			animation: fadeInSequence 1.2s;
 		}
@@ -95,7 +95,7 @@ export class SignalZeroIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 1200);
 		}
 	}
 
