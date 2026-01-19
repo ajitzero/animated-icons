@@ -40,17 +40,13 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.webhook-off {
-			overflow: visible;
-		}
-
-		.webhook-off {
+		.webhook-off-icon {
 			overflow: visible;
 			transform: translateX(0);
 			transition: transform 0.6s ease-in-out;
 		}
 
-		.webhook-off.animate {
+		.webhook-off-icon.animate {
 			animation: groupShake 0.6s ease-in-out;
 		}
 
@@ -99,7 +95,7 @@ export class WebhookOffIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 600);
 		}
 	}
 

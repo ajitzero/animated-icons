@@ -43,17 +43,13 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.keyboard-off {
-			overflow: visible;
-		}
-
-		.keyboard-off {
+		.keyboard-off-icon {
 			overflow: visible;
 			transform: translateX(0);
 			transition: transform 0.6s ease-in-out;
 		}
 
-		.keyboard-off.animate {
+		.keyboard-off-icon.animate {
 			animation: groupShake 0.6s ease-in-out;
 		}
 
@@ -102,7 +98,7 @@ export class KeyboardOffIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 600);
 		}
 	}
 

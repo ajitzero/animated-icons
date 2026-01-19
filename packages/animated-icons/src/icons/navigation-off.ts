@@ -36,17 +36,13 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.navigation-off {
-			overflow: visible;
-		}
-
-		.navigation-off {
+		.navigation-off-icon {
 			overflow: visible;
 			transform: translateX(0);
 			transition: transform 0.6s ease-in-out;
 		}
 
-		.navigation-off.animate {
+		.navigation-off-icon.animate {
 			animation: groupShake 0.6s ease-in-out;
 		}
 
@@ -95,7 +91,7 @@ export class NavigationOffIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 600);
 		}
 	}
 

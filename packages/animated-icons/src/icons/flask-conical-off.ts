@@ -39,17 +39,13 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.flask-conical-off {
-			overflow: visible;
-		}
-
-		.flask-conical-off {
+		.flask-conical-off-icon {
 			overflow: visible;
 			transform: translateX(0);
 			transition: transform 0.6s ease-in-out;
 		}
 
-		.flask-conical-off.animate {
+		.flask-conical-off-icon.animate {
 			animation: groupShake 0.6s ease-in-out;
 		}
 
@@ -98,7 +94,7 @@ export class FlaskConicalOffIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 600);
 		}
 	}
 
