@@ -1,8 +1,6 @@
 import { Component, computed, effect, inject, input, isDevMode, linkedSignal, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { provideIcons } from '@ng-icons/core';
-import { lucideCircleX } from '@ng-icons/lucide';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmEmptyImports } from '@spartan-ng/helm/empty';
 import { HlmIconImports } from '@spartan-ng/helm/icon';
@@ -12,27 +10,12 @@ import { HlmSwitchImports } from '@spartan-ng/helm/switch';
 import { IconCard } from './icon-card';
 import type { IconItem } from './icon-item.type';
 import { ICONS_LIST } from './icon-list.const';
+import { Search } from './search';
 
 @Component({
 	selector: 'docs-explorer',
 	template: `
-		<div class="sticky top-4 z-10 max-w-sm">
-			<input class="peer pe-28" #search [(ngModel)]="searchTerm" hlmInput placeholder="Search icons..." />
-
-			<div
-				class="text-muted-foreground/80 absolute inset-y-0 end-0 flex items-center justify-center pe-3 text-xs select-none peer-disabled:opacity-50"
-			>
-				@if (searchTerm().length > 0) {
-					<button
-						class="text-muted-foreground/80 hover:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 flex h-full w-9 items-center justify-center rounded-md transition-[color,box-shadow] outline-none focus:z-10 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
-						(click)="searchTerm.set(''); search.focus()"
-					>
-						<ng-icon hlm size="sm" name="lucideCircleX" />
-					</button>
-				}
-				{{ iconCountMessage() }}
-			</div>
-		</div>
+		<docs-search [(value)]="searchTerm" [status]="iconCountMessage()" [placeholder]="searchPlaceholder()" />
 
 		<!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
 		@if (isDevMode) {
@@ -84,7 +67,6 @@ import { ICONS_LIST } from './icon-list.const';
 	host: {
 		class: 'flex flex-col items-center gap-4 min-h-96',
 	},
-	providers: [provideIcons({ lucideCircleX })],
 	imports: [
 		FormsModule,
 		HlmButtonImports,
@@ -94,6 +76,7 @@ import { ICONS_LIST } from './icon-list.const';
 		HlmSwitchImports,
 		HlmIconImports,
 		IconCard,
+		Search,
 	],
 })
 export class Explorer {
@@ -125,6 +108,8 @@ export class Explorer {
 
 		return icons.filter((icon) => searchTerms.some((term) => icon.name.includes(term)));
 	});
+
+	searchPlaceholder = computed(() => `Search ${this.availableIcons().length} icons...`);
 
 	iconCountMessage = computed(() => {
 		const icons = this.availableIcons();
