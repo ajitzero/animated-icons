@@ -34,7 +34,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.wifi-icon {
+		.wifi-zero-icon {
 			overflow: visible;
 		}
 
@@ -42,7 +42,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: opacity 0.2s ease;
 		}
 
-		.wifi-icon.animate .wifi-level {
+		.wifi-zero-icon.animate .wifi-level {
 			opacity: 0;
 			animation: fadeInSequence 1.2s;
 		}
@@ -95,7 +95,7 @@ export class WifiZeroIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 1200);
 		}
 	}
 

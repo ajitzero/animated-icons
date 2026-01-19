@@ -35,7 +35,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.wifi-icon {
+		.wifi-low-icon {
 			overflow: visible;
 		}
 
@@ -44,11 +44,11 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: opacity 0.2s ease;
 		}
 
-		.wifi-icon.animate .wifi-level {
+		.wifi-low-icon.animate .wifi-level {
 			animation: fadeInSequence 0.6s ease forwards;
 		}
 
-		.wifi-icon.animate .wifi-line-1 {
+		.wifi-low-icon.animate .wifi-line-1 {
 			opacity: 0;
 			animation-delay: 0.25s;
 		}
@@ -86,7 +86,7 @@ export class WifiLowIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 700);
 		}
 	}
 
