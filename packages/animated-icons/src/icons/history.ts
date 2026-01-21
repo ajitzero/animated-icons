@@ -43,7 +43,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 		}
 
-		.arrow.animate {
+		.history-icon.animate .arrow {
 			transform: rotate(-50deg);
 		}
 
@@ -52,7 +52,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 		}
 
-		.hour-hand.animate {
+		.history-icon.animate .hour-hand {
 			transform: rotate(-360deg);
 		}
 
@@ -61,7 +61,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: transform 0.5s ease-in-out;
 		}
 
-		.minute-hand.animate {
+		.history-icon.animate .minute-hand {
 			transform: rotate(-45deg);
 		}
 	`,

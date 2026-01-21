@@ -765,7 +765,7 @@ export const ICONS_LIST: IconItem[] = [
 	{ name: 'headphone-off', component: HeadphoneOffIcon },
 	{ name: 'heart-off', component: HeartOffIcon },
 	{ name: 'heart', component: HeartIcon },
-	// { wip: true, name: 'history', component: HistoryIcon },
+	{ name: 'history', component: HistoryIcon },
 	{ name: 'hop-off', component: HopOffIcon },
 	// { wip: true, name: 'house-wifi', component: HouseWifiIcon },
 	// { wip: true, name: 'house', component: HouseIcon },
