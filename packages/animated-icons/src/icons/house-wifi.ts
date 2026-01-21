@@ -43,7 +43,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			overflow: visible;
 		}
 
-		.wifi-level {
+		.house-wifi-icon .wifi-level {
 			opacity: 1;
 			transition: opacity 0.2s ease;
 		}
@@ -100,7 +100,7 @@ export class HouseWifiIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 700);
 		}
 	}
 
