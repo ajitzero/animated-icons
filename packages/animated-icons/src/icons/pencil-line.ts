@@ -48,7 +48,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: transform 0.25s ease-in-out;
 		}
 
-		.pen.animate {
+		.pencil-line-icon.animate .pen {
 			animation: penWiggle 0.5s ease-in-out 2;
 		}
 
@@ -89,7 +89,7 @@ export class PencilLineIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 1000);
 		}
 	}
 
