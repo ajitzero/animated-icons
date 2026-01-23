@@ -29,7 +29,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			<svg:path d="M21 6H3" />
 			<svg:path d="M7 12H3" />
 			<svg:path d="M7 18H3" />
-			<svg:g class="restart-arrows">
+			<svg:g>
 				<svg:path d="M12 18a5 5 0 0 0 9-3 4.5 4.5 0 0 0-4.5-4.5c-1.33 0-2.54.54-3.41 1.41L11 14" />
 				<svg:path d="M11 10v4h4" />
 			</svg:g>
@@ -37,21 +37,18 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 	`,
 	styles: `
 		.list-restart-icon {
+			overflow: visible;
 			transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
 
-		.restart-arrows {
+		.list-restart-icon g {
 			transform-origin: center;
 			transform-box: fill-box;
 			transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
 
-		.animate .restart-arrows {
+		.list-restart-icon.animate g {
 			transform: rotate(-50deg);
-		}
-
-		svg {
-			overflow: visible;
 		}
 	`,
 	host: {

@@ -42,7 +42,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			overflow: visible;
 		}
 
-		.check-path {
+		.list-checks-icon .check-path {
 			stroke-dasharray: 9;
 			stroke-dashoffset: 0;
 			transition:
@@ -93,7 +93,7 @@ export class ListChecksIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 500);
 		}
 	}
 
