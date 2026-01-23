@@ -43,12 +43,12 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			overflow: visible;
 		}
 
-		.pinwheel {
+		.loader-pinwheel-icon g {
 			transform-origin: center;
 			transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
 
-		.pinwheel.animate {
+		.loader-pinwheel-icon.animate g {
 			animation: spin 0.6s ease-in-out infinite;
 		}
 
@@ -85,7 +85,7 @@ export class LoaderPinwheelIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 600);
 		}
 	}
 
