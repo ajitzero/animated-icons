@@ -38,7 +38,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		svg {
+		.unplug-icon {
 			overflow: visible;
 		}
 
@@ -51,27 +51,27 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 		}
 
-		.line-1.animate {
+		.unplug-icon.animate .line-1 {
 			d: path('M17 7l5 -5');
 		}
 
-		.line-2.animate {
+		.unplug-icon.animate .line-2 {
 			d: path('m2 22 6-6');
 		}
 
-		.socket.animate {
+		.unplug-icon.animate .socket {
 			transform: translate(3px, -3px);
 		}
 
-		.plug.animate {
+		.unplug-icon.animate .plug {
 			transform: translate(-3px, 3px);
 		}
 
-		.spark-1.animate {
+		.unplug-icon.animate .spark-1 {
 			d: path('M10.43 10.57l0.10 -0.10');
 		}
 
-		.spark-2.animate {
+		.unplug-icon.animate .spark-2 {
 			d: path('M13.43 13.57l0.10 -0.10');
 		}
 	`,

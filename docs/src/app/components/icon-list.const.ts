@@ -980,7 +980,7 @@ export const ICONS_LIST: IconItem[] = [
 	{ name: 'undo', component: UndoIcon },
 	{ name: 'unfold-horizontal', component: UnfoldHorizontalIcon },
 	{ name: 'unfold-vertical', component: UnfoldVerticalIcon },
-	// { wip: true, name: 'unplug', component: UnplugIcon },
+	{ name: 'unplug', component: UnplugIcon },
 	{ name: 'upload', component: UploadIcon },
 	// { wip: true, name: 'user-check', component: UserCheckIcon },
 	// { wip: true, name: 'user-cog', component: UserCogIcon },
