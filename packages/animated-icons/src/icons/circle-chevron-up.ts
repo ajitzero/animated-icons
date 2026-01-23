@@ -35,7 +35,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.circle-chevron-up {
+		.circle-chevron-up-icon {
 			overflow: visible;
 		}
 
@@ -43,7 +43,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: transform 0.3s ease-in;
 		}
 
-		.circle-chevron-up.animate .chevron {
+		.circle-chevron-up-icon.animate .chevron {
 			animation: bounceChevron 0.3s ease-in;
 		}
 
@@ -81,7 +81,7 @@ export class CircleChevronUpIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 300);
 		}
 	}
 
