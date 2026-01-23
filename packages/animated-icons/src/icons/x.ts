@@ -35,7 +35,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.x {
+		.x-icon {
 			overflow: visible;
 		}
 
@@ -46,12 +46,12 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: stroke-dashoffset 0.15s ease-out;
 		}
 
-		.x.animate .diagonal-1 {
+		.x-icon.animate .diagonal-1 {
 			opacity: 0;
 			animation: lineAnimation 0.3s ease-out forwards;
 		}
 
-		.x.animate .diagonal-2 {
+		.x-icon.animate .diagonal-2 {
 			opacity: 0;
 			animation: lineAnimation 0.3s ease-out 0.25s forwards;
 		}
@@ -95,7 +95,7 @@ export class XIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 500);
 		}
 	}
 

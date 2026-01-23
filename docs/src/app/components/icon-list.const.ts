@@ -1005,6 +1005,6 @@ export const ICONS_LIST: IconItem[] = [
 	{ name: 'wifi-zero', component: WifiZeroIcon },
 	{ name: 'wifi', component: WifiIcon },
 	{ name: 'wine-off', component: WineOffIcon },
-	// { wip: true, name: 'x', component: XIcon },
+	{ name: 'x', component: XIcon },
 	{ wip: false, name: 'zap-off', component: ZapOffIcon },
 ];
