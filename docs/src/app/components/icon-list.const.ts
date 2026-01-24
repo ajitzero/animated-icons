@@ -708,7 +708,7 @@ export const ICONS_LIST: IconItem[] = [
 	{ name: 'dice-4', component: Dice4Icon },
 	{ name: 'dice-5', component: Dice5Icon },
 	{ name: 'dice-6', component: Dice6Icon },
-	// { wip: true, name: 'diff', component: DiffIcon },
+	{ name: 'diff', component: DiffIcon },
 	{ name: 'dna-off', component: DnaOffIcon },
 	{ name: 'download', component: DownloadIcon },
 	{ name: 'droplet-off', component: DropletOffIcon },
