@@ -39,12 +39,15 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
+		.hand-heart-icon {
+			overflow: visible;
+		}
 		.hand-heart-path {
 			transform-origin: center;
 			transition: transform 0.3s ease;
 		}
 
-		.hand-heart-path.animate {
+		.hand-heart-icon.animate .hand-heart-path {
 			transform: translateY(-2px) scale(1.1);
 		}
 	`,
