@@ -82,6 +82,20 @@
 	* {
 		@apply border-border outline-ring/50;
 	}
+	html {
+		font-feature-settings:
+			'calt' 0,
+			'dlig' 1 /* Enable discretionary ligatures */,
+			'case' 1 /* Enable case-sensitive forms */,
+			'cv01' 1 /* Enable alternate one */,
+			'cv02' 1 /* Enable alternate four */,
+			'cv09' 1 /* Enable alternate three */,
+			'cv10' 1 /* Enable alternate G */,
+			'ss02' 1 /* Enable Disambiguation (I vs l) */,
+			'ss03' 1 /* Enable Rounded quotes */,
+			'cpsp' 1 /* Adjust spacing between capital letters */,
+			'kern' 1 /* Enable kerning for better spacing between letters */;
+	}
 	body {
 		@apply text-foreground bg-card;
 	}
