@@ -41,18 +41,18 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
+		.folder-sync-icon {
+			overflow: visible;
+		}
+
 		.sync-arrows {
 			transform-origin: center;
 			transform-box: fill-box;
 			transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
 
-		.animate .sync-arrows {
+		.folder-sync-icon.animate .sync-arrows {
 			transform: rotate(-50deg);
-		}
-
-		svg {
-			overflow: visible;
 		}
 	`,
 	host: {

@@ -40,6 +40,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		.folder-check-icon {
 			overflow: visible;
 		}
+
 		.check-path {
 			stroke-dasharray: 9;
 			stroke-dashoffset: 0;
@@ -89,7 +90,7 @@ export class FolderCheckIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 500);
 		}
 	}
 

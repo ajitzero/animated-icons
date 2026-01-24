@@ -51,7 +51,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
 
-		.cog-group.animate {
+		.folder-cog-icon.animate .cog-group {
 			transform: rotate(180deg);
 		}
 	`,
