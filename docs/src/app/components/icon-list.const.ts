@@ -757,7 +757,7 @@ export const ICONS_LIST: IconItem[] = [
 	// // { wip: true, name: 'grip-horizontal', component: GripHorizontalIcon },
 	// // { wip: true, name: 'grip-vertical', component: GripVerticalIcon },
 	// // { wip: true, name: 'grip', component: GripIcon },
-	// { wip: true, name: 'hammer', component: HammerIcon },
+	{ name: 'hammer', component: HammerIcon },
 	{ name: 'hand-coins', component: HandCoinsIcon },
 	{ name: 'hand-heart', component: HandHeartIcon },
 	{ name: 'hard-drive-download', component: HardDriveDownloadIcon },
