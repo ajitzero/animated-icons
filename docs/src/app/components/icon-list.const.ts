@@ -712,7 +712,7 @@ export const ICONS_LIST: IconItem[] = [
 	{ name: 'dna-off', component: DnaOffIcon },
 	{ name: 'download', component: DownloadIcon },
 	{ name: 'droplet-off', component: DropletOffIcon },
-	// { wip: true, name: 'drum', component: DrumIcon },
+	{ name: 'drum', component: DrumIcon },
 	{ name: 'ear-off', component: EarOffIcon },
 	{ name: 'eclipse', component: EclipseIcon },
 	{ name: 'egg-off', component: EggOffIcon },
