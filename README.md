@@ -38,4 +38,4 @@ bunx nx build docs
 
 ### License
 
-MIT
+[MIT](./LICENSE)
