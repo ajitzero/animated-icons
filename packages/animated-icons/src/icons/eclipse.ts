@@ -27,9 +27,9 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linejoin="round"
 		>
 			<svg:defs>
-				<clipPath id="clipSun" clipPathUnits="userSpaceOnUse">
+				<svg:clipPath id="clipSun" clipPathUnits="userSpaceOnUse">
 					<svg:circle cx="12" cy="12" r="10" />
-				</clipPath>
+				</svg:clipPath>
 			</svg:defs>
 
 			<svg:circle class="sun" cx="12" cy="12" r="10" />

@@ -714,7 +714,7 @@ export const ICONS_LIST: IconItem[] = [
 	{ name: 'droplet-off', component: DropletOffIcon },
 	// { wip: true, name: 'drum', component: DrumIcon },
 	{ name: 'ear-off', component: EarOffIcon },
-	// { wip: true, name: 'eclipse', component: EclipseIcon },
+	{ name: 'eclipse', component: EclipseIcon },
 	{ name: 'egg-off', component: EggOffIcon },
 	// { wip: true, name: 'expand', component: ExpandIcon },
 	{ name: 'eye-off', component: EyeOffIcon },
