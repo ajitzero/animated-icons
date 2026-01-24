@@ -63,10 +63,11 @@ export class Search {
 	protected readonly isMac = /Mac|iPod|iPhone|iPad/.test(this.#platform);
 
 	onKeyDown(event: KeyboardEvent) {
+		const isFKey = event.key.toLowerCase() === 'f';
 		const isKKey = event.key.toLowerCase() === 'k';
 		const isModifierPressed = this.isMac ? event.metaKey : event.ctrlKey;
 
-		if (isKKey && isModifierPressed) {
+		if ((isFKey || isKKey) && isModifierPressed) {
 			event.preventDefault();
 			this.search().nativeElement.focus();
 		}
