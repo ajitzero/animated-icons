@@ -955,7 +955,7 @@ export const ICONS_LIST: IconItem[] = [
 	{ name: 'star', component: StarIcon },
 	// // { wip: true, name: 'sun', component: SunIcon },
 	// { wip: true, name: 'sword', component: SwordIcon },
-	// { wip: true, name: 'tag', component: TagIcon },
+	{ name: 'tag', component: TagIcon },
 	// { wip: true, name: 'telescope', component: TelescopeIcon },
 	// { wip: true, name: 'terminal', component: TerminalIcon },
 	// { wip: true, name: 'text-align-center', component: TextAlignCenterIcon },

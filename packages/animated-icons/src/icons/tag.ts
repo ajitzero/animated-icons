@@ -30,14 +30,14 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			<svg:path
 				d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"
 			/>
-			<svg:circle cx="7.5" cy="7.5" r=".5" fill="color()" />
+			<svg:circle [attr.fill]="color()" cx="7.5" cy="7.5" r=".5" />
 		</svg>
 	`,
 	styles: `
 		:host {
 			display: inline-block;
 		}
-		.rotate-animation {
+		.tag-icon.animate {
 			transform-origin: top left;
 			animation: rotateAnimation 0.5s ease-in-out;
 		}
@@ -81,7 +81,7 @@ export class TagIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 500);
 		}
 	}
 
