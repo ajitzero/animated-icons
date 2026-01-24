@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HlmTooltipImports } from '@spartan-ng/helm/tooltip';
 import { hlmH1, hlmP } from '@spartan-ng/helm/typography';
 import { ICONS_LIST } from './icon-list.const';
 
@@ -19,30 +18,15 @@ import { ICONS_LIST } from './icon-list.const';
 
 			<p class="${hlmP}">
 				Thanks to
-				<a
-					class="underline hover:opacity-75"
-					[hlmTooltipTrigger]="'pqoqubbw/icons'"
-					href="https://lucide-animated.com/"
-					aria-describedby="pqoqubbw/icons"
-					target="_blank"
-					>lucide-animated</a
-				>
+				<a class="underline hover:opacity-75" href="https://lucide-animated.com/" target="_blank">lucide-animated</a>
 				and
-				<a
-					class="underline hover:opacity-75"
-					[hlmTooltipTrigger]="'jis3r/icons'"
-					href="https://movingicons.dev/"
-					aria-describedby="jis3r/icons"
-					target="_blank"
-					>movingicons</a
-				>.
+				<a class="underline hover:opacity-75" href="https://movingicons.dev/" target="_blank">movingicons</a>.
 			</p>
 		</section>
 	`,
 	host: {
 		class: 'mx-auto block max-w-2xl px-4 py-18 text-center sm:px-0',
 	},
-	imports: [HlmTooltipImports],
 })
 export class Hero {
 	readonly iconCount = ICONS_LIST.length;
