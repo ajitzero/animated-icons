@@ -716,7 +716,7 @@ export const ICONS_LIST: IconItem[] = [
 	{ name: 'ear-off', component: EarOffIcon },
 	{ name: 'eclipse', component: EclipseIcon },
 	{ name: 'egg-off', component: EggOffIcon },
-	// { wip: true, name: 'expand', component: ExpandIcon },
+	{ name: 'expand', component: ExpandIcon },
 	{ name: 'eye-off', component: EyeOffIcon },
 	{ name: 'file-chart-column-increasing', component: FileChartColumnIncreasingIcon },
 	{ name: 'file-chart-column', component: FileChartColumnIcon },

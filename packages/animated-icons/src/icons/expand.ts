@@ -36,28 +36,28 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
+		.expand-icon {
+			overflow: visible;
+		}
+
 		.corner {
 			transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
 
-		.top-right.animate {
+		.expand-icon.animate .top-right {
 			transform: translate(2px, 2px);
 		}
 
-		.bottom-left.animate {
+		.expand-icon.animate .bottom-left {
 			transform: translate(-2px, 2px);
 		}
 
-		.top-left.animate {
+		.expand-icon.animate .top-left {
 			transform: translate(2px, -2px);
 		}
 
-		.bottom-right.animate {
+		.expand-icon.animate .bottom-right {
 			transform: translate(-2px, -2px);
-		}
-
-		svg {
-			overflow: visible;
 		}
 	`,
 	host: {
