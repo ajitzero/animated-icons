@@ -970,7 +970,7 @@ export const ICONS_LIST: IconItem[] = [
 	{ name: 'timer', component: TimerIcon },
 	{ name: 'toggle-left', component: ToggleLeftIcon },
 	{ name: 'toggle-right', component: ToggleRightIcon },
-	// { wip: true, name: 'tornado', component: TornadoIcon },
+	{ name: 'tornado', component: TornadoIcon },
 	{ name: 'touchpad-off', component: TouchpadOffIcon },
 	{ name: 'trash-2', component: Trash2Icon },
 	{ name: 'trash', component: TrashIcon },

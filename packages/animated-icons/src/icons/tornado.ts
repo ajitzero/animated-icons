@@ -38,22 +38,22 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.line {
+		.tornado-icon .line {
 			transition: transform 0.3s ease;
 			transform-origin: center;
 		}
-		.animate .line-2 {
+		.tornado-icon.animate .line-2 {
 			animation: swirlLeftRight 3s ease-in-out;
 		}
-		.animate .line-3 {
+		.tornado-icon.animate .line-3 {
 			animation: swirlLeftRight 3s ease-in-out;
 			animation-delay: 0.1s;
 		}
-		.animate .line-4 {
+		.tornado-icon.animate .line-4 {
 			animation: swirlLeftRight 3s ease-in-out;
 			animation-delay: 0.2s;
 		}
-		.animate .line-5 {
+		.tornado-icon.animate .line-5 {
 			animation: swirlLeftRight 3s ease-in-out;
 			animation-delay: 0.3s;
 		}
@@ -102,7 +102,7 @@ export class TornadoIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 3300);
 		}
 	}
 
