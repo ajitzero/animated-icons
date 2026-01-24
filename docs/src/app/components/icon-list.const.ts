@@ -890,7 +890,7 @@ export const ICONS_LIST: IconItem[] = [
 	// { wip: true, name: 'route', component: RouteIcon },
 	{ name: 'rss', component: RssIcon },
 	{ name: 'save-off', component: SaveOffIcon },
-	// { wip: true, name: 'scan-text', component: ScanTextIcon },
+	{ name: 'scan-text', component: ScanTextIcon },
 	{ name: 'scissors', component: ScissorsIcon },
 	{ name: 'search-check', component: SearchCheckIcon },
 	{ name: 'search', component: SearchIcon },
