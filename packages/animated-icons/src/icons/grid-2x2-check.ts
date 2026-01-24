@@ -38,6 +38,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		.grid-2x2-check-icon {
 			overflow: visible;
 		}
+
 		.check-path {
 			stroke-dasharray: 9;
 			stroke-dashoffset: 0;
@@ -45,9 +46,11 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 				stroke-dashoffset 0.125s ease-out,
 				opacity 0.125s ease-out;
 		}
+
 		.grid-2x2-check-icon.animate .check-path {
 			animation: checkAnimation 0.5s ease-out backwards;
 		}
+
 		@keyframes checkAnimation {
 			0% {
 				stroke-dashoffset: 9;
@@ -87,7 +90,7 @@ export class Grid2x2CheckIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 500);
 		}
 	}
 

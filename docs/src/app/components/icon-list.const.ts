@@ -753,7 +753,7 @@ export const ICONS_LIST: IconItem[] = [
 	// { wip: true, name: 'gallery-vertical', component: GalleryVerticalIcon },
 	// { wip: true, name: 'gauge', component: GaugeIcon },
 	// { wip: true, name: 'gavel', component: GavelIcon },
-	// { wip: true, name: 'grid-2x2-check', component: Grid2x2CheckIcon },
+	{ name: 'grid-2x2-check', component: Grid2x2CheckIcon },
 	// // { wip: true, name: 'grip-horizontal', component: GripHorizontalIcon },
 	// // { wip: true, name: 'grip-vertical', component: GripVerticalIcon },
 	// // { wip: true, name: 'grip', component: GripIcon },
