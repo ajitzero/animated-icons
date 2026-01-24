@@ -8,9 +8,15 @@ import { HlmInputImports } from '@spartan-ng/helm/input';
 @Component({
 	selector: 'docs-search',
 	template: `
-		<input class="peer ps-9 pe-28" #search [(ngModel)]="value" [placeholder]="placeholder()" hlmInput />
+		<input
+			class="peer rounded-full py-6 ps-10 pe-28"
+			#search
+			[(ngModel)]="value"
+			[placeholder]="placeholder()"
+			hlmInput
+		/>
 		<div
-			class="text-muted-foreground/80 pointer-events-none absolute inset-y-0 start-0 flex items-center justify-center ps-3 peer-disabled:opacity-50"
+			class="text-muted-foreground/80 pointer-events-none absolute inset-y-0 start-0 flex items-center justify-center ps-4 peer-disabled:opacity-50"
 		>
 			<ng-icon hlm size="sm" name="lucideSearch" />
 		</div>
@@ -20,17 +26,17 @@ import { HlmInputImports } from '@spartan-ng/helm/input';
 			@if (value().length > 0) {
 				{{ status() }}
 				<button
-					class="text-muted-foreground/80 hover:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 flex h-full w-9 items-center justify-center rounded-md transition-[color,box-shadow] outline-none focus:z-10 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
+					class="text-muted-foreground/80 hover:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 me-2 flex h-full w-9 items-center justify-center rounded-md transition-[color,box-shadow] outline-none focus:z-10 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
 					(click)="handleClear()"
 				>
 					<ng-icon hlm size="sm" name="lucideCircleX" />
 				</button>
 			} @else {
 				<div
-					class="text-muted-foreground pointer-events-none absolute inset-y-0 end-0 flex items-center justify-center pe-2"
+					class="text-muted-foreground pointer-events-none absolute inset-y-0 end-0 hidden items-center justify-center pe-4 sm:flex"
 				>
 					<kbd
-						class="text-muted-foreground/70 inline-flex h-5 max-h-full items-center rounded border px-1 font-[inherit] text-[0.625rem] font-medium whitespace-nowrap"
+						class="text-muted-foreground/70 inline-flex h-5 max-h-full items-center rounded-full border px-2 py-3 font-[inherit] text-xs font-medium whitespace-nowrap"
 					>
 						@if (isMac) {
 							⌘
