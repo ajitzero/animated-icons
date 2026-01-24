@@ -922,7 +922,7 @@ export const ICONS_LIST: IconItem[] = [
 	// { wip: true, name: 'snowflake', component: SnowflakeIcon },
 	{ name: 'sparkle', component: SparkleIcon },
 	{ name: 'sparkles', component: SparklesIcon },
-	// { wip: true, name: 'speech', component: SpeechIcon },
+	{ name: 'speech', component: SpeechIcon },
 	// { wip: true, name: 'spell-check', component: SpellCheckIcon },
 	// { wip: true, name: 'square-arrow-down-left', component: SquareArrowDownLeftIcon },
 	// { wip: true, name: 'square-arrow-down-right', component: SquareArrowDownRightIcon },
