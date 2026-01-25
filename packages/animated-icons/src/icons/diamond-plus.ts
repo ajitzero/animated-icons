@@ -38,7 +38,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.diamond-plus {
+		.diamond-plus-icon {
 			overflow: visible;
 		}
 
@@ -49,12 +49,12 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: stroke-dashoffset 0.15s ease-out;
 		}
 
-		.diamond-plus.animate .horizontal {
+		.diamond-plus-icon.animate .horizontal {
 			opacity: 0;
 			animation: lineAnimation 0.3s ease-out forwards;
 		}
 
-		.diamond-plus.animate .vertical {
+		.diamond-plus-icon.animate .vertical {
 			opacity: 0;
 			animation: lineAnimation 0.3s ease-out 0.25s forwards;
 		}
@@ -98,7 +98,7 @@ export class DiamondPlusIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 500);
 		}
 	}
 

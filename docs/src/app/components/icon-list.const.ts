@@ -701,7 +701,7 @@ export const ICONS_LIST: IconItem[] = [
 	// { wip: true, name: 'copy', component: CopyIcon },
 	// { wip: true, name: 'cpu', component: CpuIcon },
 	// { wip: true, name: 'crop', component: CropIcon },
-	// { wip: true, name: 'diamond-plus', component: DiamondPlusIcon },
+	{ name: 'diamond-plus', component: DiamondPlusIcon },
 	{ name: 'dice-1', component: Dice1Icon },
 	{ name: 'dice-2', component: Dice2Icon },
 	{ name: 'dice-3', component: Dice3Icon },
