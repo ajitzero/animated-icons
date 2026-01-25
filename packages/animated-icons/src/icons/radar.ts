@@ -34,19 +34,19 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			<svg:path d="M12 18h.01" />
 			<svg:path d="M17.99 11.66A6 6 0 0 1 15.77 16.67" />
 			<svg:circle cx="12" cy="12" r="2" />
-			<svg:path class="radar-icon" d="m13.41 10.59 5.66-5.66" />
+			<svg:path class="radar-hand" d="m13.41 10.59 5.66-5.66" />
 		</svg>
 	`,
 	styles: `
 		:host {
 			display: inline-block;
 		}
-		.radar-icon {
+		.radar-icon .radar-hand {
 			transform-origin: center center;
 			transition: transform 1s ease-in-out;
 		}
 
-		.radar-icon.animate {
+		.radar-icon.animate .radar-hand {
 			animation: rotate-path 2s linear;
 		}
 
@@ -83,7 +83,7 @@ export class RadarIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 2000);
 		}
 	}
 

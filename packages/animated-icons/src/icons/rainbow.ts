@@ -55,15 +55,15 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: stroke-dashoffset 0.4s ease-out;
 		}
 
-		.animate .arc-1 {
+		.rainbow-icon.animate .arc-1 {
 			animation: draw1 0.8s ease-out forwards;
 		}
 
-		.animate .arc-2 {
+		.rainbow-icon.animate .arc-2 {
 			animation: draw2 0.8s ease-out forwards;
 		}
 
-		.animate .arc-3 {
+		.rainbow-icon.animate .arc-3 {
 			animation: draw3 0.8s ease-out forwards;
 		}
 
@@ -118,7 +118,7 @@ export class RainbowIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 800);
 		}
 	}
 
