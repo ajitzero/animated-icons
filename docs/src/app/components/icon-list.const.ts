@@ -995,7 +995,7 @@ export const ICONS_LIST: IconItem[] = [
 	{ name: 'video-off', component: VideoOffIcon },
 	{ name: 'volume-off', component: VolumeOffIcon },
 	{ name: 'vote', component: VoteIcon },
-	// { wip: true, name: 'waves', component: WavesIcon },
+	{ name: 'waves', component: WavesIcon },
 	{ name: 'webhook-off', component: WebhookOffIcon },
 	{ name: 'wheat-off', component: WheatOffIcon },
 	{ name: 'wifi-high', component: WifiHighIcon },
