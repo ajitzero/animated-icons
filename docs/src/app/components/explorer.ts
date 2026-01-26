@@ -1,12 +1,16 @@
-import { Component, computed, effect, inject, input, isDevMode, linkedSignal, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	computed,
+	effect,
+	inject,
+	input,
+	isDevMode,
+	linkedSignal,
+	signal,
+} from '@angular/core';
 import { Router } from '@angular/router';
-import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmEmptyImports } from '@spartan-ng/helm/empty';
-import { HlmIconImports } from '@spartan-ng/helm/icon';
-import { HlmInputImports } from '@spartan-ng/helm/input';
-import { HlmLabelImports } from '@spartan-ng/helm/label';
-import { HlmSwitchImports } from '@spartan-ng/helm/switch';
 import { IconCard } from './icon-card';
 import type { IconItem } from './icon-item.type';
 import { ICONS_LIST } from './icon-list.const';
@@ -16,18 +20,6 @@ import { Search } from './search';
 	selector: 'docs-explorer',
 	template: `
 		<docs-search [(value)]="searchTerm" [status]="iconCountMessage()" [placeholder]="searchPlaceholder()" />
-
-		<!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
-		@if (isDevMode) {
-			<label class="flex items-center" hlmLabel>
-				<hlm-switch class="mr-2" [(checked)]="includeWip" />
-				@if (includeWip()) {
-					Including WIP icons
-				} @else {
-					Excluding WIP icons
-				}
-			</label>
-		}
 
 		@let icons = filteredIcons();
 
@@ -59,7 +51,7 @@ import { Search } from './search';
 		} @else {
 			<div class="grid w-full grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-1 py-2">
 				@for (icon of icons; track icon.name) {
-					<docs-icon-card [class.hidden]="!includeWip() && icon.wip" [icon]="icon" />
+					<docs-icon-card [icon]="icon" />
 				}
 			</div>
 		}
@@ -67,25 +59,14 @@ import { Search } from './search';
 	host: {
 		class: 'flex flex-col items-center gap-4 min-h-96',
 	},
-	imports: [
-		FormsModule,
-		HlmButtonImports,
-		HlmEmptyImports,
-		HlmInputImports,
-		HlmLabelImports,
-		HlmSwitchImports,
-		HlmIconImports,
-		IconCard,
-		Search,
-	],
+	imports: [HlmEmptyImports, IconCard, Search],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Explorer {
 	private readonly router = inject(Router);
-	readonly isDevMode = isDevMode();
 
 	search = input('');
 	searchTerm = linkedSignal(() => this.search());
-	includeWip = signal(this.isDevMode);
 
 	icons = signal<IconItem[]>(ICONS_LIST);
 
@@ -96,7 +77,7 @@ export class Explorer {
 			.filter(Boolean);
 	});
 
-	availableIcons = computed(() => this.icons().filter((icon) => this.includeWip() || !icon.wip));
+	availableIcons = computed(() => this.icons().filter((icon) => (isDevMode() ? true : !icon.wip)));
 
 	filteredIcons = computed(() => {
 		const searchTerms = this.cleanSearchTerms();

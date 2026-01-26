@@ -1,36 +1,19 @@
 import { NgComponentOutlet } from '@angular/common';
-import { Component, computed, input, isDevMode, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmInputImports } from '@spartan-ng/helm/input';
 import { HlmTooltipImports } from '@spartan-ng/helm/tooltip';
+import { provideAnimatedIcons } from 'ng-animated-icons';
 import type { IconItem } from './icon-item.type';
 
 @Component({
 	selector: 'docs-icon-card',
 	template: `
-		<div class="flex items-center gap-4">
-			@if (isDevMode()) {
-				<ng-container
-					[ngComponentOutlet]="icon().component"
-					[ngComponentOutletInputs]="componentInputs()[0]"
-				></ng-container>
-				<ng-container
-					[ngComponentOutlet]="icon().component"
-					[ngComponentOutletInputs]="componentInputs()[1]"
-				></ng-container>
-			}
-			<ng-container
-				[ngComponentOutlet]="icon().component"
-				[ngComponentOutletInputs]="componentInputs()[2]"
-			></ng-container>
-		</div>
+		<ng-container [ngComponentOutlet]="icon().component" [ngComponentOutletInputs]="componentInputs()"></ng-container>
 		<span class="my-2 text-center text-sm">{{ icon().name }}</span>
 		<div class="flex h-9 group-focus-within:opacity-100 group-hover:opacity-100 focus:opacity-100 md:opacity-0">
-			<a [href]="source()" hlmBtn variant="link" target="_blank">Source</a>
-			@if (isDevMode()) {
-				<a [href]="svelteSource()" hlmBtn variant="link" target="_blank">Svelte</a>
-			}
+			<a [href]="source()" hlmBtn variant="ghost" target="_blank">Source</a>
 		</div>
 		@if (icon().wip) {
 			<span
@@ -51,7 +34,9 @@ import type { IconItem } from './icon-item.type';
 		'(mouseenter)': 'isAnimating.set(true)',
 		'(mouseleave)': 'isAnimating.set(false)',
 	},
+	providers: [provideAnimatedIcons({ size: 36 })],
 	imports: [HlmInputImports, HlmButtonImports, HlmTooltipImports, FormsModule, NgComponentOutlet],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconCard {
 	icon = input.required<IconItem>();
@@ -61,13 +46,6 @@ export class IconCard {
 		return `https://github.com/ajitzero/animated-icons/tree/main/packages/animated-icons/src/icons/${icon.name}.ts`;
 	});
 
-	svelteSource = computed(() => {
-		const icon = this.icon();
-		return `https://github.com/jis3r/icons/blob/master/src/lib/icons/${icon.name}.svelte`;
-	});
-
-	isDevMode = signal(isDevMode());
-
 	protected isAnimating = signal(false);
-	protected componentInputs = computed(() => [24, 30, 36].map((size) => ({ size, animate: this.isAnimating() })));
+	protected componentInputs = computed(() => ({ animate: this.isAnimating() }));
 }
