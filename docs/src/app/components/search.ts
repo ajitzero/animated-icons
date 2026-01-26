@@ -1,4 +1,13 @@
-import { Component, DOCUMENT, ElementRef, inject, input, model, viewChild } from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	DOCUMENT,
+	ElementRef,
+	inject,
+	input,
+	model,
+	viewChild,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { provideIcons } from '@ng-icons/core';
 import { lucideCircleX, lucideSearch } from '@ng-icons/lucide';
@@ -55,6 +64,7 @@ import { HlmInputImports } from '@spartan-ng/helm/input';
 	},
 	providers: [provideIcons({ lucideCircleX, lucideSearch })],
 	imports: [FormsModule, HlmIconImports, HlmInputImports],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Search {
 	readonly #platform = inject(DOCUMENT).defaultView?.navigator?.platform ?? '';

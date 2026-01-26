@@ -1,5 +1,5 @@
 import { coerceStringArray } from '@angular/cdk/coercion';
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { Explorer } from '../components/explorer';
 import { Footer } from '../components/footer';
 import { Header } from '../components/header';
@@ -14,6 +14,7 @@ import { Hero } from '../components/hero';
 		<docs-footer />
 	`,
 	imports: [Header, Hero, Explorer, Footer],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Home {
 	search = input('', {

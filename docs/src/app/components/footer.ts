@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
 	selector: 'docs-footer',
@@ -11,5 +11,6 @@ import { Component } from '@angular/core';
 	host: {
 		class: 'flex justify-center my-16 items-center max-w-2xl mx-auto',
 	},
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Footer {}

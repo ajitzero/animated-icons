@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { hlmH1, hlmP } from '@spartan-ng/helm/typography';
 import { ICONS_LIST } from './icon-list.const';
 
@@ -27,6 +27,7 @@ import { ICONS_LIST } from './icon-list.const';
 	host: {
 		class: 'mx-auto block max-w-2xl px-4 py-18 text-center sm:px-0',
 	},
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Hero {
 	readonly iconCount = ICONS_LIST.length;

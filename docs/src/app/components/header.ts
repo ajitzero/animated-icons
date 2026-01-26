@@ -1,4 +1,4 @@
-import { Component, computed, DOCUMENT, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, DOCUMENT, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { provideIcons } from '@ng-icons/core';
 import { lucideGithub, lucideMoon, lucideSun } from '@ng-icons/lucide';
@@ -36,6 +36,7 @@ import { HlmTooltipImports } from '@spartan-ng/helm/tooltip';
 	},
 	providers: [provideIcons({ lucideGithub, lucideMoon, lucideSun })],
 	imports: [RouterLink, HlmButtonImports, HlmIconImports, HlmTooltipImports],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Header {
 	document = inject(DOCUMENT);
