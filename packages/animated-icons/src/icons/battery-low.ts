@@ -36,7 +36,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.battery-icon {
+		.battery-low-icon {
 			overflow: visible;
 		}
 
@@ -45,11 +45,11 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: opacity 0.3s ease;
 		}
 
-		.battery-icon.animate .battery-bar {
+		.battery-low-icon.animate .battery-bar {
 			animation: fadeInSequence 0.3s ease forwards;
 		}
 
-		.battery-icon.animate .battery-bar-1 {
+		.battery-low-icon.animate .battery-bar-1 {
 			opacity: 0;
 			animation-delay: 0.4s;
 		}
@@ -87,7 +87,7 @@ export class BatteryLowIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 700);
 		}
 	}
 

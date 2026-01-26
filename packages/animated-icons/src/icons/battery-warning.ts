@@ -38,11 +38,11 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.battery-icon {
+		.battery-warning-icon {
 			overflow: visible;
 		}
 
-		.battery-icon.animate .battery-warning {
+		.battery-warning-icon.animate .battery-warning {
 			opacity: 0;
 			animation: blink 0.5s 3;
 		}
@@ -81,7 +81,7 @@ export class BatteryWarningIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 1500);
 		}
 	}
 
