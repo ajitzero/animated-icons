@@ -6,11 +6,13 @@ Bautifully crafted animated icons for Angular.
 
 A port of [Moving Icons](https://www.movingicons.dev/), inspired by [lucide-animated](https://lucide-animated.com/).
 
+Demo: <https://icons.ajitpanigrahi.com/>
+
 ## Highlights
 
-- ✅ Standalone Components, for Angular v21 and above. Tested on Node 22.x, but should work on previous versions.
-- ✅ Custom `InjectionToken` for configuring global customizations.
+- ✅ Standalone Components, for Angular v19 and above. Tested on Node 22.x and Angular v21, but should work on previous versions.
 - ✅ Zoneless & signals-first. RxJs is not required.
+- ✅ Custom `InjectionToken` for configuring customizations in one place.
 
 ## Installation
 
@@ -28,11 +30,15 @@ npm i ng-animated-icons
 pnpm i ng-animated-icons
 ```
 
+Yarn has some known issues with installing peer dependencies automatically, and need to be installed explicitly:
+
 ```bash
-yarn add ng-animated-icons
+yarn add ng-animated-icons @angular/cdk
 ```
 
 Or copy just the required icons from the repository.
+
+Use [the docs](https://icons.ajitpanigrahi.com/) to find the files and copy the source code into your project. The only relative import is for the injection token, so consider either adding this file directory beside your icons or you can delete the relevant lines should you choose to skip this.
 
 ## Usage
 
@@ -49,17 +55,17 @@ e.g., the `thumbs-up` icon in Lucide is available for import as `ThumbsUpIcon`, 
 
 ### Props
 
-| Prop          | Type    | Default        | Description                     | InjectionToken? |
-| ------------- | ------- | -------------- | ------------------------------- | --------------- |
-| `color`       | string  | 'currentColor' | Stroke color (CSS color value)  | Yes             |
-| `size`        | number  | 24             | Icon size in pixels             | Yes             |
-| `strokeWidth` | number  | 2              | SVG stroke width                | Yes             |
-| `class`       | string  | —              | Optional additional CSS classes | No              |
-| `animate`     | boolean | false          | Controls icon animation state   | No              |
+| Prop          | Type    | Default          | Description                     | InjectionToken? |
+| ------------- | ------- | ---------------- | ------------------------------- | --------------- |
+| `color`       | string  | `'currentColor'` | Stroke color (CSS color value)  | Yes             |
+| `size`        | number  | `24`             | Icon size in pixels             | Yes             |
+| `strokeWidth` | number  | `2`              | SVG stroke width                | Yes             |
+| `class`       | string  | —                | Optional additional CSS classes | No              |
+| `animate`     | boolean | `false`          | Controls icon animation state   | No              |
 
 ### Variants
 
-1. **Default usage.** This uses the default values mentions in [Props](./#props).
+1. **Default usage.** This uses the default values mentions in [Props](#props).
 
    ```ts
    import { ActivityIcon } from 'ng-animated-icons';
@@ -73,10 +79,10 @@ e.g., the `thumbs-up` icon in Lucide is available for import as `ThumbsUpIcon`, 
 
    ```html
    <!-- HTML-style attributes -->
-   <i-activity class="border p-4" color="purple" size="24" strokeWidth="1" animate />
+   <i-activity class="border p-4" color="purple" size="24" strokeWidth="1" />
 
-   <!-- Regular input binding -->
-   <i-activity [class]="'border p-4'" [color]="'purple'" [size]="24" [strokeWidth]="1" [animate]="false" />
+   <!-- Regular input binding for variables -->
+   <i-activity [class]="'border p-4'" [color]="'purple'" [size]="24" [strokeWidth]="1" />
    ```
 
 1. **Global options.** The ideal place to configure standard settings across your app.
@@ -101,14 +107,20 @@ e.g., the `thumbs-up` icon in Lucide is available for import as `ThumbsUpIcon`, 
    ```
 
    ```html
-   <!-- Will be blue, with size 30 -->
+   <!-- Will be blue, with stroke-width 1 and size 30 -->
    <i-activity />
 
-   <!-- Will still be blue, but with size 36 -->
+   <!-- Will still be blue, with stroke-width 1 but with size 36 -->
    <i-activity size="36" />
+
+   <!-- Will still be blue, with size 30 but with stroke-width 3 -->
+   <i-activity strokeWidth="3" />
+
+   <!-- Disregards providers since everything is overridden -->
+   <i-activity color="#f91377" size="36" strokeWidth="3" />
    ```
 
-<!-- Add variant for hovering on parent -->
+<!-- TODO(docs): Add variant for hovering on parent -->
 
 ## Missing support for something?
 
