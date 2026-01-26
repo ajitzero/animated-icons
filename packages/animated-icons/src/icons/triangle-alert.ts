@@ -36,7 +36,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.animate-icon {
+		.triangle-alert-icon.animate {
 			animation: primaryAnimation 0.5s ease-in-out;
 		}
 
@@ -82,7 +82,7 @@ export class TriangleAlertIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 500);
 		}
 	}
 
