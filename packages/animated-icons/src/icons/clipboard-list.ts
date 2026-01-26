@@ -150,6 +150,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		'aria-label': 'clipboard-list',
 		role: 'img',
 		'(mouseenter)': 'handleMouseEnter()',
+		'(focusin)': 'handleMouseEnter()',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

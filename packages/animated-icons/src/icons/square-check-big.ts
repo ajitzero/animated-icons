@@ -68,6 +68,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		'aria-label': 'square-check-big',
 		role: 'img',
 		'(mouseenter)': 'handleMouseEnter()',
+		'(focusin)': 'handleMouseEnter()',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

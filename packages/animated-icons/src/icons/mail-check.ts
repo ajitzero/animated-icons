@@ -69,6 +69,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		'aria-label': 'mail-check',
 		role: 'img',
 		'(mouseenter)': 'handleMouseEnter()',
+		'(focusin)': 'handleMouseEnter()',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

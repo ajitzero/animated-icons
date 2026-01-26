@@ -104,6 +104,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		'aria-label': 'bookmark-x',
 		role: 'img',
 		'(mouseenter)': 'handleMouseEnter()',
+		'(focusin)': 'handleMouseEnter()',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

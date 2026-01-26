@@ -80,6 +80,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		'aria-label': 'battery-full',
 		role: 'img',
 		'(mouseenter)': 'handleMouseEnter()',
+		'(focusin)': 'handleMouseEnter()',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

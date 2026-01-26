@@ -49,6 +49,8 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		'[style]': "'--icon-size: ' + size()",
 		'aria-label': 'undo-dot',
 		role: 'img',
+		'(focusin)': 'isAnimating.set(true)',
+		'(focusout)': 'handleMouseLeave()',
 		'(mouseenter)': 'isAnimating.set(true)',
 		'(mouseleave)': 'handleMouseLeave()',
 	},

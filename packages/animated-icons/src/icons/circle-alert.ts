@@ -28,7 +28,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linejoin="round"
 		>
 			<svg:circle cx="12" cy="12" r="10" />
-			<svg:g [class.animate-path]="isAnimating()">
+			<svg:g>
 				<svg:line x1="12" x2="12" y1="8" y2="12" />
 				<svg:line x1="12" x2="12.01" y1="16" y2="16" />
 			</svg:g>
@@ -65,6 +65,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		'aria-label': 'circle-alert',
 		role: 'img',
 		'(mouseenter)': 'handleMouseEnter()',
+		'(focusin)': 'handleMouseEnter()',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

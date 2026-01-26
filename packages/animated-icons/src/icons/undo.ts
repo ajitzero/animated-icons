@@ -47,6 +47,8 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		'[class]': 'class()',
 		'aria-label': 'undo',
 		role: 'img',
+		'(focusin)': 'isAnimating.set(true)',
+		'(focusout)': 'handleMouseLeave()',
 		'(mouseenter)': 'isAnimating.set(true)',
 		'(mouseleave)': 'handleMouseLeave()',
 	},

@@ -118,6 +118,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 	host: {
 		'[class]': 'class()',
 		'(mouseenter)': 'handleMouseEnter()',
+		'(focusin)': 'handleMouseEnter()',
 		'aria-label': 'accessibility',
 		role: 'img',
 	},

@@ -58,6 +58,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		'aria-label': 'sliders-horizontal',
 		role: 'img',
 		'(mouseenter)': 'handleMouseEnter()',
+		'(focusin)': 'handleMouseEnter()',
 		'(mouseleave)': 'handleMouseLeave()',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
