@@ -45,11 +45,11 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
 
-		.swap-group-up.animate {
+		.arrow-up-a-z-icon.animate .swap-group-up {
 			transform: translateY(10px);
 		}
 
-		.swap-group-down.animate {
+		.arrow-up-a-z-icon.animate .swap-group-down {
 			transform: translateY(-10px);
 		}
 	`,

@@ -34,10 +34,10 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		svg {
+		.arrow-big-down-icon {
 			transition: transform 0.2s ease-out;
 		}
-		.animate {
+		.arrow-big-down-icon.animate {
 			transform: translateY(3px);
 		}
 	`,
@@ -66,7 +66,7 @@ export class ArrowBigDownIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 200);
 		}
 	}
 

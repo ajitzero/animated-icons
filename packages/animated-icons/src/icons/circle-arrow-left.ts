@@ -29,18 +29,18 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		>
 			<svg:circle cx="12" cy="12" r="10" />
 			<svg:path d="M16 12H12" />
-			<svg:path [class.head]="isAnimating()" d="M12 12H8" />
-			<svg:path [class.head]="isAnimating()" d="m12 8-4 4 4 4" />
+			<svg:path class="head" d="M12 12H8" />
+			<svg:path class="head" d="m12 8-4 4 4 4" />
 		</svg>
 	`,
 	styles: `
 		:host {
 			display: inline-block;
 		}
-		path {
+		.circle-arrow-left-icon path {
 			transition: all 0.2s ease-out;
 		}
-		.head {
+		.circle-arrow-left-icon.animate path.head {
 			transform: translateX(1.5px);
 		}
 	`,
@@ -69,7 +69,7 @@ export class CircleArrowLeftIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 200);
 		}
 	}
 

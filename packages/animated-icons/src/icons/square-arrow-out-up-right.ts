@@ -41,7 +41,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		.arrow path {
 			transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
-		.animate {
+		.square-arrow-out-up-right-icon.animate .arrow {
 			animation: moveUpRight 0.5s;
 		}
 		@keyframes moveUpRight {
@@ -79,7 +79,7 @@ export class SquareArrowOutUpRightIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 500);
 		}
 	}
 

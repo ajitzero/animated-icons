@@ -27,8 +27,8 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:path [class.animate-dash]="isAnimating()" d="M15 5H9" />
-			<svg:path [class.animate-arrow]="isAnimating()" d="M15 9v3h4l-7 7-7-7h4V9z" />
+			<svg:path class="dash" d="M15 5H9" />
+			<svg:path class="arrow" d="M15 9v3h4l-7 7-7-7h4V9z" />
 		</svg>
 	`,
 	styles: `
@@ -38,10 +38,10 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		.arrow-big-down-dash-icon path {
 			transition: transform 0.2s ease-out;
 		}
-		.animate-arrow {
+		.arrow-big-down-dash-icon.animate .arrow {
 			transform: translateY(3px);
 		}
-		.animate-dash {
+		.arrow-big-down-dash-icon.animate .dash {
 			transform: translateY(1px);
 		}
 	`,

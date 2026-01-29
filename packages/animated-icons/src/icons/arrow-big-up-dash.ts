@@ -27,21 +27,21 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:path [class.animate-dash]="isAnimating()" d="M9 19h6" />
-			<svg:path [class.animate-arrow]="isAnimating()" d="M9 15v-3H5l7-7 7 7h-4v3H9z" />
+			<svg:path class="dash" d="M9 19h6" />
+			<svg:path class="arrow" d="M9 15v-3H5l7-7 7 7h-4v3H9z" />
 		</svg>
 	`,
 	styles: `
 		:host {
 			display: inline-block;
 		}
-		svg path {
+		.arrow-big-up-dash-icon path {
 			transition: transform 0.2s ease-out;
 		}
-		.animate-arrow {
+		.arrow-big-up-dash-icon.animate .arrow {
 			transform: translateY(-3px);
 		}
-		.animate-dash {
+		.arrow-big-up-dash-icon.animate .dash {
 			transform: translateY(-1px);
 		}
 	`,
@@ -70,7 +70,7 @@ export class ArrowBigUpDashIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 200);
 		}
 	}
 

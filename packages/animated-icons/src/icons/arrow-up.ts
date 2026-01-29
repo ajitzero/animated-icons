@@ -27,8 +27,8 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:path [class.head]="isAnimating()" d="m5 12 7-7 7 7" />
-			<svg:path [class.head]="isAnimating()" d="M12 10V5" />
+			<svg:path class="head" d="m5 12 7-7 7 7" />
+			<svg:path class="head" d="M12 10V5" />
 			<svg:path d="M12 19V10" />
 		</svg>
 	`,
@@ -36,11 +36,10 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		path {
+		.arrow-up-icon path {
 			transition: all 0.2s ease-out;
 		}
-
-		.head {
+		.arrow-up-icon.animate path.head {
 			transform: translateY(3px);
 		}
 	`,
@@ -69,7 +68,7 @@ export class ArrowUpIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 200);
 		}
 	}
 

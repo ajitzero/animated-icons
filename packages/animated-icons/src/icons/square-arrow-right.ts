@@ -28,8 +28,8 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linejoin="round"
 		>
 			<svg:rect width="18" height="18" x="3" y="3" rx="2" />
-			<svg:path [class.head]="isAnimating()" d="M12 16 L16 12 L12 8" />
-			<svg:path [class.head]="isAnimating()" d="M12 12H16" />
+			<svg:path class="head" d="M12 16 L16 12 L12 8" />
+			<svg:path class="head" d="M12 12H16" />
 			<svg:path d="M8 12H12" />
 		</svg>
 	`,
@@ -37,10 +37,10 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		path {
+		.square-arrow-right-icon path {
 			transition: all 0.2s ease-out;
 		}
-		.head {
+		.square-arrow-right-icon.animate path.head {
 			transform: translateX(-1.5px);
 		}
 	`,
@@ -69,7 +69,7 @@ export class SquareArrowRightIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 200);
 		}
 	}
 

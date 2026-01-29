@@ -42,11 +42,11 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
 
-		.left-arrow.animate {
+		.arrow-right-left-icon.animate .left-arrow {
 			animation: moveLeft 0.5s;
 		}
 
-		.right-arrow.animate {
+		.arrow-right-left-icon.animate .right-arrow {
 			animation: moveRight 0.5s;
 		}
 
@@ -95,7 +95,7 @@ export class ArrowRightLeftIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 500);
 		}
 	}
 
