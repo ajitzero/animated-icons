@@ -31,9 +31,9 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			/>
 			<svg:path d="M14 2v5a1 1 0 0 0 1 1h5" />
 			<svg:path d="M8 12h8" />
-			<svg:path [class.animate-line1]="isAnimating()" d="M10 11v2" />
+			<svg:path class="animate-line1" d="M10 11v2" />
 			<svg:path d="M8 17h8" />
-			<svg:path [class.animate-line2]="isAnimating()" d="M14 16v2" />
+			<svg:path class="animate-line2" d="M14 16v2" />
 		</svg>
 	`,
 	styles: `
@@ -41,15 +41,15 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			display: inline-block;
 		}
 
-		path {
+		.file-sliders-icon path {
 			transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
 		}
 
-		.animate-line1 {
+		.file-sliders-icon.animate .animate-line1 {
 			transform: translateX(4px);
 		}
 
-		.animate-line2 {
+		.file-sliders-icon.animate .animate-line2 {
 			transform: translateX(-4px);
 		}
 	`,

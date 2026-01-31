@@ -28,7 +28,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linejoin="round"
 		>
 			<svg:path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z" />
-			<svg:g [class.animate-path]="isAnimating()">
+			<svg:g class="animate-path">
 				<svg:path d="M9.1 9a3 3 0 0 1 5.82 1c0 2-3 3-3 3" />
 				<svg:path d="M12 17h.01" />
 			</svg:g>
@@ -38,11 +38,11 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.animate-icon {
+		.file-question-mark-icon.animate {
 			transition: transform 0.5s ease-in-out;
 		}
 
-		.animate-path {
+		.file-question-mark-icon.animate .animate-path {
 			transition: transform 0.5s ease-in-out;
 			transform-origin: center;
 			animation: rotateAnimation 0.5s ease-in-out;
@@ -91,7 +91,7 @@ export class FileQuestionMarkIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 500);
 		}
 	}
 

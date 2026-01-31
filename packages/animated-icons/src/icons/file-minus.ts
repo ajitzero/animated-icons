@@ -36,7 +36,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.file-minus {
+		.file-minus-icon {
 			overflow: visible;
 		}
 
@@ -46,7 +46,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: stroke-dashoffset 0.5s ease-out;
 		}
 
-		.file-minus.animate .horizontal {
+		.file-minus-icon.animate .horizontal {
 			opacity: 0;
 			animation: lineAnimation 0.5s ease-out forwards;
 		}
@@ -91,7 +91,7 @@ export class FileMinusIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 500);
 		}
 	}
 
