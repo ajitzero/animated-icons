@@ -36,11 +36,11 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.mouse-pointer-icon {
+		.mouse-pointer-2-icon {
 			overflow: visible;
 		}
 
-		.mouse-pointer-icon.animate {
+		.mouse-pointer-2-icon.animate {
 			animation: mouseMove 1s ease;
 		}
 
@@ -82,7 +82,7 @@ export class MousePointer2Icon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 1000);
 		}
 	}
 
