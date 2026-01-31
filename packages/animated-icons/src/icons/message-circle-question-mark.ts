@@ -28,7 +28,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linejoin="round"
 		>
 			<svg:path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
-			<svg:g [class.animate-path]="isAnimating()">
+			<svg:g class="animate-path">
 				<svg:path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
 				<svg:path d="M12 17h.01" />
 			</svg:g>
@@ -38,11 +38,11 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.animate-icon {
+		.message-circle-question-mark-icon.animate {
 			transition: transform 0.5s ease-in-out;
 		}
 
-		.animate-path {
+		.message-circle-question-mark-icon.animate .animate-path {
 			transition: transform 0.5s ease-in-out;
 			transform-origin: center;
 			animation: rotateAnimation 0.5s ease-in-out;
@@ -91,7 +91,7 @@ export class MessageCircleQuestionMarkIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 500);
 		}
 	}
 
