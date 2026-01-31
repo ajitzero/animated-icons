@@ -16,12 +16,9 @@
 		"baseUrl": ".",
 		"paths": {
 			"ng-animated-icons": ["packages/animated-icons/src/index.ts"],
-			"@spartan-ng/helm/avatar": ["libs/ui/avatar/src/index.ts"],
 			"@spartan-ng/helm/button": ["libs/ui/button/src/index.ts"],
 			"@spartan-ng/helm/empty": ["libs/ui/empty/src/index.ts"],
 			"@spartan-ng/helm/input": ["libs/ui/input/src/index.ts"],
-			"@spartan-ng/helm/label": ["libs/ui/label/src/index.ts"],
-			"@spartan-ng/helm/switch": ["libs/ui/switch/src/index.ts"],
 			"@spartan-ng/helm/tooltip": ["libs/ui/tooltip/src/index.ts"],
 			"@spartan-ng/helm/typography": ["libs/ui/typography/src/index.ts"],
 			"@spartan-ng/helm/utils": ["libs/ui/utils/src/index.ts"],
