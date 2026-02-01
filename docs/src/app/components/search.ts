@@ -18,7 +18,7 @@ import { HlmInputImports } from '@spartan-ng/helm/input';
 	selector: 'docs-search',
 	template: `
 		<input
-			class="peer rounded-full py-6 ps-10 pe-28"
+			class="peer rounded-full py-6 ps-10 pe-32"
 			#search
 			[(ngModel)]="value"
 			[placeholder]="placeholder()"
