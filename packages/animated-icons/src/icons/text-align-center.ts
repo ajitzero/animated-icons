@@ -27,7 +27,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:path [class.animate-path]="isAnimating()" d="M17 12H7" />
+			<svg:path class="animate-path" d="M17 12H7" />
 			<svg:path d="M19 18H5" />
 			<svg:path d="M21 6H3" />
 		</svg>
@@ -36,7 +36,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.animate-path {
+		.text-align-center-icon.animate .animate-path {
 			animation: translateAnimation 1s linear;
 		}
 

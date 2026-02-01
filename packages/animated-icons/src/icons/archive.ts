@@ -26,24 +26,24 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:rect [class.animate-rect]="isAnimating()" width="20" height="5" x="2" y="3" rx="1" />
-			<svg:path [class.animate-path]="isAnimating()" d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8" />
-			<svg:path [class.animate-path]="isAnimating()" d="M10 12h4" />
+			<svg:rect class="animate-rect" width="20" height="5" x="2" y="3" rx="1" />
+			<svg:path class="animate-path" d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8" />
+			<svg:path class="animate-path" d="M10 12h4" />
 		</svg>
 	`,
 	styles: `
 		:host {
 			display: inline-block;
 		}
-		rect {
+		.archive-icon .animate-rect {
 			transition: transform 0.2s ease-in;
 		}
 
-		.animate-rect {
+		.archive-icon.animate .animate-rect {
 			transform: translateY(-2px);
 		}
 
-		.animate-path {
+		.archive-icon.animate .animate-path {
 			transform: translateY(2px);
 			transition: transform 0.2s ease-in;
 		}

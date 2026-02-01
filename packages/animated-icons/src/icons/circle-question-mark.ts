@@ -20,7 +20,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			[attr.height]="size()"
 			[attr.stroke]="color()"
 			[attr.stroke-width]="strokeWidth()"
-			[class.animate-icon]="isAnimating()"
+			[class.animate]="isAnimating()"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
 			fill="none"
@@ -28,7 +28,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linejoin="round"
 		>
 			<svg:circle cx="12" cy="12" r="10" />
-			<svg:g [class.animate-path]="isAnimating()">
+			<svg:g class="animate-path">
 				<svg:path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
 				<svg:path d="M12 17h.01" />
 			</svg:g>
@@ -38,11 +38,11 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.circle-question-mark-icon.animate-icon {
+		.circle-question-mark-icon.animate {
 			transition: transform 0.5s ease-in-out;
 		}
 
-		.circle-question-mark-icon g.animate-path {
+		.circle-question-mark-icon.animate g.animate-path {
 			transition: transform 0.5s ease-in-out;
 			transform-origin: center;
 			animation: rotateAnimation 0.5s ease-in-out;

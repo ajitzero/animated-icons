@@ -19,39 +19,32 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			[attr.height]="size()"
 			[attr.stroke]="color()"
 			[attr.stroke-width]="strokeWidth()"
+			[class.animate]="isAnimating()"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
 			fill="none"
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:g [class.is-animated]="isAnimating()">
+			<svg:g class="group">
 				<svg:path d="M3 6h18" />
 				<svg:path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
 			</svg:g>
-			<svg:path [class.animate-path]="isAnimating()" d="M19 8v12c0 1-1 2-2 2H7c-1 0-2-1-2-2V8" />
+			<svg:path class="animate-path" d="M19 8v12c0 1-1 2-2 2H7c-1 0-2-1-2-2V8" />
 		</svg>
 	`,
 	styles: `
 		:host {
 			display: inline-block;
 		}
-		.is-animated {
+		.trash-icon.animate .group {
 			transform: translateY(-1px);
 			transition: transform 0.2s ease-in;
 		}
 
-		.animate-path {
+		.trash-icon.animate .animate-path {
 			transform: translateY(1px);
 			transition: transform 0.2s ease-in;
-		}
-
-		.is-animated-line {
-			transition: all 0.2s ease-in;
-		}
-
-		.is-animated-path {
-			transition: all 0.2s ease-in;
 		}
 	`,
 	host: {
