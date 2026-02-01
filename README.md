@@ -1,6 +1,6 @@
 # ng-animated-icons
 
-Bautifully crafted animated icons for Angular.
+Beautifully crafted animated icons for Angular.
 
 > an open-source collection of smooth, animated icons for your projects. feel free to use them, share your feedback, and let's make this library awesome together!
 
@@ -15,7 +15,7 @@ Heavily based on [Moving Icons](https://www.movingicons.dev/), inspired by [luci
 ## Highlights
 
 - ✅ Standalone Components, for Angular v19 and above.
-- ✅ Zoneless & signals-first. RxJs is not required.
+- ✅ Zoneless & signals-first. RxJS is not required.
 - ✅ Custom `InjectionToken` for configuring customizations in one place.
 
 ## Installation
@@ -69,7 +69,7 @@ e.g., the `thumbs-up` icon in Lucide is available for import as `ThumbsUpIcon`, 
 
 ### Variants
 
-1. **Default usage.** This uses the default values mentions in [Props](#props).
+1. **Default usage.** This uses the default values mentioned in [Props](#props).
 
    ```ts
    import { ActivityIcon } from 'ng-animated-icons';
@@ -94,7 +94,7 @@ e.g., the `thumbs-up` icon in Lucide is available for import as `ThumbsUpIcon`, 
    ```ts
    // src/app/app.config.ts
    import { ApplicationConfig } from '@angular/core';
-   import { provideAnimatedIcons } from 'ng-auto-animate';
+   import { provideAnimatedIcons } from 'ng-animated-icons';
 
    export const appConfig: ApplicationConfig = {
      providers: [
@@ -125,6 +125,67 @@ e.g., the `thumbs-up` icon in Lucide is available for import as `ThumbsUpIcon`, 
    ```
 
 ## Advanced Usage
+
+Control icon animations from parent elements by binding the `animate` input to your own hover & focus states:
+
+```ts
+import { BellIcon } from 'ng-animated-icons';
+
+@Component({ ... })
+class Example {
+	shouldAnimate = signal(false);
+}
+```
+
+```html
+<button
+	(focusin)="shouldAnimate.set(true)"
+	(focusout)="shouldAnimate.set(false)"
+	(mouseenter)="shouldAnimate.set(true)"
+	(mouseleave)="shouldAnimate.set(false)"
+>
+	<i-bell size="16" [animate]="shouldAnimate()" />
+	<span>Notifications</span>
+</button>
+```
+
+When building navigation or sidebar components, it might come in handy to create a reusable wrapper component. With snippets, you can pass the hover/focus state to the children, allowing icons to animate on hover/focus:
+
+```ts
+@Component({
+	selector: 'group-animation-item',
+	template: `<ng-content />`,
+	host: {
+		'(focusin)': 'shouldAnimate.set(true)',
+		'(focusout)': 'shouldAnimate.set(false)',
+		'(mouseenter)': 'shouldAnimate.set(true)',
+		'(mouseleave)': 'shouldAnimate.set(false)',
+	},
+})
+class GroupAnimationItem {
+	readonly shouldAnimate = signal(false);
+}
+```
+
+Use the wrapper component in your navigation:
+
+```ts
+import { GroupAnimationItem } from '@/components/group-animation-item';
+import { Home, Settings } from 'ng-animated-icons';
+```
+
+```html
+<nav class="flex flex-col gap-2">
+	<group-animation-item class="flex items-center gap-2 rounded p-2" #homeItem>
+		<i-home size="16" [animate]="homeItem.shouldAnimate()" />
+		<span>Home</span>
+	</group-animation-item>
+	<group-animation-item class="flex items-center gap-2 rounded p-2" #settingsItem>
+		<i-settings size="16" [animate]="settingsItem.shouldAnimate()" />
+		<span>Settings</span>
+	</group-animation-item>
+</nav>
+```
 
 ## Missing support for something?
 
