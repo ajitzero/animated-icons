@@ -59,7 +59,7 @@ import { HlmInputImports } from '@spartan-ng/helm/input';
 		</div>
 	`,
 	host: {
-		class: 'sticky top-4 z-10 max-w-sm',
+		class: 'sticky top-4 z-10 max-w-sm mx-4 sm:mx-0',
 		'(document:keydown)': 'onKeyDown($event)',
 	},
 	providers: [provideIcons({ lucideCircleX, lucideSearch })],
