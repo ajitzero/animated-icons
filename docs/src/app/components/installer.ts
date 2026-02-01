@@ -85,7 +85,7 @@ export class Installer {
 
 	public copy(pm: PackageManager): void {
 		this.copied.set(true);
-		const command = `${pm.id} ${pm.cmd} ${this.packageName()}`;
+		const command = `${pm.id} ${pm.cmd} ${this.packageName()}@latest`;
 		this.#clipboard.copy(command);
 
 		setTimeout(() => {
