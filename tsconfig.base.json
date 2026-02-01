@@ -18,11 +18,12 @@
 			"ng-animated-icons": ["packages/animated-icons/src/index.ts"],
 			"@spartan-ng/helm/button": ["libs/ui/button/src/index.ts"],
 			"@spartan-ng/helm/empty": ["libs/ui/empty/src/index.ts"],
+			"@spartan-ng/helm/icon": ["libs/ui/icon/src/index.ts"],
 			"@spartan-ng/helm/input": ["libs/ui/input/src/index.ts"],
+			"@spartan-ng/helm/tabs": ["libs/ui/tabs/src/index.ts"],
 			"@spartan-ng/helm/tooltip": ["libs/ui/tooltip/src/index.ts"],
 			"@spartan-ng/helm/typography": ["libs/ui/typography/src/index.ts"],
-			"@spartan-ng/helm/utils": ["libs/ui/utils/src/index.ts"],
-			"@spartan-ng/helm/icon": ["libs/ui/icon/src/index.ts"]
+			"@spartan-ng/helm/utils": ["libs/ui/utils/src/index.ts"]
 		}
 	},
 	"exclude": ["node_modules", "tmp"]
