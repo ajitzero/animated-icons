@@ -39,12 +39,12 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		g.animate path {
-			transform: translateY(2px);
+		.monitor-down-icon g path {
+			transform: translateY(0);
 			transition: transform 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 		}
-		g path {
-			transform: translateY(0);
+		.monitor-down-icon.animate g path {
+			transform: translateY(2px);
 			transition: transform 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 		}
 	`,
