@@ -44,7 +44,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: opacity 0.8s linear;
 		}
 
-		.cursor-line.animate {
+		.square-terminal-icon.animate .cursor-line {
 			animation: blink 0.8s linear infinite;
 		}
 

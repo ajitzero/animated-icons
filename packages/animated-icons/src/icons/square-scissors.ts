@@ -50,11 +50,11 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transform-origin: 12px 12px;
 		}
 
-		.animate .blade-top {
+		.square-scissors-icon.animate .blade-top {
 			animation: openBlade 0.8s ease-in-out;
 		}
 
-		.animate .blade-bottom {
+		.square-scissors-icon.animate .blade-bottom {
 			animation: closeBlade 0.8s ease-in-out;
 		}
 
@@ -107,7 +107,7 @@ export class SquareScissorsIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 800);
 		}
 	}
 
