@@ -1,8 +1,8 @@
 {
 	"name": "ng-animated-icons",
-	"version": "1.3.0",
+	"version": "1.3.1",
 	"description": "Beautifully crafted animated icons for Angular, built on Lucide. Easily customizable and lightweight.",
-	"homepage": "https://github.com/ajitzero/animated-icons#readme",
+	"homepage": "https://icons.ajitpanigrahi.com/",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/ajitzero/animated-icons.git"
