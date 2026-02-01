@@ -27,7 +27,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:path class="frame" d="M3 3v16a2 2 0 0 0 2 2h16" />
+			<svg:path d="M3 3v16a2 2 0 0 0 2 2h16" />
 			<svg:path class="spline" d="M7 16c.5-2 1.5-7 4-7 2 0 2 3 4 3 2.5 0 4.5-5 5-7" />
 		</svg>
 	`,
@@ -91,7 +91,7 @@ export class ChartSplineIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 700);
 		}
 	}
 

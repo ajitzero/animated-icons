@@ -30,7 +30,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			<svg:path class="line line-0" d="M10 6h8" />
 			<svg:path class="line line-1" d="M8 11h7" />
 			<svg:path class="line line-2" d="M12 16h6" />
-			<svg:path class="frame" d="M3 3v16a2 2 0 0 0 2 2h16" />
+			<svg:path d="M3 3v16a2 2 0 0 0 2 2h16" />
 		</svg>
 	`,
 	styles: `
@@ -101,7 +101,7 @@ export class ChartGanttIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 700);
 		}
 	}
 

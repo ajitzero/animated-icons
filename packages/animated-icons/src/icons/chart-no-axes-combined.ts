@@ -43,7 +43,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			overflow: visible;
 		}
 
-		.line {
+		.chart-no-axes-combined-icon .line {
 			stroke-dasharray: 28;
 			stroke-dashoffset: 0;
 			transition:
@@ -52,7 +52,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		}
 
 		.chart-no-axes-combined-icon.animate .line {
-			animation: lineAnimation 0.9s ease backwards;
+			animation: lineAnimation2 0.9s ease backwards;
 			animation-delay: 0.1s;
 		}
 
@@ -88,7 +88,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			animation-delay: 0.4s;
 		}
 
-		@keyframes lineAnimation {
+		@keyframes lineAnimation2 {
 			0% {
 				stroke-dashoffset: 28;
 				opacity: 0;
@@ -143,7 +143,7 @@ export class ChartNoAxesCombinedIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 1000);
 		}
 	}
 

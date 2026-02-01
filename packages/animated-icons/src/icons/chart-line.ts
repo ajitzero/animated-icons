@@ -27,7 +27,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:path class="frame" d="M3 3v16a2 2 0 0 0 2 2h16" />
+			<svg:path d="M3 3v16a2 2 0 0 0 2 2h16" />
 			<svg:path class="line" d="m7 13 3-3 4 4 5-5" />
 		</svg>
 	`,
@@ -39,7 +39,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			overflow: visible;
 		}
 
-		.line {
+		.chart-line-icon .line {
 			stroke-dasharray: 17;
 			stroke-dashoffset: 0;
 			transition:
@@ -48,10 +48,10 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		}
 
 		.chart-line-icon.animate .line {
-			animation: lineAnimation 0.6s ease backwards;
+			animation: lineAnimation1 0.6s ease backwards;
 		}
 
-		@keyframes lineAnimation {
+		@keyframes lineAnimation1 {
 			0% {
 				stroke-dashoffset: 17;
 				opacity: 1;
@@ -91,7 +91,7 @@ export class ChartLineIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 700);
 		}
 	}
 

@@ -29,7 +29,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		>
 			<svg:path class="column column-1" d="M13 17V9" />
 			<svg:path class="column column-2" d="M18 17V5" />
-			<svg:path class="frame" d="M3 3v16a2 2 0 0 0 2 2h16" />
+			<svg:path d="M3 3v16a2 2 0 0 0 2 2h16" />
 			<svg:path class="column column-0" d="M8 17v-3" />
 		</svg>
 	`,
@@ -109,7 +109,7 @@ export class ChartColumnIncreasingIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 700);
 		}
 	}
 

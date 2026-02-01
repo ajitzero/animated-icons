@@ -12,10 +12,10 @@ import {
 import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 
 @Component({
-	selector: 'i-chart-bar',
+	selector: 'i-chart-scatter',
 	template: `
 		<svg
-			class="chart-bar-icon"
+			class="chart-scatter-icon"
 			[attr.width]="size()"
 			[attr.height]="size()"
 			[attr.stroke]="color()"
@@ -27,69 +27,58 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
+			@for (dot of dots; track $index) {
+				<svg:circle
+					class="dot"
+					[attr.cx]="dot.cx"
+					[attr.cy]="dot.cy"
+					[attr.fill]="color()"
+					[style.--chart-scatter-delay.s]="dot.delay"
+					r="0.5"
+				/>
+			}
 			<svg:path d="M3 3v16a2 2 0 0 0 2 2h16" />
-			<svg:path class="bar bar-2" d="M7 16h8" />
-			<svg:path class="bar bar-1" d="M7 11h12" />
-			<svg:path class="bar bar-0" d="M7 6h3" />
 		</svg>
 	`,
 	styles: `
 		:host {
 			display: inline-block;
 		}
-		.chart-bar-icon {
+		.chart-scatter-icon {
 			overflow: visible;
 		}
 
-		.bar {
-			stroke-dasharray: 12;
-			stroke-dashoffset: 0;
-			transition:
-				stroke-dashoffset 0.3s ease,
-				opacity 0.3s ease;
+		.dot {
+			opacity: 1;
+			transform: scale(1);
+			transition: opacity 0.2s;
 		}
 
-		.chart-bar-icon.animate .bar {
-			animation: barAnimation 0.6s ease forwards;
+		.chart-scatter-icon.animate .dot {
+			opacity: 0;
+			animation: popIn 0.3s ease-out forwards;
+			animation-delay: var(--chart-scatter-delay);
 		}
 
-		.chart-bar-icon.animate .bar-0 {
-			animation-delay: 0s;
-		}
-
-		.chart-bar-icon.animate .bar-1 {
-			animation-delay: 0.1s;
-		}
-
-		.chart-bar-icon.animate .bar-2 {
-			animation-delay: 0.2s;
-		}
-
-		@keyframes barAnimation {
+		@keyframes popIn {
 			0% {
-				stroke-dashoffset: 0;
-				opacity: 1;
-			}
-			50% {
-				stroke-dashoffset: 12;
 				opacity: 0;
 			}
 			100% {
-				stroke-dashoffset: 0;
 				opacity: 1;
 			}
 		}
 	`,
 	host: {
 		'[class]': 'class()',
-		'aria-label': 'chart-bar',
+		'aria-label': 'chart-scatter',
 		role: 'img',
 		'(mouseenter)': 'handleMouseEnter()',
 		'(focusin)': 'handleMouseEnter()',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ChartBarIcon {
+export class ChartScatterIcon {
 	#options = inject(ANIMATED_ICONS_CONFIG);
 
 	color = input(this.#options?.color ?? 'currentColor');
@@ -102,10 +91,18 @@ export class ChartBarIcon {
 
 	#timer: ReturnType<typeof setTimeout> | null = null;
 
+	protected readonly dots = [
+		{ cx: 7.5, cy: 7.5, delay: 2 * 0.15 },
+		{ cx: 18.5, cy: 5.5, delay: 5 * 0.15 },
+		{ cx: 11.5, cy: 11.5, delay: 3 * 0.15 },
+		{ cx: 7.5, cy: 16.5, delay: 1 * 0.15 },
+		{ cx: 17.5, cy: 14.5, delay: 4 * 0.15 },
+	];
+
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 700);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 900);
 		}
 	}
 

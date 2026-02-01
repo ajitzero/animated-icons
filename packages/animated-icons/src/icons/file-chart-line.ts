@@ -27,7 +27,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:path class="frame" d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+			<svg:path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
 			<svg:path class="top-line" d="M14 2v4a2 2 0 0 0 2 2h4" />
 			<svg:path class="line" d="M8 17 10.5 14.5 12.5 16.5 16 13" />
 		</svg>

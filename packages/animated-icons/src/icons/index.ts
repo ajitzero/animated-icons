@@ -125,6 +125,7 @@ export * from './chart-no-axes-column';
 export * from './chart-no-axes-combined';
 export * from './chart-no-axes-gantt';
 export * from './chart-pie';
+export * from './chart-scatter';
 export * from './chart-spline';
 export * from './check-check';
 export * from './check';
