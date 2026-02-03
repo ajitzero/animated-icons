@@ -33,6 +33,8 @@ import type { IconItem } from './icon-item.type';
 		'(focusout)': 'isAnimating.set(false)',
 		'(mouseenter)': 'isAnimating.set(true)',
 		'(mouseleave)': 'isAnimating.set(false)',
+		'(touchstart)': 'isAnimating.set(true)',
+		'(touchend)': 'isAnimating.set(false)',
 	},
 	providers: [provideAnimatedIcons({ size: 36 })],
 	imports: [HlmInputImports, HlmButtonImports, HlmTooltipImports, FormsModule, NgComponentOutlet],
