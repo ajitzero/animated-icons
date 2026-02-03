@@ -124,44 +124,48 @@ e.g., the `thumbs-up` icon in Lucide is available for import as `ThumbsUpIcon`, 
 
 ## Advanced Usage
 
-Control icon animations from parent elements by binding the `animate` input to your own hover & focus states:
+Control icon animations from parent elements by binding the `animate` input to your own hover, focus & touch states:
 
 ```ts
 import { BellIcon } from 'ng-animated-icons';
 
 @Component({ ... })
 class Example {
-	shouldAnimate = signal(false);
+  shouldAnimate = signal(false);
 }
 ```
 
 ```html
 <button
-	(focusin)="shouldAnimate.set(true)"
-	(focusout)="shouldAnimate.set(false)"
-	(mouseenter)="shouldAnimate.set(true)"
-	(mouseleave)="shouldAnimate.set(false)"
+  (focusin)="shouldAnimate.set(true)"
+  (focusout)="shouldAnimate.set(false)"
+  (mouseenter)="shouldAnimate.set(true)"
+  (mouseleave)="shouldAnimate.set(false)"
+  (touchstart)="shouldAnimate.set(true)"
+  (touchend)="shouldAnimate.set(false)"
 >
-	<i-bell size="16" [animate]="shouldAnimate()" />
-	<span>Notifications</span>
+  <i-bell size="16" [animate]="shouldAnimate()" />
+  <span>Notifications</span>
 </button>
 ```
 
-When building navigation or sidebar components, it might come in handy to create a reusable wrapper component. With snippets, you can pass the hover/focus state to the children, allowing icons to animate on hover/focus:
+When building navigation or sidebar components, it might come in handy to create a reusable wrapper component. With snippets, you can pass the hover/focus/touch state to the children, allowing icons to animate on hover/focus/touch:
 
 ```ts
 @Component({
-	selector: 'group-animation-item',
-	template: `<ng-content />`,
-	host: {
-		'(focusin)': 'shouldAnimate.set(true)',
-		'(focusout)': 'shouldAnimate.set(false)',
-		'(mouseenter)': 'shouldAnimate.set(true)',
-		'(mouseleave)': 'shouldAnimate.set(false)',
-	},
+  selector: 'group-animation-item',
+  template: `<ng-content />`,
+  host: {
+    '(focusin)': 'shouldAnimate.set(true)',
+    '(focusout)': 'shouldAnimate.set(false)',
+    '(mouseenter)': 'shouldAnimate.set(true)',
+    '(mouseleave)': 'shouldAnimate.set(false)',
+    '(touchstart)': 'shouldAnimate.set(true)',
+    '(touchend)': 'shouldAnimate.set(false)',
+  },
 })
 class GroupAnimationItem {
-	readonly shouldAnimate = signal(false);
+  readonly shouldAnimate = signal(false);
 }
 ```
 
@@ -174,14 +178,14 @@ import { Home, Settings } from 'ng-animated-icons';
 
 ```html
 <nav class="flex flex-col gap-2">
-	<group-animation-item class="flex items-center gap-2 rounded p-2" #homeItem>
-		<i-home size="16" [animate]="homeItem.shouldAnimate()" />
-		<span>Home</span>
-	</group-animation-item>
-	<group-animation-item class="flex items-center gap-2 rounded p-2" #settingsItem>
-		<i-settings size="16" [animate]="settingsItem.shouldAnimate()" />
-		<span>Settings</span>
-	</group-animation-item>
+  <group-animation-item class="flex items-center gap-2 rounded p-2" #homeItem>
+    <i-home size="16" [animate]="homeItem.shouldAnimate()" />
+    <span>Home</span>
+  </group-animation-item>
+  <group-animation-item class="flex items-center gap-2 rounded p-2" #settingsItem>
+    <i-settings size="16" [animate]="settingsItem.shouldAnimate()" />
+    <span>Settings</span>
+  </group-animation-item>
 </nav>
 ```
 

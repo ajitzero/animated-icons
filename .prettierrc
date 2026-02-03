@@ -10,5 +10,13 @@
 		"@trivago/prettier-plugin-sort-imports",
 		"prettier-plugin-organize-attributes",
 		"prettier-plugin-tailwindcss"
+	],
+	"overrides": [
+		{
+			"files": "*.md",
+			"options": {
+				"useTabs": false
+			}
+		}
 	]
 }
