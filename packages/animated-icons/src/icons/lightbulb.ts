@@ -132,6 +132,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		role: 'img',
 		'(mouseenter)': 'handleMouseEnter()',
 		'(focusin)': 'handleMouseEnter()',
+		'(touchstart)': 'handleMouseEnter()',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })

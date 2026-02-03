@@ -79,10 +79,12 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		'[class]': 'class()',
 		'aria-label': 'file-pen-line',
 		role: 'img',
-		'(focusin)': 'isAnimating.set(true)',
+		'(focusin)': 'handleMouseEnter()',
 		'(focusout)': 'handleMouseLeave()',
-		'(mouseenter)': 'isAnimating.set(true)',
+		'(mouseenter)': 'handleMouseEnter()',
 		'(mouseleave)': 'handleMouseLeave()',
+		'(touchstart)': 'handleMouseEnter()',
+		'(touchend)': 'handleMouseLeave()',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -97,6 +99,9 @@ export class FilePenLineIcon {
 
 	protected isAnimating = linkedSignal(() => this.animate());
 
+	handleMouseEnter() {
+		this.isAnimating.set(true);
+	}
 	handleMouseLeave() {
 		if (!this.animate()) this.isAnimating.set(false);
 	}

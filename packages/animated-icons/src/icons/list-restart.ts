@@ -55,10 +55,12 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		'[class]': 'class()',
 		'aria-label': 'list-restart',
 		role: 'img',
-		'(focusin)': 'isAnimating.set(true)',
+		'(focusin)': 'handleMouseEnter()',
 		'(focusout)': 'handleMouseLeave()',
-		'(mouseenter)': 'isAnimating.set(true)',
+		'(mouseenter)': 'handleMouseEnter()',
 		'(mouseleave)': 'handleMouseLeave()',
+		'(touchstart)': 'handleMouseEnter()',
+		'(touchend)': 'handleMouseLeave()',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -73,6 +75,9 @@ export class ListRestartIcon {
 
 	protected isAnimating = linkedSignal(() => this.animate());
 
+	handleMouseEnter() {
+		this.isAnimating.set(true);
+	}
 	handleMouseLeave() {
 		if (!this.animate()) this.isAnimating.set(false);
 	}

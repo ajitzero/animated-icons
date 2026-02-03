@@ -117,11 +117,11 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 	`,
 	host: {
 		'[class]': 'class()',
+		'aria-label': 'accessibility',
+		role: 'img',
 		'(mouseenter)': 'handleMouseEnter()',
 		'(focusin)': 'handleMouseEnter()',
 		'(touchstart)': 'handleMouseEnter()',
-		'aria-label': 'accessibility',
-		role: 'img',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
