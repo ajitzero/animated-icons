@@ -23,13 +23,13 @@ type PackageManager = { id: string; cmd: string };
 			</hlm-tabs-list>
 			@for (packageManager of packageManagers; track packageManager.id) {
 				<div
-					class="bg-background dark:bg-muted m-0 flex items-center justify-between rounded-lg p-2 ps-4 text-left"
+					class="bg-background dark:bg-muted m-0 flex items-center justify-between rounded-lg p-1 ps-2 sm:ps-4 text-left"
 					[hlmTabsContent]="packageManager.id"
 				>
-					<kbd class="flex gap-2">
-						<span class="text-neutral-400">{{ packageManager.id }} {{ packageManager.cmd }}</span>
+					<kbd>
+						<span class="text-neutral-400 me-1.5">{{ packageManager.id }} {{ packageManager.cmd }}</span>
 						<span class="select-all">{{ packageName() }}</span>
-						<span class="text-neutral-400 -ml-1.5">@latest</span>
+						<span class="text-neutral-400">@latest</span>
 					</kbd>
 
 					<button
