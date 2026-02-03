@@ -69,6 +69,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		'[class]': 'class()',
 		'(mouseenter)': 'handleMouseEnter()',
 		'(focusin)': 'handleMouseEnter()',
+		'(touchstart)': 'handleMouseEnter()',
 		'aria-label': 'activity',
 		role: 'img',
 	},
