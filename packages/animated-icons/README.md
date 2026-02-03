@@ -34,10 +34,8 @@ pnpm i ng-animated-icons
 bun add ng-animated-icons
 ```
 
-Yarn has some known issues with installing peer dependencies automatically, which need to be installed explicitly:
-
 ```bash
-yarn add ng-animated-icons @angular/cdk
+yarn add ng-animated-icons
 ```
 
 Or copy just the required icons from the repository.
