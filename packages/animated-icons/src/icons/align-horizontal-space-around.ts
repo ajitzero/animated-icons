@@ -66,6 +66,8 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		'(focusout)': 'handleMouseLeave()',
 		'(mouseenter)': 'isAnimating.set(true)',
 		'(mouseleave)': 'handleMouseLeave()',
+		'(touchstart)': 'isAnimating.set(true)',
+		'(touchend)': 'handleMouseLeave()',
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
