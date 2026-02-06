@@ -45,11 +45,11 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
 
-		.layer-bottom.animate {
+		.layers-icon.animate .layer-bottom {
 			transform: translateY(-9px);
 		}
 
-		.layer-middle.animate {
+		.layers-icon.animate .layer-middle {
 			transform: translateY(-5px);
 		}
 	`,
@@ -79,7 +79,7 @@ export class LayersIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 300);
 		}
 	}
 

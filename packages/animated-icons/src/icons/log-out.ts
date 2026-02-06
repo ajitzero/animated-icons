@@ -27,15 +27,15 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linejoin="round"
 		>
 			<svg:path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-			<svg:polyline points="16 17 21 12 16 7" />
-			<svg:line x1="21" x2="9" y1="12" y2="12" />
+			<svg:polyline class="part" points="16 17 21 12 16 7" />
+			<svg:line class="part" x1="21" x2="9" y1="12" y2="12" />
 		</svg>
 	`,
 	styles: `
 		:host {
 			display: inline-block;
 		}
-		.animate {
+		.log-out-icon.animate .part {
 			animation: bounce 0.4s forwards;
 		}
 
@@ -77,7 +77,7 @@ export class LogOutIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 400);
 		}
 	}
 
