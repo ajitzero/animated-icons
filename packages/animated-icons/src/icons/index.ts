@@ -240,6 +240,7 @@ export * from './folder-up';
 export * from './frame';
 export * from './gallery-horizontal-end';
 export * from './gallery-horizontal';
+export * from './gallery-thumbnails';
 export * from './gallery-vertical-end';
 export * from './gallery-vertical';
 export * from './gauge';

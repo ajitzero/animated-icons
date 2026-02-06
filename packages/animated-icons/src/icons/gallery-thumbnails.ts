@@ -11,10 +11,10 @@ import {
 import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 
 @Component({
-	selector: 'i-gallery-horizontal',
+	selector: 'i-gallery-thumbnails',
 	template: `
 		<svg
-			class="gallery-horizontal-icon"
+			class="gallery-thumbnails-icon"
 			[attr.width]="size()"
 			[attr.height]="size()"
 			[attr.stroke]="color()"
@@ -26,65 +26,43 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:path class="gallery-path gallery-path-1" d="M2 3v18" />
-			<svg:rect class="gallery-rect" width="12" height="18" x="6" y="3" rx="2" />
-			<svg:path class="gallery-path gallery-path-2" d="M22 3v18" />
+			<svg:rect width="18" height="14" x="3" y="3" rx="2" />
+			@for (thumb of thumbs; track thumb; let index = $index) {
+				<svg:path class="thumbnail-line" [attr.d]="thumb" [style.--gallery-thumbnails-delay]="index + 1" />
+			}
 		</svg>
 	`,
 	styles: `
 		:host {
 			display: inline-block;
 		}
-
-		.gallery-horizontal-icon {
+		.gallery-thumbnails-icon {
 			overflow: visible;
 		}
 
-		.gallery-path {
+		.thumbnail-line {
 			opacity: 1;
-			transform: scale(1) translateX(0);
-			transform-origin: center;
+			transition: opacity 0.2s ease;
 		}
 
-		.gallery-rect {
-			opacity: 1;
-			transform: scale(1);
-			transform-origin: center;
+		.gallery-thumbnails-icon.animate .thumbnail-line {
+			opacity: 0;
+			animation: fadeInSequence 0.3s ease forwards;
+			animation-delay: calc(0.1s + var(--gallery-thumbnails-delay) * 0.09s);
 		}
 
-		.gallery-horizontal-icon.animate .gallery-path-1 {
-			animation: slideInLeft 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s;
-		}
-
-		.gallery-horizontal-icon.animate .gallery-path-2 {
-			animation: slideInRight 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s;
-		}
-
-		@keyframes slideInLeft {
+		@keyframes fadeInSequence {
 			0% {
 				opacity: 0;
-				transform: scale(0.8) translateX(4px);
 			}
 			100% {
 				opacity: 1;
-				transform: scale(1) translateX(0);
-			}
-		}
-
-		@keyframes slideInRight {
-			0% {
-				opacity: 0;
-				transform: scale(0.8) translateX(-4px);
-			}
-			100% {
-				opacity: 1;
-				transform: scale(1) translateX(0);
 			}
 		}
 	`,
 	host: {
 		'[class]': 'class()',
-		'aria-label': 'gallery-horizontal',
+		'aria-label': 'gallery-thumbnails',
 		role: 'img',
 		'(mouseenter)': 'handleMouseEnter()',
 		'(focusin)': 'handleMouseEnter()',
@@ -92,7 +70,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GalleryHorizontalIcon {
+export class GalleryThumbnailsIcon {
 	#options = inject(ANIMATED_ICONS_CONFIG);
 
 	color = input(this.#options?.color ?? 'currentColor');
@@ -108,9 +86,11 @@ export class GalleryHorizontalIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 600);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 850);
 		}
 	}
+
+	protected thumbs = ['M4 21h1', 'M9 21h1', 'M14 21h1', 'M19 21h1'];
 
 	constructor() {
 		effect(() => {

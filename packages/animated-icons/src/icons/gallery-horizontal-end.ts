@@ -26,8 +26,8 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:path d="M2 7v10" custom="1" />
-			<svg:path d="M6 5v14" custom="2" />
+			<svg:path class="path1" d="M2 7v10" />
+			<svg:path class="path2" d="M6 5v14" />
 			<svg:rect width="12" height="18" x="10" y="3" rx="2" />
 		</svg>
 	`,
@@ -35,7 +35,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		path {
+		.gallery-horizontal-end-icon path {
 			transition:
 				transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
 				opacity 0.3s ease;
@@ -44,11 +44,11 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transform: translateX(0);
 		}
 
-		path[custom='1'].animate {
+		.gallery-horizontal-end-icon.animate .path1 {
 			animation: disappearThenAppear1 0.6s forwards;
 		}
 
-		path[custom='2'].animate {
+		.gallery-horizontal-end-icon.animate .path2 {
 			animation: disappearThenAppear2 0.6s forwards;
 		}
 
@@ -116,7 +116,7 @@ export class GalleryHorizontalEndIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 600);
 		}
 	}
 
