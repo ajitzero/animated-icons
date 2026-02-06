@@ -10,6 +10,7 @@ import {
 	signal,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmEmptyImports } from '@spartan-ng/helm/empty';
 import { IconCard } from './icon-card';
 import type { IconItem } from './icon-item.type';
@@ -59,7 +60,7 @@ import { Search } from './search';
 	host: {
 		class: 'flex flex-col items-center gap-4 min-h-96',
 	},
-	imports: [HlmEmptyImports, IconCard, Search],
+	imports: [HlmEmptyImports, HlmButtonImports, IconCard, Search],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Explorer {
