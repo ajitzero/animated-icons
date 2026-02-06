@@ -38,7 +38,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: all 0.15s ease-in;
 		}
 
-		.rect-left.animate {
+		.between-vertical-start-icon.animate .rect-left {
 			transform: translateX(-1px);
 		}
 
@@ -46,7 +46,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: all 0.15s ease-in;
 		}
 
-		.rect-right.animate {
+		.between-vertical-start-icon.animate .rect-right {
 			transform: translateX(1px);
 		}
 
@@ -54,7 +54,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: all 0.15s ease-in;
 		}
 
-		.arrow.animate {
+		.between-vertical-start-icon.animate .arrow {
 			transform: translateY(2px);
 		}
 	`,
