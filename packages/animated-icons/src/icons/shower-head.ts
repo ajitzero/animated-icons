@@ -10,10 +10,10 @@ import {
 import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 
 @Component({
-	selector: 'i-shrink',
+	selector: 'i-shower-head',
 	template: `
 		<svg
-			class="shrink-icon"
+			class="shower-head-icon"
 			[attr.width]="size()"
 			[attr.height]="size()"
 			[attr.stroke]="color()"
@@ -25,35 +25,46 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:path class="animate3" d="m15 15 6 6m-6-6v4.8m0-4.8h4.8" />
-			<svg:path class="animate2" d="M9 19.8V15m0 0H4.2M9 15l-6 6" />
-			<svg:path class="animate1" d="M15 4.2V9m0 0h4.8M15 9l6-6" />
-			<svg:path class="animate0" d="M9 4.2V9m0 0H4.2M9 9 3 3" />
+			<svg:path d="m4 4 2.5 2.5" />
+			<svg:path d="M13.5 6.5a4.95 4.95 0 0 0-7 7" />
+			<svg:path d="M15 5 5 15" />
+			<svg:g class="drops">
+				@for (drop of dropPath; track drop.id) {
+					<svg:path class="drop" [id]="drop.id" [attr.d]="drop.d" [style.--shower-head-delay.s]="drop.delay" />
+				}
+			</svg:g>
 		</svg>
 	`,
 	styles: `
 		:host {
 			display: inline-block;
 		}
-		.shrink-icon path {
-			transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		.shower-head-icon {
+			overflow: visible;
 		}
-		.shrink-icon.animate .animate0 {
-			transform: translate(1px, 1px);
+
+		.shower-head-icon .drop {
+			opacity: 1;
 		}
-		.shrink-icon.animate .animate1 {
-			transform: translate(-1px, 1px);
+
+		.shower-head-icon.animate .drop {
+			animation: fadeInOut 1s ease-in-out infinite;
+			animation-delay: var(--shower-head-delay);
 		}
-		.shrink-icon.animate .animate2 {
-			transform: translate(1px, -1px);
-		}
-		.shrink-icon.animate .animate3 {
-			transform: translate(-1px, -1px);
+
+		@keyframes fadeInOut {
+			0%,
+			100% {
+				opacity: 1;
+			}
+			50% {
+				opacity: 0.2;
+			}
 		}
 	`,
 	host: {
 		'[class]': 'class()',
-		'aria-label': 'shrink',
+		'aria-label': 'shower-head',
 		role: 'img',
 		'(focusin)': 'handleMouseEnter()',
 		'(focusout)': 'handleMouseLeave()',
@@ -64,7 +75,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ShrinkIcon {
+export class ShowerHeadIcon {
 	#options = inject(ANIMATED_ICONS_CONFIG);
 
 	color = input(this.#options?.color ?? 'currentColor');
@@ -74,6 +85,16 @@ export class ShrinkIcon {
 	animate = input(false, { transform: booleanAttribute });
 
 	protected isAnimating = linkedSignal(() => this.animate());
+
+	protected dropPath = [
+		{ id: 'drop1', d: 'M14 17v.01', delay: 0 },
+		{ id: 'drop2', d: 'M10 16v.01', delay: 0.2 },
+		{ id: 'drop3', d: 'M13 13v.01', delay: 0.4 },
+		{ id: 'drop4', d: 'M16 10v.01', delay: 0.6 },
+		{ id: 'drop5', d: 'M11 20v.01', delay: 0.8 },
+		{ id: 'drop6', d: 'M17 14v.01', delay: 1 },
+		{ id: 'drop7', d: 'M20 11v.01', delay: 1.2 },
+	];
 
 	handleMouseEnter() {
 		this.isAnimating.set(true);

@@ -11,10 +11,10 @@ import {
 import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 
 @Component({
-	selector: 'i-sword',
+	selector: 'i-sun',
 	template: `
 		<svg
-			class="sword-icon"
+			class="sun-icon"
 			[attr.width]="size()"
 			[attr.height]="size()"
 			[attr.stroke]="color()"
@@ -26,41 +26,43 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5" />
-			<svg:line x1="13" y1="19" x2="19" y2="13" />
-			<svg:line x1="16" y1="16" x2="20" y2="20" />
-			<svg:line x1="19" y1="21" x2="21" y2="19" />
+			<svg:circle cx="12" cy="12" r="4" />
+			@for (ray of sunRays; track ray; let index = $index) {
+				<svg:path class="sun-ray" [attr.d]="ray" [style.--sun-delay]="index + 1" />
+			}
 		</svg>
 	`,
 	styles: `
 		:host {
 			display: inline-block;
 		}
-		.sword-icon {
-			transform-origin: bottom right;
-			transition: transform 0.3s ease;
+		.sun-icon {
+			overflow: visible;
 		}
 
-		.sword-icon.animate {
-			animation: swing 1s ease;
+		.sun-ray {
+			opacity: 1;
+			transition: opacity 0.3s ease;
 		}
 
-		@keyframes swing {
-			0%,
-			70% {
-				transform: rotate(0deg);
+		.sun-icon.animate .sun-ray {
+			opacity: 0;
+			animation: fadeIn 0.3s ease forwards;
+			animation-delay: calc(0.1s + var(--sun-delay) * 0.09s);
+		}
+
+		@keyframes fadeIn {
+			0% {
+				opacity: 0;
 			}
-			30% {
-				transform: rotate(25deg);
-			}
-			50% {
-				transform: rotate(-5deg);
+			100% {
+				opacity: 1;
 			}
 		}
 	`,
 	host: {
 		'[class]': 'class()',
-		'aria-label': 'sword',
+		'aria-label': 'sun',
 		role: 'img',
 		'(mouseenter)': 'handleMouseEnter()',
 		'(focusin)': 'handleMouseEnter()',
@@ -68,7 +70,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SwordIcon {
+export class SunIcon {
 	#options = inject(ANIMATED_ICONS_CONFIG);
 
 	color = input(this.#options?.color ?? 'currentColor');
@@ -84,9 +86,20 @@ export class SwordIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 700);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 1100);
 		}
 	}
+
+	protected sunRays = [
+		'M12 2v2',
+		'm19.07 4.93-1.41 1.41',
+		'M20 12h2',
+		'm17.66 17.66 1.41 1.41',
+		'M12 20v2',
+		'm6.34 17.66-1.41 1.41',
+		'M2 12h2',
+		'm4.93 4.93 1.41 1.41',
+	];
 
 	constructor() {
 		effect(() => {
