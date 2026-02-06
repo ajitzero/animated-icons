@@ -25,21 +25,21 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:circle [class.top-left]="isAnimating()" cx="9" cy="9" r="7" />
-			<svg:circle [class.bottom-right]="isAnimating()" cx="15" cy="15" r="7" />
+			<svg:circle class="top-left" cx="9" cy="9" r="7" />
+			<svg:circle class="bottom-right" cx="15" cy="15" r="7" />
 		</svg>
 	`,
 	styles: `
 		:host {
 			display: inline-block;
 		}
-		circle {
+		.blend-icon circle {
 			transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
-		.top-left {
+		.blend-icon.animate .top-left {
 			transform: translate(1px, 1px);
 		}
-		.bottom-right {
+		.blend-icon.animate .bottom-right {
 			transform: translate(-1px, -1px);
 		}
 	`,

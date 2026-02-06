@@ -25,7 +25,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:rect [class.top-right]="isAnimating()" width="7" height="7" x="14" y="3" rx="1" />
+			<svg:rect class="top-right" width="7" height="7" x="14" y="3" rx="1" />
 			<svg:path d="M10 21V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H3" />
 		</svg>
 	`,
@@ -33,11 +33,11 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		rect {
+		.blocks-icon .top-right {
 			transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
 
-		.top-right {
+		.blocks-icon.animate .top-right {
 			transform: translate(-1px, 1px);
 		}
 	`,
