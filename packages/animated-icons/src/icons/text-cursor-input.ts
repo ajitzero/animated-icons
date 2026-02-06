@@ -42,7 +42,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			overflow: visible;
 		}
 
-		.animated-group.animate {
+		.text-cursor-input-icon.animate .animated-group {
 			animation: blink 0.8s linear infinite;
 		}
 

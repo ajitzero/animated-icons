@@ -25,7 +25,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:g class="telescope-icon">
+			<svg:g class="group">
 				<svg:path
 					d="m10.065 12.493-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44"
 				/>
@@ -45,12 +45,12 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.telescope-icon {
+		.group {
 			transform-origin: center;
 			transition: transform 0.3s ease-in-out;
 		}
 
-		.telescope-icon.animate {
+		.telescope-icon.animate .group {
 			transform: rotate(-15deg);
 		}
 	`,
