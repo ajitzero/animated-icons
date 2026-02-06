@@ -34,7 +34,12 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		</svg>
 	`,
 	styles: `
+		:host {
+			display: inline-block;
+			overflow: hidden;
+		}
 		.anvil-icon {
+			overflow: hidden;
 			transform-origin: top center;
 			animation: none;
 		}
@@ -80,7 +85,7 @@ export class AnvilIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 500);
 		}
 	}
 
