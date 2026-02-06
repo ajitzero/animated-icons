@@ -67,7 +67,8 @@ import { HlmInputImports } from '@spartan-ng/helm/input';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Search {
-	readonly #platform = inject(DOCUMENT).defaultView?.navigator?.platform ?? '';
+	readonly #document = inject(DOCUMENT);
+	readonly #platform = this.#document.defaultView?.navigator?.platform ?? '';
 
 	value = model('');
 
@@ -82,10 +83,11 @@ export class Search {
 		const isFKey = event.key.toLowerCase() === 'f';
 		const isKKey = event.key.toLowerCase() === 'k';
 		const isModifierPressed = this.isMac ? event.metaKey : event.ctrlKey;
+		const searchElement = this.search().nativeElement;
 
-		if ((isFKey || isKKey) && isModifierPressed) {
+		if (isModifierPressed && (isKKey || (isFKey && this.#document.activeElement !== searchElement))) {
 			event.preventDefault();
-			this.search().nativeElement.focus();
+			searchElement.focus();
 		}
 	}
 
