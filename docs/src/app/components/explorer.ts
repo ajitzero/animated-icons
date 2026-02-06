@@ -5,7 +5,6 @@ import {
 	effect,
 	inject,
 	input,
-	isDevMode,
 	linkedSignal,
 	signal,
 } from '@angular/core';
@@ -69,7 +68,7 @@ export class Explorer {
 	search = input('');
 	searchTerm = linkedSignal(() => this.search());
 
-	icons = signal<IconItem[]>(ICONS_LIST);
+	availableIcons = signal<IconItem[]>(ICONS_LIST);
 
 	cleanSearchTerms = computed(() => {
 		return this.searchTerm()
@@ -77,8 +76,6 @@ export class Explorer {
 			.map((term) => this.cleanString(term))
 			.filter(Boolean);
 	});
-
-	availableIcons = computed(() => this.icons().filter((icon) => (isDevMode() ? true : !icon.wip)));
 
 	filteredIcons = computed(() => {
 		const searchTerms = this.cleanSearchTerms();
