@@ -19,12 +19,12 @@ import type { IconItem } from './icon-item.type';
 			<span
 				class="text-red-500"
 				[hlmTooltipTrigger]="'This icon might be working, but I have not verfied it yet'"
-				aria-describedby="Simple tooltip"
 				hlmBtn
 				variant="outline"
 				aria-label="Work in progress"
-				>WIP</span
 			>
+				WIP
+			</span>
 		}
 	`,
 	host: {

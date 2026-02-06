@@ -29,7 +29,7 @@ import { Search } from './search';
 					<div hlmEmptyTitle>No icons matched</div>
 					<div hlmEmptyDescription>
 						There are no icons for
-						@for (term of cleanSearchTerms(); track $index; let first = $first, last = $last) {
+						@for (term of safeSearchTerms(); track $index; let first = $first, last = $last) {
 							@if (last) {
 								<span> or </span>
 							} @else {
@@ -68,9 +68,9 @@ export class Explorer {
 	search = input('');
 	searchTerm = linkedSignal(() => this.search());
 
-	availableIcons = signal<IconItem[]>(ICONS_LIST);
+	private icons = signal<IconItem[]>(ICONS_LIST);
 
-	cleanSearchTerms = computed(() => {
+	safeSearchTerms = computed(() => {
 		return this.searchTerm()
 			.split(',')
 			.map((term) => this.cleanString(term))
@@ -78,8 +78,8 @@ export class Explorer {
 	});
 
 	filteredIcons = computed(() => {
-		const searchTerms = this.cleanSearchTerms();
-		const icons = this.availableIcons();
+		const searchTerms = this.safeSearchTerms();
+		const icons = this.icons();
 
 		if (!searchTerms.length) {
 			return icons;
@@ -104,10 +104,10 @@ export class Explorer {
 		);
 	});
 
-	searchPlaceholder = computed(() => `Search ${this.availableIcons().length} icons...`);
+	searchPlaceholder = computed(() => `Search ${this.icons().length} icons...`);
 
 	iconCountMessage = computed(() => {
-		const icons = this.availableIcons();
+		const icons = this.icons();
 		const filteredIcons = this.filteredIcons();
 		if (icons.length === filteredIcons.length) {
 			return `${icons.length} icons`;
@@ -122,7 +122,7 @@ export class Explorer {
 
 	constructor() {
 		effect((onCleanup) => {
-			const terms = this.cleanSearchTerms();
+			const terms = this.safeSearchTerms();
 			const timeout = setTimeout(() => {
 				this.router.navigate([], {
 					queryParams: { search: terms || null },
