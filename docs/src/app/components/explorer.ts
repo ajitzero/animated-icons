@@ -88,7 +88,23 @@ export class Explorer {
 			return icons;
 		}
 
-		return icons.filter((icon) => searchTerms.some((term) => icon.name.includes(term)));
+		return icons.filter((icon) =>
+			searchTerms.some((term) => {
+				const startsWithCaret = term.startsWith('^');
+				const endsWithDollar = term.endsWith('$');
+
+				if (startsWithCaret && endsWithDollar) {
+					return icon.name === term.slice(1, -1);
+				}
+				if (startsWithCaret) {
+					return icon.name.startsWith(term.slice(1));
+				}
+				if (endsWithDollar) {
+					return icon.name.endsWith(term.slice(0, -1));
+				}
+				return icon.name.includes(term);
+			}),
+		);
 	});
 
 	searchPlaceholder = computed(() => `Search ${this.availableIcons().length} icons...`);
