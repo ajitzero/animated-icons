@@ -270,6 +270,7 @@ export * from './key-round';
 export * from './key-square';
 export * from './key';
 export * from './keyboard-off';
+export * from './keyboard';
 export * from './landmark';
 export * from './layers';
 export * from './layout-dashboard';
