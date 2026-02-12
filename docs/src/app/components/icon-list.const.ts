@@ -866,7 +866,7 @@ export const ICONS_LIST: IconItem[] = [
 	{ name: 'pin-off', component: PinOffIcon },
 	// // { wip: true, name: 'plane', component: PlaneIcon },
 	// { wip: true, name: 'play', component: PlayIcon },
-	// { wip: true, name: 'plus', component: PlusIcon },
+	{ name: 'plus', component: PlusIcon },
 	{ name: 'pointer-off', component: PointerOffIcon },
 	{ name: 'power-off', component: PowerOffIcon },
 	// { wip: true, name: 'printer-check', component: PrinterCheckIcon },
