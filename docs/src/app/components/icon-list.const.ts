@@ -816,7 +816,7 @@ export const ICONS_LIST: IconItem[] = [
 	{ name: 'milk-off', component: MilkOffIcon },
 	{ name: 'minimize-2', component: Minimize2Icon },
 	{ name: 'minimize', component: MinimizeIcon },
-	// { wip: true, name: 'minus', component: MinusIcon },
+	{ name: 'minus', component: MinusIcon },
 	{ name: 'monitor-check', component: MonitorCheckIcon },
 	{ name: 'monitor-cog', component: MonitorCogIcon },
 	{ name: 'monitor-down', component: MonitorDownIcon },

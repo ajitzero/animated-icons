@@ -33,7 +33,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		.minus {
+		.minus-icon {
 			overflow: visible;
 		}
 
@@ -43,7 +43,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transition: stroke-dashoffset 0.15s ease-out;
 		}
 
-		.minus.animate .horizontal {
+		.minus-icon.animate .horizontal {
 			opacity: 0;
 			animation: lineAnimation 0.3s ease-out forwards;
 		}
@@ -89,7 +89,7 @@ export class MinusIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 500);
 		}
 	}
 
