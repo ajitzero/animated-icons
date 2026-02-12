@@ -797,7 +797,7 @@ export const ICONS_LIST: IconItem[] = [
 	{ name: 'loader-pinwheel', component: LoaderPinwheelIcon },
 	{ name: 'locate-off', component: LocateOffIcon },
 	{ name: 'log-out', component: LogOutIcon },
-	// { wip: true, name: 'mail-check', component: MailCheckIcon },
+	{ name: 'mail-check', component: MailCheckIcon },
 	{ name: 'map-pin-check-inside', component: MapPinCheckInsideIcon },
 	{ name: 'map-pin-check', component: MapPinCheckIcon },
 	{ name: 'map-pin-off', component: MapPinOffIcon },
