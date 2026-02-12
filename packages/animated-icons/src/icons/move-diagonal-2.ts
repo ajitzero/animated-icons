@@ -35,11 +35,11 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		path {
+		.move-diagonal-2-icon path {
 			transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
 
-		.animate {
+		.move-diagonal-2-icon.animate {
 			animation: moveDiagonal2 1s;
 		}
 
@@ -84,7 +84,7 @@ export class MoveDiagonal2Icon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1400);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 1000);
 		}
 	}
 
