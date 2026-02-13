@@ -356,6 +356,7 @@ export * from './pencil';
 export * from './phone-off';
 export * from './pickaxe';
 export * from './pin-off';
+export * from './plane';
 export * from './play';
 export * from './plus';
 export * from './pointer-off';

@@ -32,11 +32,11 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
-		polygon {
+		.play-icon polygon {
 			transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
 
-		polygon.animate {
+		.play-icon.animate polygon {
 			transform: translateX(3px);
 		}
 	`,
