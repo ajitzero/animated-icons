@@ -25,21 +25,21 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:path [class.bottom-left]="isAnimating()" d="M6 2v14a2 2 0 0 0 2 2h14" />
-			<svg:path [class.top-right]="isAnimating()" d="M18 22V8a2 2 0 0 0-2-2H2" />
+			<svg:path class="bottom-left" d="M6 2v14a2 2 0 0 0 2 2h14" />
+			<svg:path class="top-right" d="M18 22V8a2 2 0 0 0-2-2H2" />
 		</svg>
 	`,
 	styles: `
 		:host {
 			display: inline-block;
 		}
-		path {
+		.crop-icon {
 			transition: transform 0.3s ease;
 		}
-		.bottom-left {
+		.crop-icon.animate .bottom-left {
 			transform: translate(1px, -1px);
 		}
-		.top-right {
+		.crop-icon.animate .top-right {
 			transform: translate(-1px, 1px);
 		}
 	`,

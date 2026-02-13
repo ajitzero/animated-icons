@@ -42,7 +42,6 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transform-origin: center;
 		}
 
-		/* Hover state */
 		.contrast-icon.animate .right {
 			transform: rotate(-180deg);
 		}

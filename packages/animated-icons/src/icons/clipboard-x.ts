@@ -11,10 +11,10 @@ import {
 import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 
 @Component({
-	selector: 'i-cpu',
+	selector: 'i-clipboard-x',
 	template: `
 		<svg
-			class="cpu-icon"
+			class="clipboard-x-icon"
 			[attr.width]="size()"
 			[attr.height]="size()"
 			[attr.stroke]="color()"
@@ -26,75 +26,98 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:rect width="16" height="16" x="4" y="4" rx="2" />
-			<svg:rect width="6" height="6" x="9" y="9" rx="1" />
-			<svg:path class="vertical-line" d="M15 2v2" />
-			<svg:path class="vertical-line" d="M15 20v2" />
-			<svg:path class="horizontal-line" d="M2 15h2" />
-			<svg:path class="horizontal-line" d="M2 9h2" />
-			<svg:path class="horizontal-line" d="M20 15h2" />
-			<svg:path class="horizontal-line" d="M20 9h2" />
-			<svg:path class="vertical-line" d="M9 2v2" />
-			<svg:path class="vertical-line" d="M9 20v2" />
+			<svg:rect class="clip" width="8" height="4" x="8" y="2" rx="1" ry="1" />
+			<svg:path class="board" d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+			<svg:path class="diagonal-1" d="m15 11-6 6" />
+			<svg:path class="diagonal-2" d="m9 11 6 6" />
 		</svg>
 	`,
 	styles: `
 		:host {
 			display: inline-block;
 		}
-		.cpu-icon {
+		.clipboard-x-icon {
 			overflow: visible;
 		}
 
-		.vertical-line,
-		.horizontal-line {
-			transition:
-				transform 0.5s ease-in-out,
-				opacity 0.5s ease-in-out;
-			transform-origin: center;
+		.clip,
+		.board {
+			transition: transform 0.3s ease;
 		}
 
-		.cpu-icon.animate .vertical-line {
-			animation: scaleYAnimation 0.5s ease-in-out 2;
+		.diagonal-1,
+		.diagonal-2 {
+			stroke-dasharray: 8.5;
+			stroke-dashoffset: 0;
+			transition: stroke-dashoffset 0.15s ease-out;
 		}
 
-		.cpu-icon.animate .horizontal-line {
-			animation: scaleXAnimation 0.5s ease-in-out 2;
+		.clipboard-x-icon.animate .clip {
+			animation: clipBounce 0.5s ease-in-out;
 		}
 
-		@keyframes scaleYAnimation {
+		.clipboard-x-icon.animate .board {
+			animation: boardShake 0.5s ease-in-out;
+		}
+
+		.clipboard-x-icon.animate .diagonal-1 {
+			opacity: 0;
+			animation: lineAnimation 0.3s ease-out forwards;
+		}
+
+		.clipboard-x-icon.animate .diagonal-2 {
+			opacity: 0;
+			animation: lineAnimation 0.3s ease-out 0.25s forwards;
+		}
+
+		@keyframes lineAnimation {
 			0% {
-				transform: scaleY(1);
-				opacity: 1;
+				opacity: 0;
+				stroke-dashoffset: 8.5;
 			}
-			50% {
-				transform: scaleY(1.1);
-				opacity: 0.8;
+			15% {
+				opacity: 1;
+				stroke-dashoffset: 8.5;
 			}
 			100% {
-				transform: scaleY(1);
 				opacity: 1;
+				stroke-dashoffset: 0;
 			}
 		}
 
-		@keyframes scaleXAnimation {
+		@keyframes clipBounce {
 			0% {
-				transform: scaleX(1);
-				opacity: 1;
+				transform: translateY(0);
+			}
+			25% {
+				transform: translateY(-2px);
 			}
 			50% {
-				transform: scaleX(1.1);
-				opacity: 0.8;
+				transform: translateY(1px);
 			}
 			100% {
-				transform: scaleX(1);
-				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes boardShake {
+			0% {
+				transform: rotate(0deg);
+			}
+			25% {
+				transform: rotate(-1deg);
+			}
+			75% {
+				transform: rotate(1deg);
+			}
+			100% {
+				transform: rotate(0deg);
 			}
 		}
 	`,
 	host: {
 		'[class]': 'class()',
-		'aria-label': 'cpu',
+		'aria-label': 'clipboard-x',
 		role: 'img',
 		'(mouseenter)': 'handleMouseEnter()',
 		'(focusin)': 'handleMouseEnter()',
@@ -102,7 +125,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CpuIcon {
+export class ClipboardXIcon {
 	#options = inject(ANIMATED_ICONS_CONFIG);
 
 	color = input(this.#options?.color ?? 'currentColor');
@@ -118,7 +141,7 @@ export class CpuIcon {
 	handleMouseEnter(forced = false) {
 		if (forced || (!this.animate() && !this.isAnimating())) {
 			this.isAnimating.set(true);
-			this.#timer = setTimeout(() => this.isAnimating.set(false), 1000);
+			this.#timer = setTimeout(() => this.isAnimating.set(false), 600);
 		}
 	}
 

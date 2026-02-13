@@ -38,7 +38,7 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			transform-origin: center;
 		}
 
-		.compass-icon polygon.animate {
+		.compass-icon.animate polygon {
 			transform: rotate(360deg);
 		}
 	`,

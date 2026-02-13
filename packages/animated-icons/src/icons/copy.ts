@@ -33,21 +33,21 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 		:host {
 			display: inline-block;
 		}
+		.copy-icon {
+			overflow: visible;
+		}
+
 		.copy-rect,
 		.copy-path {
 			transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 		}
 
-		.copy-rect.animate {
+		.copy-icon.animate .copy-rect {
 			transform: translate(-3px, -3px);
 		}
 
-		.copy-path.animate {
+		.copy-icon.animate .copy-path {
 			transform: translate(3px, 3px);
-		}
-
-		svg {
-			overflow: visible;
 		}
 	`,
 	host: {
