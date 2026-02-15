@@ -25,43 +25,29 @@ import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		>
-			<svg:line
-				[class.animate-line]="isAnimating()"
-				[style.transform]="isAnimating() ? 'translateY(-4px)' : 'translateY(0)'"
-				[style.transition]="'transform 0.17s ease-in-out'"
-				x1="22"
-				x2="2"
-				y1="6"
-				y2="6"
-			/>
-			<svg:line
-				[class.animate-line]="isAnimating()"
-				[style.transform]="isAnimating() ? 'translateY(4px)' : 'translateY(0)'"
-				[style.transition]="'transform 0.17s ease-in-out'"
-				x1="22"
-				x2="2"
-				y1="18"
-				y2="18"
-			/>
-			<svg:line
-				[class.animate-line]="isAnimating()"
-				[style.transform]="isAnimating() ? 'translateX(-4px)' : 'translateX(0)'"
-				[style.transition]="'transform 0.17s ease-in-out'"
-				x1="6"
-				x2="6"
-				y1="2"
-				y2="22"
-			/>
-			<svg:line
-				[class.animate-line]="isAnimating()"
-				[style.transform]="isAnimating() ? 'translateX(4px)' : 'translateX(0)'"
-				[style.transition]="'transform 0.17s ease-in-out'"
-				x1="18"
-				x2="18"
-				y1="2"
-				y2="22"
-			/>
+			<svg:line x1="22" x2="2" y1="6" y2="6" />
+			<svg:line x1="22" x2="2" y1="18" y2="18" />
+			<svg:line x1="6" x2="6" y1="2" y2="22" />
+			<svg:line x1="18" x2="18" y1="2" y2="22" />
 		</svg>
+	`,
+	styles: `
+		.frame-icon line {
+			transition: transform 0.17s ease-in-out;
+			transform: translate(0, 0);
+		}
+		.frame-icon.animate line:nth-child(1) {
+			transform: translateY(-4px);
+		}
+		.frame-icon.animate line:nth-child(2) {
+			transform: translateY(4px);
+		}
+		.frame-icon.animate line:nth-child(3) {
+			transform: translateX(-4px);
+		}
+		.frame-icon.animate line:nth-child(4) {
+			transform: translateX(4px);
+		}
 	`,
 	host: {
 		'[class]': 'class()',

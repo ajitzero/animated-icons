@@ -749,7 +749,7 @@ export const ICONS_LIST: IconItem[] = [
 	{ name: 'folder-sync', component: FolderSyncIcon },
 	{ name: 'folder-up', component: FolderUpIcon },
 	{ name: 'folder-x', component: FolderXIcon },
-	// { wip: true, name: 'frame', component: FrameIcon },
+	{ name: 'frame', component: FrameIcon },
 	{ name: 'gallery-horizontal-end', component: GalleryHorizontalEndIcon },
 	{ name: 'gallery-horizontal', component: GalleryHorizontalIcon },
 	{ name: 'gallery-thumbnails', component: GalleryThumbnailsIcon },
