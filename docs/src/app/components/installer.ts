@@ -23,13 +23,12 @@ type PackageManager = { id: string; cmd: string };
 			</hlm-tabs-list>
 			@for (packageManager of packageManagers; track packageManager.id) {
 				<div
-					class="bg-background dark:bg-muted m-0 flex items-center justify-between rounded-lg p-1 ps-2 sm:ps-4 text-left"
+					class="bg-background dark:bg-muted m-0 flex items-center justify-between rounded-lg p-1 ps-2 text-left sm:ps-4"
 					[hlmTabsContent]="packageManager.id"
 				>
 					<kbd>
-						<span class="text-neutral-400 me-1.5">{{ packageManager.id }} {{ packageManager.cmd }}</span>
+						<span class="me-1.5 text-neutral-400">{{ packageManager.id }} {{ packageManager.cmd }}</span>
 						<span class="select-all">{{ packageName() }}</span>
-						<span class="text-neutral-400">@latest</span>
 					</kbd>
 
 					<button
@@ -41,7 +40,7 @@ type PackageManager = { id: string; cmd: string };
 						size="icon"
 					>
 						<ng-icon
-              class="absolute transition-all"
+							class="absolute transition-all"
 							[ngClass]="{
 								'scale-0 opacity-0': copied(),
 								'scale-100 opacity-100': !copied(),
@@ -51,7 +50,7 @@ type PackageManager = { id: string; cmd: string };
 							size="sm"
 						/>
 						<ng-icon
-              class="absolute text-emerald-500 dark:text-emerald-400 dark:text-shadow-xs dark:text-shadow-emerald-100 transition-all"
+							class="absolute text-emerald-500 transition-all dark:text-emerald-400 dark:text-shadow-emerald-100 dark:text-shadow-xs"
 							[ngClass]="{
 								'scale-0 opacity-0': !copied(),
 								'scale-100 opacity-100': copied(),
@@ -85,11 +84,11 @@ export class Installer {
 
 	public copy(pm: PackageManager): void {
 		this.copied.set(true);
-		const command = `${pm.id} ${pm.cmd} ${this.packageName()}@latest`;
+		const command = `${pm.id} ${pm.cmd} ${this.packageName()}`;
 		this.#clipboard.copy(command);
 
 		setTimeout(() => {
 			this.copied.set(false);
-		}, 1500);
+		}, 1200);
 	}
 }
