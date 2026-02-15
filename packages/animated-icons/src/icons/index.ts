@@ -243,6 +243,7 @@ export * from './folder-sync';
 export * from './folder-up';
 export * from './folder-x';
 export * from './frame';
+export * from './funnel-x';
 export * from './gallery-horizontal-end';
 export * from './gallery-horizontal';
 export * from './gallery-thumbnails';
