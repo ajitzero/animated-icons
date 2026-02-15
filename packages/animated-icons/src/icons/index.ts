@@ -217,6 +217,7 @@ export * from './file-chart-column';
 export * from './file-chart-line';
 export * from './file-check-corner';
 export * from './file-check';
+export * from './file-cog';
 export * from './file-down';
 export * from './file-minus';
 export * from './file-pen-line';

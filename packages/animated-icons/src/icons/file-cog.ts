@@ -1,0 +1,90 @@
+import {
+	booleanAttribute,
+	ChangeDetectionStrategy,
+	Component,
+	inject,
+	input,
+	linkedSignal,
+	numberAttribute,
+} from '@angular/core';
+import { ANIMATED_ICONS_CONFIG } from '../tokens/provider';
+
+@Component({
+	selector: 'i-file-cog',
+	template: `
+		<svg
+			class="file-cog-icon"
+			[attr.width]="size()"
+			[attr.height]="size()"
+			[attr.stroke]="color()"
+			[attr.stroke-width]="strokeWidth()"
+			[class.animate]="isAnimating()"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+		>
+			<svg:path d="M14 2v4a2 2 0 0 0 2 2h4" />
+			<svg:path d="M4.677 21.5a2 2 0 0 0 1.313.5H18a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v2.5" />
+			<svg:g class="cog-group">
+				<svg:path d="m3.2 12.9-.9-.4" />
+				<svg:path d="m3.2 15.1-.9.4" />
+				<svg:path d="m4.9 11.2-.4-.9" />
+				<svg:path d="m4.9 16.8-.4.9" />
+				<svg:path d="m7.5 10.3-.4.9" />
+				<svg:path d="m7.5 17.7-.4-.9" />
+				<svg:path d="m9.7 12.5-.9.4" />
+				<svg:path d="m9.7 15.5-.9-.4" />
+				<svg:circle cx="6" cy="14" r="3" />
+			</svg:g>
+		</svg>
+	`,
+	styles: `
+		:host {
+			display: inline-block;
+		}
+		.file-cog-icon {
+			overflow: visible;
+		}
+
+		.file-cog-icon .cog-group {
+			transform-origin: 6px 14px;
+			transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		}
+
+		.file-cog-icon.animate .cog-group {
+			transform: rotate(180deg);
+		}
+	`,
+	host: {
+		'[class]': 'class()',
+		'aria-label': 'file-cog',
+		role: 'img',
+		'(focusin)': 'handleMouseEnter()',
+		'(focusout)': 'handleMouseLeave()',
+		'(mouseenter)': 'handleMouseEnter()',
+		'(mouseleave)': 'handleMouseLeave()',
+		'(touchstart)': 'handleMouseEnter()',
+		'(touchend)': 'handleMouseLeave()',
+	},
+	changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class FileCogIcon {
+	#options = inject(ANIMATED_ICONS_CONFIG);
+
+	color = input(this.#options?.color ?? 'currentColor');
+	size = input(this.#options?.size ?? 24, { transform: numberAttribute });
+	strokeWidth = input(this.#options?.strokeWidth ?? 2, { transform: numberAttribute });
+	class = input('');
+	animate = input(false, { transform: booleanAttribute });
+
+	protected isAnimating = linkedSignal(() => this.animate());
+
+	handleMouseEnter() {
+		this.isAnimating.set(true);
+	}
+	handleMouseLeave() {
+		if (!this.animate()) this.isAnimating.set(false);
+	}
+}
