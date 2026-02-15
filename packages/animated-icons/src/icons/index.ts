@@ -104,6 +104,7 @@ export * from './bug-off';
 export * from './calendar-check-2';
 export * from './calendar-check';
 export * from './calendar-cog';
+export * from './calendar-days';
 export * from './calendar-off';
 export * from './calendar-sync';
 export * from './camera-off';
