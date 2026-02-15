@@ -219,6 +219,7 @@ export * from './file-check-corner';
 export * from './file-check';
 export * from './file-cog';
 export * from './file-down';
+export * from './file-exclamation-point';
 export * from './file-minus';
 export * from './file-pen-line';
 export * from './file-pen';
