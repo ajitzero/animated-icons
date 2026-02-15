@@ -3,7 +3,8 @@
 	"version": "0.0.1",
 	"license": "MIT",
 	"scripts": {
-    "find-missing": "comm -23 <(ls temp/src/lib/icons/*.svelte | xargs -n1 basename -s .svelte | sort) <(ls packages/animated-icons/src/icons/*.ts | xargs -n1 basename -s .ts | sort)",
+		"find-missing-source": "comm -23 <(ls temp/src/lib/icons/*.svelte | xargs -n1 basename -s .svelte | sort) <(ls packages/animated-icons/src/icons/*.ts | xargs -n1 basename -s .ts | sort)",
+		"find-missing-self": "comm -23 <(ls packages/animated-icons/src/icons/*.ts | xargs -n1 basename -s .ts | sort) <(ls temp/src/lib/icons/*.svelte | xargs -n1 basename -s .svelte | sort)",
 		"format": "bunx prettier --write ."
 	},
 	"private": true,
