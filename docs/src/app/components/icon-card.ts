@@ -18,7 +18,7 @@ import type { IconItem } from './icon-item.type';
 		@if (icon().wip) {
 			<span
 				class="text-red-500"
-				[hlmTooltipTrigger]="'This icon might be working, but I have not verfied it yet'"
+				[hlmTooltip]="'This icon might be working, but I have not verfied it yet'"
 				hlmBtn
 				variant="outline"
 				aria-label="Work in progress"

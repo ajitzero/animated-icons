@@ -17,7 +17,7 @@ import { HlmTooltipImports } from '@spartan-ng/helm/tooltip';
 			</a>
 			<button
 				class="transition-transform active:translate-y-0.5"
-				[hlmTooltipTrigger]="themeLabel()"
+				[hlmTooltip]="themeLabel()"
 				[aria-describedby]="themeLabel()"
 				(click)="toggleTheme()"
 				hlmBtn

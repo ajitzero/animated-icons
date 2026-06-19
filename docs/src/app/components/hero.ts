@@ -21,9 +21,9 @@ import { Installer } from './installer';
 
 			<p class="${hlmP}">
 				Thanks to
-				<a class="underline hover:opacity-75" href="https://lucide-animated.com/" target="_blank">lucide-animated</a>
+				<a class="underline hover:opacity-75" href="https://movingicons.dev/" target="_blank">movingicons</a>
 				and
-				<a class="underline hover:opacity-75" href="https://movingicons.dev/" target="_blank">movingicons</a>.
+				<a class="underline hover:opacity-75" href="https://lucide-animated.com/" target="_blank">lucide-animated</a>.
 			</p>
 		</section>
 	`,

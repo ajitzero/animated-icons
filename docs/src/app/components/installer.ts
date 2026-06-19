@@ -32,7 +32,7 @@ type PackageManager = { id: string; cmd: string };
 					</kbd>
 
 					<button
-						[hlmTooltipTrigger]="'Copy to clipboard'"
+						[hlmTooltip]="'Copy to clipboard'"
 						[disabled]="copied()"
 						(click)="copy(packageManager)"
 						hlmBtn

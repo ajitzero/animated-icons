@@ -23,7 +23,7 @@
 		"@ng-icons/core": ">=32.0.0 <34.0.0",
 		"@ng-icons/lucide": ">=32.0.0 <34.0.0",
 		"@nx/vite": "^22.3.3",
-		"@spartan-ng/brain": "^0.0.1-alpha.591",
+		"@spartan-ng/brain": "^0.0.1-alpha.718",
 		"@tailwindcss/postcss": "^4.1.4",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",
@@ -34,7 +34,7 @@
 		"marked-mangle": "^1.1.10",
 		"postcss": "^8.5.3",
 		"rxjs": "~7.8.0",
-		"tailwind-merge": "^3.3.1",
+		"tailwind-merge": "^3.5.0",
 		"tailwindcss": "^4.1.4"
 	},
 	"devDependencies": {
@@ -56,7 +56,7 @@
 		"@nx/workspace": "22.3.3",
 		"@playwright/test": "^1.36.0",
 		"@schematics/angular": "~21.0.0",
-		"@spartan-ng/cli": "^0.0.1-alpha.591",
+		"@spartan-ng/cli": "^0.0.1-alpha.718",
 		"@swc-node/register": "~1.9.1",
 		"@swc/core": "~1.5.7",
 		"@swc/helpers": "~0.5.11",
