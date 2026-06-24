@@ -2,6 +2,8 @@ import nx from '@nx/eslint-plugin';
 import baseConfig from '../../../eslint.config.mjs';
 
 export default [
+	...nx.configs['flat/angular'],
+	...nx.configs['flat/angular-template'],
 	...baseConfig,
 	{
 		files: ['**/*.json'],
@@ -17,8 +19,6 @@ export default [
 			parser: await import('jsonc-eslint-parser'),
 		},
 	},
-	...nx.configs['flat/angular'],
-	...nx.configs['flat/angular-template'],
 	{
 		files: ['**/*.ts'],
 		rules: {
