@@ -5,12 +5,13 @@
 	"scripts": {
 		"find-missing-source": "comm -23 <(ls temp/src/lib/icons/*.svelte | xargs -n1 basename -s .svelte | sort) <(ls packages/animated-icons/src/icons/*.ts | xargs -n1 basename -s .ts | sort)",
 		"find-missing-self": "comm -23 <(ls packages/animated-icons/src/icons/*.ts | xargs -n1 basename -s .ts | sort) <(ls temp/src/lib/icons/*.svelte | xargs -n1 basename -s .svelte | sort)",
-		"build": "nx run ng-animated-icons:build:production",
+		"build": "bunx nx build ng-animated-icons",
+		"build:docs": "bunx nx build docs",
 		"clean": "bunx rimraf dist ./node_modules ./.angular ./.nx",
 		"format": "bunx prettier --write .",
 		"prepublish": "bun run format && bun run build",
 		"publish": "npm publish dist/packages/animated-icons",
-		"start": "bunx nx run docs:serve:development"
+		"start": "bunx nx serve docs"
 	},
 	"private": true,
 	"dependencies": {
