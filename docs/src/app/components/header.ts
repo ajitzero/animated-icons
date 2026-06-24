@@ -15,19 +15,17 @@ import { HlmTooltipImports } from '@spartan-ng/helm/tooltip';
 				<ng-icon hlm size="sm" name="lucideGithub" />
 				GitHub
 			</a>
+
+			<ng-template #tooltip>{{ themeLabel() }}</ng-template>
 			<button
 				class="transition-transform active:translate-y-0.5"
-				[hlmTooltip]="themeLabel()"
+				[hlmTooltip]="tooltip"
 				[aria-describedby]="themeLabel()"
 				(click)="toggleTheme()"
 				hlmBtn
 				variant="outline"
 			>
-				@if (theme() === 'light') {
-					<ng-icon hlm size="sm" name="lucideSun" />
-				} @else {
-					<ng-icon hlm size="sm" name="lucideMoon" />
-				}
+				<ng-icon [name]="themeIcon()" hlm size="sm" />
 			</button>
 		</span>
 	`,
@@ -42,6 +40,7 @@ export class Header {
 	document = inject(DOCUMENT);
 
 	theme = signal<'light' | 'dark'>('light');
+	themeIcon = computed(() => (this.theme() === 'light' ? 'lucideSun' : 'lucideMoon'));
 	themeLabel = computed(() => 'Switch to ' + (this.theme() === 'light' ? 'dark' : 'light') + ' mode');
 
 	toggleTheme() {
