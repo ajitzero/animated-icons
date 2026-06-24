@@ -16,9 +16,11 @@
 			"cache": true,
 			"inputs": [
 				"default",
+				"^default",
 				"{workspaceRoot}/.eslintrc.json",
 				"{workspaceRoot}/.eslintignore",
-				"{workspaceRoot}/eslint.config.mjs"
+				"{workspaceRoot}/eslint.config.mjs",
+				"{workspaceRoot}/tools/eslint-rules/**/*"
 			]
 		},
 		"@nx/angular:ng-packagr-lite": {
@@ -58,5 +60,6 @@
 		"version": {
 			"preVersionCommand": "bunx nx run-many -t build"
 		}
-	}
+	},
+	"analytics": false
 }
